@@ -14,6 +14,7 @@ That's it!
 - `define_languages`: It defines the programming languages that I normally use;
 - `define_styles`: It defines the styles in which I want the programming languages to be displayed with;
 - `exam`: A template for typesetting exams;
+- `local`: A folder already present on the file system;
 - `introduction`: This is the standard introduction that I use for my lecture notes;
 - `mystyle`: abbreviations and general settings for most of the packages;
 - `preamble`: The preamble in which I've listed all the libraries I ordinarily use in my doc;
