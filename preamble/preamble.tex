@@ -5,9 +5,12 @@
 \PassOptionsToPackage{us,24hr}{datetime}				% `us' makes \today behave as usual in TeX/LaTeX
 \PassOptionsToPackage{bottom}{footmisc}					% Note a piè pagina
 \PassOptionsToPackage{os=win}{menukeys}					% Notazione windows
+\PassOptionsToPackage{parfill}{parskip}					% Imposta la spaziatura fra i paragrafi
 \PassOptionsToPackage{colorinlistoftodos,prependcaption,textsize=tiny}{todonotes}
 \PassOptionsToPackage{titles,subfigure}{tocloft}		% Evita errori di caricamento dei pacchetti
 \PassOptionsToPackage{normalem}{ulem}					% replaces underlining with italics in text emphasized by \emph
+
+% \PassOptionsToPackage{colorlinks=true, allcolors=blue}{hyperref} % It produces a clashing error with the tocloft package if the TOC is displayed
 
 % \PassOptionsToPackage{thin}{roboto}					% Thin font for roboto
 
@@ -59,6 +62,7 @@
 	braket,				% Permette l'uso di parentesi angolari
 	caption,			% Personalizzazione delle didascalie
 	coffee4,			% Macchie di caffé
+	chngcntr,			% It defines the \counterwithin command, useful with parts of a document
 	csquotes,			% Permette di personalizzare le citazioni
 	xcolor,				% Permette di definire colori personalizzati
 	comment,			% Fornisce l'ambiente dei commenti
@@ -81,6 +85,7 @@
 	MnSymbol,			% Fornisce le freccie che utilizzo per andare a capo riga nelle liste di codice
 	multirow,			% Tabelle con righe multilinea
 	ocg-p,				% Permette di controllare le opzioni di stampa
+	parskip,			% Imposta la spaziatura fra i paragrafi
 	pdflscape,			% Permette di mettere in orizzontale il pdf
 	pgfgantt,			% Permette di disegnare i diagrammi di Gantt
 	pgffor,				% foreach
@@ -115,6 +120,7 @@
 	shapes.geometric,	% Forme geometriche
 	arrows,				% Frecce
 }
+
 
 \usepackage{hyperref}	% crea i collegamenti ipertestuali, bisogna caricarlo per ultimo
 
