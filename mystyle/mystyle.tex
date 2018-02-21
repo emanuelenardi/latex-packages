@@ -1,0 +1,327 @@
+\newdateformat{mydate}{%
+	\THEDAY{ }\monthname[\THEMONTH], \THEYEAR%		% Definisce il formato della data
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% LFC
+\newcommand{\vuoto}{\emptyset}
+
+\newcommand{\produce}{\longrightarrow}
+
+\newcommand{\deriva}{\implies}
+\newcommand{\derivamultiplo}{\underset{\deriva}{+}}		% Derivazione multipla
+\newcommand{\derivanumero}[1]{\underset{\deriva}{#1}}	% Segna il passaggi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\upquote}{\text{\textquotesingle}}
+\newcommand{\ub}{\underbrace}
+
+\newcommand{\N}{\mathbb{N}}	% natural
+\newcommand{\Z}{\mathbb{Z}}	% integers
+\newcommand{\I}{\mathbb{I}}	% irrational
+\newcommand{\Q}{\mathbb{Q}}	% rational
+\newcommand{\R}{\mathbb{R}}	% real
+\newcommand{\C}{\mathbb{C}}	% complex
+
+\renewcommand\qedsymbol{\( \blacksquare \)}
+
+\newtheorem{theorem}{Teorema}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}{Definizione}
+
+\newtheorem*{remark}{Ricorda}
+\newtheorem*{note}{Nota}
+
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclarePairedDelimiter\Bracket{\lbrack}{\rbrack}
+
+\newcolumntype{C}{>{$}c<{$}}
+\newcolumntype{L}{>{$}l<{$}}
+\newcolumntype{R}{>{$}r<{$}}
+
+\makeatletter
+\def\mathcolor#1#{\@mathcolor{#1}}
+\def\@mathcolor#1#2#3{%
+	\protect\leavevmode
+	\begingroup
+		\color#1{#2}#3%
+	\endgroup
+}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\blankpage}{%								% Permette di inserisce una pagina bianca
+	\null%
+	\thispagestyle{empty}%
+	\addtocounter{page}{-1}%
+	\newpage%
+}
+
+\date{\today}
+\newcommand{\dateandtime}{{\mydate\today} ore \currenttime}
+
+\newcommand{\ExternalLink}{								% Simbolo per riferimento a siti esterni
+	\tikz[x = 1.2ex, y = 1.2ex, baseline = -0.05ex]{
+		\begin{scope}[x = 1ex, y = 1ex]
+			\clip (-0.1,-0.1) --++ (-0, 1.2) --++ (0.6, 0) --++ (0, -0.6) --++ (0.6, 0) --++ (0, -1);
+			\path[draw, line width = 0.5, rounded corners = 0.5] (0,0) rectangle (1,1);
+		\end{scope}
+		\path[draw, line width = 0.5] (0.5, 0.5) -- (1, 1);
+		\path[draw, line width = 0.5] (0.6, 1) -- (1, 1) -- (1, 0.6);
+	}
+}
+
+\newcommand{\lstinputpath}[1]{\lstset{inputpath=#1}}
+
+\newcommand{\mail}[1]{\href{mailto:#1}{\texttt{#1}}}    % definisce il comando \mail
+
+\newcommand{\mysection}[2]{\section[#1]{#1\\[.5ex]\normalsize\textit{#2}}}
+\newcommand{\mysubsection}[2]{\subsection[#1]{#1\\[.5ex]\normalsize\textit{#2}}}
+
+\newcommand{\omissis}{[\textellipsis\unkern]}
+\newcommand{\code}[1]{\texttt{\textbf{#1}}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SOSTITUISCI IN PROGRAMMAZIONE WEB %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\html}[1]{\lstinline[style = HTML]|#1|}
+\newcommand{\cc}[1]{\lstinline[style = C]|#1|}
+\newcommand{\cpp}[1]{\lstinline[style = [11]C++]|#1|}
+\newcommand{\gradle}[1]{\lstinline[style = Gradle]|#1|}
+\newcommand{\java}[1]{\lstinline[style = Java]|#1|}
+\newcommand{\javascript}[1]{\lstinline[style = Javascript]|#1|}
+\newcommand{\jsp}[1]{\lstinline[style = JSP]|#1|}
+\newcommand{\sml}[1]{\lstinline[style = SML]|#1|}
+\newcommand{\sql}[1]{\lstinline[style = SQL]|#1|}
+\newcommand{\xml}[1]{\lstinline[style = XML]|#1|}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\soutthick}[1]{								% Linea spessa sul testo sottostante
+	\renewcommand{\ULthickness}{1.0pt}	% 2.4
+		\sout{#1}%
+	\renewcommand{\ULthickness}{.4pt}	% Resetting to ulem default
+}
+
+\definecolor{ashgrey}{rgb}{0.7, 0.75, 0.71}
+\definecolor{burgundy}{rgb}{0.5, 0.0, 0.13}
+\definecolor{cyan}{rgb}{0.0,0.6,0.6}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.6}
+\definecolor{gray}{rgb}{0.4,0.4,0.4}
+
+\colorlet{selection}{red}
+\colorlet{purple}{MediumPurple1}
+\colorlet{greenYellow}{Chartreuse2}
+
+\newcommand{\darkblue}[1]{\textcolor{darkblue}{#1}}
+\newcommand{\cyan}[1]{\textcolor{cyan}{#1}}
+\newcommand{\gray}[1]{\textcolor{gray}{#1}}
+
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\azure}[1]{\textcolor{SkyBlue}{#1}}
+\newcommand{\green}[1]{\textcolor{ForestGreen}{#1}}
+\newcommand{\greenlight}[1]{\textcolor{green!30}{#1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\orange}[1]{\textcolor{red!50}{#1}}
+\newcommand{\purple}[1]{\textcolor{purple}{#1}}
+
+\newcommand{\greenHL}{\btHL[fill=green!30]}				% Evidenzia in verde
+\newcommand{\blueHL}{\btHL[fill=blue!30]}				% Evidenzia in blue
+\newcommand{\azureHL}{\btHL[fill=SkyBlue]}				% Evidenzia in blue
+\newcommand{\redHL}{\btHL}								% Evidenzia in rosso
+\newcommand{\yellowHL}{\btHL[fill=yellow!60]}			% Evidenzia in giallo
+
+\newcommand{\cmark}{\green{\ding{51}}}					% \verb|\cmark|: \cmark \par
+\newcommand{\xmark}{\red{\ding{55}}}					% \verb|\xmark|: \xmark
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \renewcommand{\descriptionlabel}[1]{\hspace{\labelsep}\texttt{#1}}
+\renewcommand{\labelitemi}{--}							% trattino negli elenchi puntati
+\setlist[1]{itemsep = 3pt, topsep = 3pt}
+
+\renewcommand{\lstlistingname}{Codice}					% Listing -> Codice
+\renewcommand{\lstlistlistingname}{Lista dei Codici}	% List of Listings -> Lista dei Codici
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \renewcommand{\cftchapafterpnum}{\vspace{10pt}}
+\renewcommand{\cftsecafterpnum}{\vspace{10pt}}
+
+% \let\Chapter\chapter
+% \def\chapter{\addtocontents{lol}{\protect\addvspace{10pt}}\Chapter}
+\let\Section\section%
+\def\section{\addtocontents{lol}{\protect\addvspace{10pt}}\Section}
+
+\setlist[description]{leftmargin = 8em, style = nextline}
+\setlength\parindent{0pt}				% togliere l'intentazione a tutto il documento
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommandx{\insicuro}[2][1=]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
+\newcommandx{\cambia}[2][1=]{\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]{#2}}
+\newcommandx{\info}[2][1=]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen,#1]{#2}}
+\newcommandx{\miglioramento}[2][1=]{\todo[linecolor=Plum,backgroundcolor=Plum!25,bordercolor=Plum,#1]{#2}}
+\newcommandx{\nascosto}[2][1=]{\todo[disable,#1]{#2}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\makeatletter
+	\newenvironment{btHighlight}[1][]
+		{\begingroup\tikzset{bt@Highlight@par/.style={#1}}\begin{lrbox}{\@tempboxa}}
+		{\end{lrbox}\bt@HL@box[bt@Highlight@par]{\@tempboxa}\endgroup}
+
+	\newcommand\btHL[1][]{%
+		\begin{btHighlight}[#1]\bgroup\aftergroup\bt@HL@endenv%
+	}
+	\def\bt@HL@endenv{%
+		\end{btHighlight}%
+		\egroup%
+	}
+	\newcommand{\bt@HL@box}[2][]{%
+		\tikz[#1]{%
+			\pgfpathrectangle{\pgfpoint{1pt}{0pt}}{\pgfpoint{\wd #2}{\ht #2}}%
+			\pgfusepath{use as bounding box}%
+			\node[anchor=base west, fill=orange!30,outer sep=0pt,inner xsep=1pt, inner ysep=0pt, rounded corners=3pt, minimum height=\ht\strutbox+1pt,#1]{\raisebox{1pt}{\strut}\strut\usebox{#2}};
+		}%
+	}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\captionsetup{
+	figureposition = bottom,	% opzione analoga alla successiva per le figure
+	tableposition = top,		% ordina al programma di inserire uno spazio adeguato tra didascalia e tabella
+	% position = bottom,			% Non funziona
+	font = small,				% produce didascalie in corpo più piccolo
+	format = hang,				% allinea (hang) alla prima riga quelle successive
+	labelfont = {sf,bf}			% imposta l’etichetta della didascalia in caratteri senza grazie, in grassetto
+}
+
+\DeclareQuoteStyle{italian}%
+	{\textquotedblleft}
+	[\textquotedblleft]
+	{\textquotedblright}
+		[0.05em]
+	{\textquoteleft}
+	[\textquoteleft]
+	{\textquoteright}
+
+\setquotestyle{italian}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\hypersetup{
+	pdfinfo = {
+		pdffitwindow = true,	 		% window fit to page when opened
+		pdfnewwindow = true,			% links in new PDF window
+		pdftitle = {\pdfTitle},			% PDF's title
+		pdfsubject = {\subject},		% subject of the document
+		pdfkeywords = {\tags},			% list of keywords
+		pdfauthor = {\authorName},		% author of the document
+		pdfcreator = {\authorName},		% creator of the document
+		pdfproducer = {\authorName},	% producer of the document
+	}
+}
+
+\geometry{
+	paper = a4paper,					% formato carta A4
+	% margin = 2cm,               		% tutti i margini
+	top = 1.5cm,						% margine superiore
+	bottom = 2cm,						% margine inferiore
+	left = 2cm,							% margine sinistro
+	right = 2cm,						% margine destro
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Commenta quando usi la documentclass "exam"
+% \begin{comment}
+
+\fancypagestyle{dev}{%
+	\rhead{Ultimo aggiornamento \dateandtime}
+}
+
+% \fancypagestyle{header}{
+% }
+
+\fancypagestyle{footer}{
+	\fancyhf{}
+	\lfoot{\authorName}
+	\cfoot{\footnotesize Pagina~\thepage\ di~\pageref{LastPage}}
+	\rfoot{\dateandtime}
+	\renewcommand{\headrulewidth}{0pt}
+	\renewcommand{\footrulewidth}{2pt} % 0.8pt
+}
+
+% \fancypagestyle{book}{
+% }
+
+% \end{comment}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcolumntype{!}{>{\global\let\currentrowstyle\relax}}
+\newcolumntype{^}{>{\currentrowstyle}}
+\newcommand{\rowstyle}[1]{\gdef\currentrowstyle{#1}%
+	#1\ignorespaces%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\nodeDistance}{2.0cm}
+\newcommand{\nextto}{0.5cm}
+
+% Digramma Entità-Relazione
+\tikzset{%
+	every entity/.style = {draw = orange, fill = orange!20},
+	every attribute/.style = {draw = purple, fill = purple!20, node distance = 1cm},
+	every relationship/.style = {draw = greenYellow, fill = greenYellow!20},
+	every isa/.style = {draw = green, fill = green!20},
+	every database/.style = {draw = blue, fill = blue!20},
+}
+
+\tikzset{%
+	between/.style args={#1 and #2}{%
+		at = (\( (#1)!0.5!(#2) \))%
+	},
+}
+
+% Diagramma di flusso
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width = 3cm, minimum height = 1cm, text centered, every startstop]
+\tikzstyle{io} = [trapezium, trapezium left angle = 70, trapezium right angle = 110, minimum width = 3cm, minimum height = 1cm, text centered, every io]
+\tikzstyle{process} = [rectangle, minimum width = 3cm, minimum height = 1cm, text centered, text width = 3cm, every process]
+\tikzstyle{decision} = [diamond, minimum width = 3cm, minimum height = 1cm, text centered, text width = 3cm, every decision]
+\tikzstyle{arrow}  = [every arrow]
+
+\tikzstyle{every startstop}  = [draw = black, fill = red!30]
+\tikzstyle{every io}  = [draw = black, fill = blue!30]
+\tikzstyle{every process}  = [draw = black, fill = orange!30]
+\tikzstyle{every decision}  = [draw = black, fill = green!30]
+\tikzstyle{every arrow}  = [thick, ->, >=stealth]
+
+% Immagini
+\tikzstyle{rettangolo} = [rectangle, draw, thick, minimum width = 4cm, minimum height = 2cm, text centered]
+\tikzstyle{freccia} = [single arrow, draw, thick, minimum width = 1cm, minimum height = 4cm, every arrow]
+\tikzstyle{freccia doppia} = [double arrow, draw, thick, minimum width = 1cm, minimum height = 4cm, every arrow]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% CHANGED: Path "Immagini/" to "Images/"
+% CHANGED: Path "Immagini/Slides/" to "Images/Slides/"
+% CHANGED: Path "Icons/" to "Images/Icons/"
+\graphicspath{
+	{Images/}
+	{Images/Slides/}
+	{Images/Icons/}
+}
+
+\lstinputpath{Codici/}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -1,0 +1,54 @@
+\makeatletter
+\def\lst@DelimPrint#1#2{%
+	#1%
+		\begingroup
+			\lst@mode\lst@nomode \lst@modetrue
+			#2\delimstyle\lst@XPrintToken%
+		\endgroup
+		\lst@ResetToken
+	\fi}
+\makeatother
+\newcommand\delimstyle{}
+
+\lstdefinelanguage{XML} {
+	% language = XML,
+	morestring = [s]{"}{"},
+	morestring = [s]{>}{<},
+	morecomment = [l]{\#},
+	% morecomment = [s]{<?}{?>},
+	morecomment = [s]{<!--}{-->},
+}
+
+\lstdefinelanguage{Javascript} {
+	language = HTML,
+}
+
+\lstdefinelanguage{JSP} {
+	language = Java,
+	alsolanguage = html,
+}
+
+\lstdefinelanguage{Kotlin} {
+	sensitive = true,
+	comment = [l]{//},
+	morecomment = [s]{/*}{*/},
+	morestring = [b]",
+	morestring = [s]{"""*}{*"""},
+	emph = {
+		println, return@, forEach,
+	},
+	keywords = {
+		package, as, typealias, this, super, val, var, fun, for, null,
+		true, false, is, in, throw, return, break, continue, object, if,
+		try, else, while, do, when, yield, typeof, yield, typeof, class,
+		interface, enum, object, override, public, private, get, set, import, abstract,
+	},
+	keywords = {[2]
+		@Deprecated, Iterable, Int, Integer, Float,
+		Double, String, Runnable, dynamic,
+	},
+}
+
+\lstdefinelanguage{SML} {
+	language = ML,
+}

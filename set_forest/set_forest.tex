@@ -1,0 +1,88 @@
+\forestset{
+	custom/.style = {
+		% top color = white,
+		% bottom color = white,
+		delay = {%
+			content/.wrap value={##1\\{\raisebox{-1.5mm}{\includegraphics[scale=.45]{custom}}}}
+		}
+	},
+	java/.style = {
+		% top color = white,
+		% bottom color = white,
+		delay = {%
+			content/.wrap value={##1\\{\raisebox{-1.5mm}{\includegraphics[scale=.45]{java}}}}
+		}
+	},
+	library/.style = {
+		% top color = white,
+		% bottom color = white,
+		delay = {%
+			content/.wrap value={##1\\{\raisebox{-1.5mm}{\raisebox{-0mm}{\includegraphics[scale=.45]{library}}}}}
+		}
+	},
+	Module/.style = {
+		% top color = white,
+		% bottom color = white,
+		delay = {%
+			content/.wrap value={##1\\{\raisebox{-1.5mm}{\raisebox{-0mm}{\includegraphics[scale=.45]{Module}}}}}
+		}
+	},
+	resourceRoot/.style = {
+		% top color = white,
+		% bottom color = white,
+		delay = {%
+			content/.wrap value={##1\\{\raisebox{-1.5mm}{\includegraphics[scale=.45]{resourcesRoot}}}}
+		}
+	},
+	sourceRoot/.style = {
+		% top color = white,
+		% bottom color = white,
+		delay = {%
+			content/.wrap value={##1\\{\raisebox{-1.5mm}{\includegraphics[scale=.45]{sourceRoot}}}}
+		}
+	},
+	sourceFolder/.style = {
+		% top color = white,
+		% bottom color = white,
+		delay = {%
+			content/.wrap value={##1\\{\raisebox{-0mm}{\raisebox{-1.5mm}{\includegraphics[scale=.45]{sourceFolder}}}}}
+		}
+	},
+	xml/.style = {
+		% top color = white,
+		% bottom color = white,
+		delay = {%
+			content/.wrap value={##1\\{\raisebox{-1.5mm}{\includegraphics[scale=.45]{xml}}}}
+		}
+	},
+	dir node/.style={%
+		font=\ttfamily,
+		parent anchor = south west,	% tell where the parent’s endpoint of the edge between them should be
+		child anchor = west,		% tell where the child’s endpoint of the edge between them should be
+		anchor = mid west,			% by default, nodes are anchored at their base
+		inner ysep = 0pt,			% distance within nodes
+		calign = first,				% child-alignment
+	},
+	dir tree/.style={
+		for tree = {
+			% font = \sffamily,
+			grow' = 0,		% directory tree
+			dir node,		% node style
+			edge = {gray, rounded corners, line width = 1pt},
+			edge path = {
+				\noexpand\path [draw, \forestoption{edge}]%
+				(!u.south west) +(7.5pt,0) |- (.child anchor)\forestoption{edge label};
+			},
+			if n children = 0 {} {
+				delay = {	% it introduces cyclical option processing, is a temporal propagator
+					prepend = {[text 1, dir node, phantom, calign with current]}
+				}
+			},
+			fit = band,		% the space under the node and its descendants will be kept clear
+			s sep = 5pt,	% control the distance between the subtrees rooted in the siblings
+			before computing xy = {
+				l = 15pt 	% branch's length
+			},
+		}
+	}
+}
