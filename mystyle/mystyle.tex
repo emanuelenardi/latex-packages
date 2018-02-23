@@ -238,7 +238,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Commenta quando usi la documentclass "exam"
+% NOTE: Commenta quando usi la documentclass "exam"
 % \begin{comment}
 
 \fancypagestyle{dev}{%
@@ -252,7 +252,7 @@
 	\fancyhf{}
 	\lfoot{\authorName}
 	\cfoot{\footnotesize Pagina~\thepage\ di~\pageref{LastPage}}
-	\rfoot{\dateandtime}
+	\rfoot{\date}
 	\renewcommand{\headrulewidth}{0pt}
 	\renewcommand{\footrulewidth}{2pt} % 0.8pt
 }
@@ -310,16 +310,13 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% CHANGED: Path "Immagini/" to "Images/"
-% CHANGED: Path "Immagini/Slides/" to "Images/Slides/"
-% CHANGED: Path "Icons/" to "Images/Icons/"
+% NOTE: Devono rispecchiare l'albero di cartelle
 \graphicspath{
 	{Images/}
 	{Images/Slides/}
 	{Images/Icons/}
 }
 
-% CHANGED: Codici -> Codes
 \lstinputpath{Codes/}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
