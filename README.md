@@ -30,13 +30,13 @@ Code formatting in my latex documents follow a strict legend that is listed belo
 
 | Colore | Simbolo | Codice |
 | --- | --- | --- |
-| ForestGreen | `†...†` | `alt + 0134` |
-| green | `+...+` | `+` |
-| celeste | `Ž...Ž` | `alt + 0142` |
 | SkyBlue | `•...•` | `alt + 149` |
-| orange | `Š...Š` | `alt + 0138` |
+| celeste | `Ž...Ž` | `alt + 0142` |
+| ForestGreen | `†...†` | `alt + 0134` |
+| green | `+++...+++` | `+` |
 | yellow | `‡...‡` | `alt + 0135` |
-| red | `-...-` | `-` |
+| orange | `Š...Š` | `alt + 0138` |
+| red | `---...---` | `-` |
 
 ## Contribute
 
