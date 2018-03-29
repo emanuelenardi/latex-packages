@@ -59,13 +59,13 @@
 	moredelim = **[is][\color{blue}]{^}{^},					% in blue cumulativo
 	moredelim = **[is][\color{ForestGreen}]{***}{***},		% in verde cumulativo
 	moredelim = **[is][\color{red}]{~}{~},					% [Alt + 126] in rosso cumulativo
-	moredelim = **[is][\btHL]{---}{---},					% aggiunto cumulativo
+	moredelim = **[is][\btHL]{---}{---},					% rimosso cumulativo
 	moredelim = **[is][{\btHL[fill=blue!60]}]{Ž}{Ž},		% [Alt + 0142]  evidenzia cumulativo
 	moredelim = **[is][{\btHL[fill=SkyBlue]}]{•}{•},		% [Alt + 0149]  evidenzia cumulativo
 	moredelim = **[is][{\btHL[fill=orange!60]}]{Š}{Š},		% [Alt + 0138]  evidenzia cumulativo
 	moredelim = **[is][{\btHL[fill=yellow!60]}]{‡}{‡},		% [Alt + 0135]  modificato cumulativo
-	moredelim = **[is][{\btHL[fill=ForestGreen]}]{†}{†},	% [Alt + 0134] evidenzia cumulativo
-	moredelim = **[is][{\btHL[fill=green!30]}]{+++}{+++},	% rimosso cumulativo
+	moredelim = **[is][{\btHL[fill=ForestGreen]}]{†}{†},	% [Alt + 0134]  evidenzia cumulativo
+	moredelim = **[is][{\btHL[fill=green!30]}]{+++}{+++},	%  aggiunto cumulativo
 	emph = {
 		@Override,
 		@param
@@ -128,7 +128,12 @@
 		val, type, datatype,
 		fn, rec, fun,
 		let, local, in, end,
-	}
+	},
+	moredelim = **[is][{\btHL[fill=orange!60]}]{Š}{Š},
+	moredelim = **[is][{\btHL[fill=yellow!60]}]{‡}{‡},
+	moredelim = **[is][{\btHL[fill=ForestGreen]}]{†}{†},
+	moredelim = **[is][{\btHL[fill=green!30]}]{+++}{+++},
+	moredelim = **[is][\btHL]{---}{---},
 }
 
 \lstdefinestyle{SQL} {

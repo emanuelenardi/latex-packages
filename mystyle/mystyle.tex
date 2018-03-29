@@ -1,23 +1,27 @@
-\newdateformat{mydate}{%
-	\THEDAY{ }\monthname[\THEMONTH], \THEYEAR%		% Definisce il formato della data
-}
+% ---------------------------------------------------------------------------- %
+% ---------------------------------------------------------------------------- %
+% ---------------------------------------------------------------------------- %
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% LFC
+% NOTE: Abbreviazioni LFC
 \newcommand{\vuoto}{\emptyset}
+% TODO: Testare e cambiare
+% \newcommand{\e}{\epsilon}
 
 \newcommand{\produce}{\longrightarrow}
-
 \newcommand{\deriva}{\implies}
 \newcommand{\derivamultiplo}{\underset{\deriva}{+}}		% Derivazione multipla
 \newcommand{\derivanumero}[1]{\underset{\deriva}{#1}}	% Segna il passaggi
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+% TODO: Cambiare
+% \newcommand{\uq}{\upquote}
 \newcommand{\upquote}{\text{\textquotesingle}}
+
+\newcommand{\ob}{\overbrace}
 \newcommand{\ub}{\underbrace}
 
+% ---------------------------------------------------------------------------- %
+
+% NOTE: Abbreviazioni simboli matematici
 \newcommand{\N}{\mathbb{N}}	% natural
 \newcommand{\Z}{\mathbb{Z}}	% integers
 \newcommand{\I}{\mathbb{I}}	% irrational
@@ -52,19 +56,26 @@
 }
 \makeatother
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ---------------------------------------------------------------------------- %
 
-\newcommand{\blankpage}{%								% Permette di inserisce una pagina bianca
+% NOTE: Permette di inserisce una pagina bianca
+\newcommand{\blankpage}{%
 	\null%
 	\thispagestyle{empty}%
 	\addtocounter{page}{-1}%
 	\newpage%
 }
 
+% NOTE: Definizione della data ->
+\newdateformat{mydate}{%
+	\THEDAY{ }\monthname[\THEMONTH] \THEYEAR%		% Definisce il formato della data
+}
+
 \date{\today}
 \newcommand{\dateandtime}{{\mydate\today}}
 
-\newcommand{\ExternalLink}{								% Simbolo per riferimento a siti esterni
+% NOTE: Simbolo per riferimento a materiali esterni
+\newcommand{\ExternalLink}{
 	\tikz[x = 1.2ex, y = 1.2ex, baseline = -0.05ex]{
 		\begin{scope}[x = 1ex, y = 1ex]
 			\clip (-0.1,-0.1) --++ (-0, 1.2) --++ (0.6, 0) --++ (0, -0.6) --++ (0.6, 0) --++ (0, -1);
@@ -85,8 +96,10 @@
 \newcommand{\omissis}{[\textellipsis\unkern]}
 \newcommand{\code}[1]{\texttt{\textbf{#1}}}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% ---------------------------------------------------------------------------- %
+
+% NOTE: Abbreviazioni inserimento codice
 \newcommand{\html}[1]{\lstinline[style = HTML]|#1|}
 \newcommand{\cc}[1]{\lstinline[style = C]|#1|}
 \newcommand{\cpp}[1]{\lstinline[style = [11]C++]|#1|}
@@ -98,24 +111,30 @@
 \newcommand{\sql}[1]{\lstinline[style = SQL]|#1|}
 \newcommand{\xml}[1]{\lstinline[style = XML]|#1|}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ---------------------------------------------------------------------------- %
 
-\newcommand{\soutthick}[1]{								% Linea spessa sul testo sottostante
+% NOTE: Linea spessa sul testo sottostante
+\newcommand{\soutthick}[1]{
 	\renewcommand{\ULthickness}{1.0pt}	% 2.4
 		\sout{#1}%
 	\renewcommand{\ULthickness}{.4pt}	% Resetting to ulem default
 }
 
+% ---------------------------------------------------------------------------- %
+
+% NOTE: Definizione nuovi colori
 \definecolor{ashgrey}{rgb}{0.7, 0.75, 0.71}
 \definecolor{burgundy}{rgb}{0.5, 0.0, 0.13}
 \definecolor{cyan}{rgb}{0.0,0.6,0.6}
 \definecolor{darkblue}{rgb}{0.0,0.0,0.6}
 \definecolor{gray}{rgb}{0.4,0.4,0.4}
 
+% NOTE: Definizione nomi colori personalizzati
 \colorlet{selection}{red}
 \colorlet{purple}{MediumPurple1}
 \colorlet{greenYellow}{Chartreuse2}
 
+% NOTE: Abbreviazioni colori
 \newcommand{\darkblue}[1]{\textcolor{darkblue}{#1}}
 \newcommand{\cyan}[1]{\textcolor{cyan}{#1}}
 \newcommand{\gray}[1]{\textcolor{gray}{#1}}
@@ -133,21 +152,31 @@
 \newcommand{\azureHL}{\btHL[fill=SkyBlue]}				% Evidenzia in blue
 \newcommand{\redHL}{\btHL}								% Evidenzia in rosso
 \newcommand{\yellowHL}{\btHL[fill=yellow!60]}			% Evidenzia in giallo
+\newcommand{\orangeHL}{\btHL[fill=orange!60]}
 
+
+% NOTE: Marking
 \newcommand{\cmark}{\green{\ding{51}}}					% \verb|\cmark|: \cmark \par
 \newcommand{\xmark}{\red{\ding{55}}}					% \verb|\xmark|: \xmark
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ---------------------------------------------------------------------------- %
 
+% TODO: Remove from all notes
 % \renewcommand{\descriptionlabel}[1]{\hspace{\labelsep}\texttt{#1}}
-\renewcommand{\labelitemi}{--}							% trattino negli elenchi puntati
+
+% NOTE: Imposta il trattino negli elenchi puntati come marcatore
+\renewcommand{\labelitemi}{--}
+% NOTE: Diminuisce la distanza fra i punti
 \setlist[1]{itemsep = 3pt, topsep = 3pt}
 
+% NOTE: Rinomina la didascalia dei codici
 \renewcommand{\lstlistingname}{Codice}					% Listing -> Codice
+% NOTE: Rinomina l'indice dei codici
 \renewcommand{\lstlistlistingname}{Lista dei Codici}	% List of Listings -> Lista dei Codici
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ---------------------------------------------------------------------------- %
 
+% HACK: Change it when you use "book" as document class
 % \renewcommand{\cftchapafterpnum}{\vspace{10pt}}
 \renewcommand{\cftsecafterpnum}{\vspace{10pt}}
 
@@ -156,19 +185,24 @@
 \let\Section\section%
 \def\section{\addtocontents{lol}{\protect\addvspace{10pt}}\Section}
 
+% NOTE: La numerazione delle sezione si azzera all'inizio di una nuova parte
+\counterwithin*{section}{part}
+
 \setlist[description]{leftmargin = 8em, style = nextline}
-\setlength\parindent{0pt}				% togliere l'intentazione a tutto il documento
+\setlength\parindent{0pt}				% toglie l'intentazione a tutto il documento
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ---------------------------------------------------------------------------- %
 
+% NOTe: Definizione nuovi comandi per il pacchetto "notes"
 \newcommandx{\insicuro}[2][1=]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
 \newcommandx{\cambia}[2][1=]{\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]{#2}}
 \newcommandx{\info}[2][1=]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen,#1]{#2}}
 \newcommandx{\miglioramento}[2][1=]{\todo[linecolor=Plum,backgroundcolor=Plum!25,bordercolor=Plum,#1]{#2}}
 \newcommandx{\nascosto}[2][1=]{\todo[disable,#1]{#2}}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ---------------------------------------------------------------------------- %
 
+% NOTE: Definizione nuovo ambiente per evidenziare il codice
 \makeatletter
 	\newenvironment{btHighlight}[1][]
 		{\begingroup\tikzset{bt@Highlight@par/.style={#1}}\begin{lrbox}{\@tempboxa}}
@@ -190,8 +224,9 @@
 	}
 \makeatother
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ---------------------------------------------------------------------------- %
 
+% NOTE: Impostazione delle didascalie
 \captionsetup{
 	figureposition = bottom,	% opzione analoga alla successiva per le figure
 	tableposition = top,		% ordina al programma di inserire uno spazio adeguato tra didascalia e tabella
@@ -201,6 +236,7 @@
 	labelfont = {sf,bf}			% imposta l’etichetta della didascalia in caratteri senza grazie, in grassetto
 }
 
+% NOTE: Ridefinisce le virgolette
 \DeclareQuoteStyle{italian}%
 	{\textquotedblleft}
 	[\textquotedblleft]
@@ -210,9 +246,10 @@
 	[\textquoteleft]
 	{\textquoteright}
 
+% NOTE: Impsta il tipo di virgolette
 \setquotestyle{italian}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ---------------------------------------------------------------------------- %
 
 \hypersetup{
 	pdfinfo = {
@@ -236,33 +273,23 @@
 	right = 2cm,						% margine destro
 }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ---------------------------------------------------------------------------- %
 
-% NOTE: Commenta quando usi la documentclass "exam"
+% HACK: Commenta quando usi la documentclass "exam"
 % \begin{comment}
-
-\fancypagestyle{dev}{%
-	\rhead{Ultimo aggiornamento \dateandtime}
-}
-
-% \fancypagestyle{header}{
-% }
 
 \fancypagestyle{footer}{
 	\fancyhf{}
 	\lfoot{\authorName}
 	\cfoot{\footnotesize Pagina~\thepage\ di~\pageref{LastPage}}
-	\rfoot{\date}
+	\rfoot{\dateandtime}
 	\renewcommand{\headrulewidth}{0pt}
 	\renewcommand{\footrulewidth}{2pt} % 0.8pt
 }
 
-% \fancypagestyle{book}{
-% }
+% \begin{comment}
 
-% \end{comment}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ---------------------------------------------------------------------------- %
 
 \newcolumntype{!}{>{\global\let\currentrowstyle\relax}}
 \newcolumntype{^}{>{\currentrowstyle}}
@@ -270,12 +297,13 @@
 	#1\ignorespaces%
 }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ---------------------------------------------------------------------------- %
 
+% FIXME: Fare attenzione, potrebbe creare problemi
 \newcommand{\nodeDistance}{2.0cm}
 \newcommand{\nextto}{0.5cm}
 
-% Digramma Entità-Relazione
+% NOTE: Digramma Entità-Relazione
 \tikzset{%
 	every entity/.style = {draw = orange, fill = orange!20},
 	every attribute/.style = {draw = purple, fill = purple!20, node distance = 1cm},
@@ -290,7 +318,7 @@
 	},
 }
 
-% Diagramma di flusso
+% NOTE: Flow-diagram
 \tikzstyle{startstop} = [rectangle, rounded corners, minimum width = 3cm, minimum height = 1cm, text centered, every startstop]
 \tikzstyle{io} = [trapezium, trapezium left angle = 70, trapezium right angle = 110, minimum width = 3cm, minimum height = 1cm, text centered, every io]
 \tikzstyle{process} = [rectangle, minimum width = 3cm, minimum height = 1cm, text centered, text width = 3cm, every process]
@@ -303,20 +331,21 @@
 \tikzstyle{every decision}  = [draw = black, fill = green!30]
 \tikzstyle{every arrow}  = [thick, ->, >=stealth]
 
-% Immagini
+% NOTE: Images
 \tikzstyle{rettangolo} = [rectangle, draw, thick, minimum width = 4cm, minimum height = 2cm, text centered]
 \tikzstyle{freccia} = [single arrow, draw, thick, minimum width = 1cm, minimum height = 4cm, every arrow]
 \tikzstyle{freccia doppia} = [double arrow, draw, thick, minimum width = 1cm, minimum height = 4cm, every arrow]
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ---------------------------------------------------------------------------- %
 
-% NOTE: Devono rispecchiare l'albero di cartelle
 \graphicspath{
-	{Images/}
-	{Images/Slides/}
-	{Images/Icons/}
+	{assets/figures/}
+	{assets/slides/}
+	{assets/icons/}
 }
 
 \lstinputpath{Codes/}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ---------------------------------------------------------------------------- %
+% ---------------------------------------------------------------------------- %
+% ---------------------------------------------------------------------------- %
