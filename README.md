@@ -4,9 +4,19 @@ This repository contains the libraries that I use on daily basis to typesetting 
 
 ## Usage
 
-Clone this repo in your `C:\texlive\texmf-local\tex\latex` folder , then run `texhash` command on a terminal.
+Clone this repo in your local `texmf` folder , then run `texhash` command on a terminal.
 
-That's it!
+If you are on a Windows system run the following:
+```bash
+git clone https://github.com/emanuelenardi/latex C:\texlive\texmf-local\tex
+texhash
+```
+
+While if you're on UNIX based system like linux or mac run the following:
+```bash
+git clone https://github.com/emanuelenardi/latex ~/usr/local/share/texmf/tex
+texhash
+```
 
 ## Description
 
@@ -15,6 +25,7 @@ That's it!
 - `define_styles`: It defines the styles in which I want the programming languages to be displayed with;
 - `exam`: A template for typesetting exams;
 - `local`: A folder already present on the file system;
+- `initial_page`: A template for the initial page of my lectures notes;
 - `introduction`: This is the standard introduction that I use for my lecture notes;
 - `mystyle`: abbreviations and general settings for most of the packages;
 - `preamble`: The preamble in which I've listed all the libraries I ordinarily use in my doc;
