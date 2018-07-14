@@ -14,13 +14,13 @@
 	texcl,							% Permette di mostrare formule matematiche nei commenti
 	basicstyle = \footnotesize\ttfamily,
 	numbers = none,					% Non mostra i numeri lateralmente
-	breakatwhitespace = false,		%
+	breakatwhitespace = false,		% Non permette di spezzare il codice dove c'è uno spazio
 	breaklines = true,				% Permette di spezzare il codice
 	columns = fixed,				% incolonnamento corretto dei caratteri
 	frame = H,						% Posizionamento corretto dal codice
 	prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\rhookswarrow}},
 	postbreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\rcurvearrowse}\space},
-	escapeinside = {(*@}{@*)},		% %*codice latex*) CHANGED: (* *) -> \%* *)
+	escapeinside = {(*@}{@*)},		% %*codice latex*) CHANGED: (* *) -> (*@ "codice latex" @*)
 	tabsize = 4,					% imposta la larghezza del tab pari a 4 spazi
 	showspaces = false,				% non mostra gli spazi come caratteri
 	showstringspaces = false,		% non mostra gli spazi nelle stringhe come caratteri

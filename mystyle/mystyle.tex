@@ -4,21 +4,22 @@
 
 % NOTE: Abbreviazioni LFC
 \newcommand{\vuoto}{\emptyset}
-% TODO: Testare e cambiare
+% TODO: Dispensa di LFC
 % \newcommand{\e}{\epsilon}
 
 \newcommand{\produce}{\longrightarrow}
 \newcommand{\deriva}{\implies}
 \newcommand{\derivamultiplo}{\underset{\deriva}{+}}		% Derivazione multipla
-\newcommand{\derivanumero}[1]{\underset{\deriva}{#1}}	% Segna il passaggi
+\newcommand{\derivanumero}[1]{\underset{\deriva}{#1}}	% Segna il no. di passaggi
 
-% TODO: Cambiare
+% TODO: Dispensa di LFC
 % \newcommand{\uq}{\upquote}
 \newcommand{\upquote}{\text{\textquotesingle}}
 
 \newcommand{\ob}{\overbrace}
 \newcommand{\ub}{\underbrace}
 
+% ---------------------------------------------------------------------------- %
 % ---------------------------------------------------------------------------- %
 
 % NOTE: Abbreviazioni simboli matematici
@@ -57,6 +58,7 @@
 \makeatother
 
 % ---------------------------------------------------------------------------- %
+% ---------------------------------------------------------------------------- %
 
 % NOTE: Permette di inserisce una pagina bianca
 \newcommand{\blankpage}{%
@@ -88,7 +90,7 @@
 
 \newcommand{\lstinputpath}[1]{\lstset{inputpath=#1}}
 
-\newcommand{\mail}[1]{\href{mailto:#1}{\texttt{#1}}}    % definisce il comando \mail
+\newcommand{\mail}[1]{\href{mailto:#1}{\texttt{#1}}}
 
 \newcommand{\mysection}[2]{\section[#1]{#1\\[.5ex]\normalsize\textit{#2}}}
 \newcommand{\mysubsection}[2]{\subsection[#1]{#1\\[.5ex]\normalsize\textit{#2}}}
@@ -96,7 +98,7 @@
 \newcommand{\omissis}{[\textellipsis\unkern]}
 \newcommand{\code}[1]{\texttt{\textbf{#1}}}
 
-
+% ---------------------------------------------------------------------------- %
 % ---------------------------------------------------------------------------- %
 
 % NOTE: Abbreviazioni inserimento codice
@@ -112,6 +114,7 @@
 \newcommand{\xml}[1]{\lstinline[style = XML]|#1|}
 
 % ---------------------------------------------------------------------------- %
+% ---------------------------------------------------------------------------- %
 
 % NOTE: Linea spessa sul testo sottostante
 \newcommand{\soutthick}[1]{
@@ -120,6 +123,7 @@
 	\renewcommand{\ULthickness}{.4pt}	% Resetting to ulem default
 }
 
+% ---------------------------------------------------------------------------- %
 % ---------------------------------------------------------------------------- %
 
 % NOTE: Definizione nuovi colori
@@ -154,14 +158,14 @@
 \newcommand{\yellowHL}{\btHL[fill=yellow!60]}			% Evidenzia in giallo
 \newcommand{\orangeHL}{\btHL[fill=orange!60]}
 
-
 % NOTE: Marking
 \newcommand{\cmark}{\green{\ding{51}}}					% \verb|\cmark|: \cmark \par
 \newcommand{\xmark}{\red{\ding{55}}}					% \verb|\xmark|: \xmark
 
 % ---------------------------------------------------------------------------- %
+% ---------------------------------------------------------------------------- %
 
-% TODO: Remove from all notes
+% TODO: Rimuovila da tutte le dispense, da ri-definire
 % \renewcommand{\descriptionlabel}[1]{\hspace{\labelsep}\texttt{#1}}
 
 % NOTE: Imposta il trattino negli elenchi puntati come marcatore
@@ -174,6 +178,7 @@
 % NOTE: Rinomina l'indice dei codici
 \renewcommand{\lstlistlistingname}{Lista dei Codici}	% List of Listings -> Lista dei Codici
 
+% ---------------------------------------------------------------------------- %
 % ---------------------------------------------------------------------------- %
 
 % HACK: Change it when you use "book" as document class
@@ -189,17 +194,20 @@
 \counterwithin*{section}{part}
 
 \setlist[description]{leftmargin = 8em, style = nextline}
-\setlength\parindent{0pt}				% toglie l'intentazione a tutto il documento
+% NOTE: toglie l'intentazione a tutto il documento
+\setlength\parindent{0pt}
 
 % ---------------------------------------------------------------------------- %
+% ---------------------------------------------------------------------------- %
 
-% NOTe: Definizione nuovi comandi per il pacchetto "notes"
+% NOTE: Definizione nuovi comandi per il pacchetto "notes"
 \newcommandx{\insicuro}[2][1=]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
 \newcommandx{\cambia}[2][1=]{\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]{#2}}
 \newcommandx{\info}[2][1=]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen,#1]{#2}}
 \newcommandx{\miglioramento}[2][1=]{\todo[linecolor=Plum,backgroundcolor=Plum!25,bordercolor=Plum,#1]{#2}}
 \newcommandx{\nascosto}[2][1=]{\todo[disable,#1]{#2}}
 
+% ---------------------------------------------------------------------------- %
 % ---------------------------------------------------------------------------- %
 
 % NOTE: Definizione nuovo ambiente per evidenziare il codice
@@ -224,6 +232,7 @@
 	}
 \makeatother
 
+% ---------------------------------------------------------------------------- %
 % ---------------------------------------------------------------------------- %
 
 % NOTE: Impostazione delle didascalie
@@ -250,19 +259,21 @@
 \setquotestyle{italian}
 
 % ---------------------------------------------------------------------------- %
+% ---------------------------------------------------------------------------- %
 
-% \hypersetup{
-% 	pdfinfo = {
-% 		pdffitwindow = true,	 		% window fit to page when opened
-% 		pdfnewwindow = true,			% links in new PDF window
-% 		pdftitle = {\pdfTitle},			% PDF's title
-% 		pdfsubject = {\subject},		% subject of the document
-% 		pdfkeywords = {\tags},			% list of keywords
-% 		pdfauthor = {\authorName},		% author of the document
-% 		pdfcreator = {\authorName},		% creator of the document
-% 		pdfproducer = {\authorName},	% producer of the document
-% 	}
-% }
+% WARNING: può creare probemi a tempo di compilazione
+\hypersetup{
+	pdfinfo = {
+		pdffitwindow = true,	 		% window fit to page when opened
+		pdfnewwindow = true,			% links in new PDF window
+		pdftitle = {\pdfTitle},			% PDF's title
+		pdfsubject = {\subject},		% subject of the document
+		pdfkeywords = {\tags},			% list of keywords
+		pdfauthor = {\authorName},		% author of the document
+		pdfcreator = {\authorName},		% creator of the document
+		pdfproducer = {\authorName},	% producer of the document
+	}
+}
 
 \geometry{
 	paper = a4paper,					% formato carta A4
@@ -273,6 +284,7 @@
 	right = 2cm,						% margine destro
 }
 
+% ---------------------------------------------------------------------------- %
 % ---------------------------------------------------------------------------- %
 
 % HACK: Commenta quando usi la documentclass "exam"
@@ -290,6 +302,7 @@
 % \begin{comment}
 
 % ---------------------------------------------------------------------------- %
+% ---------------------------------------------------------------------------- %
 
 \newcolumntype{!}{>{\global\let\currentrowstyle\relax}}
 \newcolumntype{^}{>{\currentrowstyle}}
@@ -298,10 +311,13 @@
 }
 
 % ---------------------------------------------------------------------------- %
+% ---------------------------------------------------------------------------- %
 
 % FIXME: Fare attenzione, potrebbe creare problemi
 \newcommand{\nodeDistance}{2.0cm}
 \newcommand{\nextto}{0.5cm}
+
+% ---------------------------------------------------------------------------- %
 
 % NOTE: Digramma Entità-Relazione
 \tikzset{%
@@ -317,6 +333,8 @@
 		at = (\( (#1)!0.5!(#2) \))%
 	},
 }
+
+% ---------------------------------------------------------------------------- %
 
 % NOTE: Flow-diagram
 \tikzstyle{startstop} = [rectangle, rounded corners, minimum width = 3cm, minimum height = 1cm, text centered, every startstop]
@@ -337,14 +355,17 @@
 \tikzstyle{freccia doppia} = [double arrow, draw, thick, minimum width = 1cm, minimum height = 4cm, every arrow]
 
 % ---------------------------------------------------------------------------- %
+% ---------------------------------------------------------------------------- %
 
+% NOTE: Dichiarazione dei percorsi DI DEFAULT per le immagini
 \graphicspath{
-	{assets/figures/}
-	{assets/slides/}
-	{assets/icons/}
+	{./assets/figures/}
+	{./assets/slides/}
+	{./assets/icons/}
 }
 
-\lstinputpath{assets/codes/}
+% NOTE: Dichiarazione dei percorsi DI DEFAULT per il codice
+\lstinputpath{./assets/codes/}
 
 % ---------------------------------------------------------------------------- %
 % ---------------------------------------------------------------------------- %

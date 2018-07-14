@@ -41,7 +41,6 @@
 	dvipsnames,
 	x11names,
 	% gray,
-	epsfig,							% TODO: Da rimuovere
 	% fleqn,						% Typesets displayed formulas left-aligned instead of centered.
 	leqno,							% Places the numbering of formulas on the left hand side instead of the right.
 	a4paper,						% Defines the paper size.
@@ -55,20 +54,20 @@
 % "searchable and copyable" in acrobat reader and other compliant PDF viewers.
 \usepackage{cmap}
 
-\usepackage{lmodern}
-
-\usepackage[T1]{fontenc}           % Codifica dei font
-\usepackage[utf8]{inputenc}        % Lettere accentate da tastiera
-\usepackage[italian]{babel}        % Lingua del documento
-\usepackage[italian]{varioref}     % Indicazione del numero di pagina per i riferimenti tramite \vref
-
 % \renewcommand*\familydefault{\sfdefault}
 \usepackage{avant}						% Lo utilizzo per il testo
 % \usepackage{roboto}					% Option 'sfdefault' only if the base font of the document is to be sans serif
 \usepackage[scaled=.9]{sourcecodepro}	% Lo utilizzo per il codice
 
+\usepackage[T1]{fontenc}           % Codifica dei font
+\usepackage[utf8]{inputenc}        % Lettere accentate da tastiera
+\usepackage[italian, english]{babel}        % Lingua del documento
+\usepackage[italian]{varioref}     % Indicazione del numero di pagina per i riferimenti tramite \vref
+
+% NOTE: Mantenee l'ordine dei pacchetti è fonadamentale per non rompere la build
 \usepackage{
-	% abraces,			% math braces
+	% abraces,			% angle brackets
+	standalone,			%
 	adjustbox,			% boxes
 	afterpage,			%
 	array,				% Permette di creare delle colonne personalizzate
@@ -86,11 +85,10 @@
 	comment,			% Fornisce l'ambiente dei commenti
 	datetime,			% Gestione e stampa delle date in vari formati
 	enumitem,			% Permette di personalizzare gli elenchi puntati
-	% epsfig,				% Permette di inserire file ".eps"
 	etoolbox,			% Costrutto if-then-else più altri strumenti utili
 	footmisc,			% Permette di aggiungere note a pié pagina CHANGED: position with "fancyhdr to avoid warning"
 	float,				% Definisce l'opzione "H" per gli oggetti fluttuanti
-	fancyhdr,			% Permette la personalizzazione di testatina e piede, commenta quando usi la documentclass "exam"
+	fancyhdr,			% Permette la personalizzazione di testatina e piede, WARNING: commenta quando usi la documentclass "exam"
 	forest,				% Permette di disegnare l'albero di cartelle
 	geometry,			% Gestisce i margini della pagina
 	graphicx,			% Permette di allegare figure
@@ -103,7 +101,8 @@
 	MnSymbol,			% Fornisce le freccie che utilizzo per andare a capo riga nelle liste di codice
 	multirow,			% Tabelle con righe multilinea
 	ocg-p,				% Permette di controllare le opzioni di stampa
-	parskip,			% Imposta la spaziatura fra i paragrafi
+	% NOTE: rompeva la build, da reintegrare
+	% parskip,			% Imposta la spaziatura fra i paragrafi
 	pdflscape,			% Permette di mettere in orizzontale il pdf
 	pgfgantt,			% Permette di disegnare i diagrammi di Gantt
 	pgffor,				% foreach
