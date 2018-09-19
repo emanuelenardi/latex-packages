@@ -1,0 +1,9 @@
+% HACK: Commenta quando usi la documentclass "exam"
+\fancypagestyle{footer}{
+	\fancyhf{}
+	\lfoot{\authorName}
+	\cfoot{\footnotesize Pagina~\thepage\ di~\pageref{LastPage}}
+	\rfoot{\today}
+	\renewcommand{\headrulewidth}{0pt}
+	\renewcommand{\footrulewidth}{2pt} % 0.8pt
+}

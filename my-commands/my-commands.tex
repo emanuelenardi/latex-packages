@@ -1,0 +1,33 @@
+% NOTE: Permette di inserisce una pagina bianca
+\newcommand{\blankpage}{%
+	\null%
+	\thispagestyle{empty}%
+	\addtocounter{page}{-1}%
+	\newpage%
+}
+
+% NOTE: Simbolo per riferimento a materiali esterni
+\newcommand{\ExternalLink}{
+	\tikz[x = 1.2ex, y = 1.2ex, baseline = -0.05ex]{
+		\begin{scope}[x = 1ex, y = 1ex]
+			\clip (-0.1,-0.1) --++ (-0, 1.2) --++ (0.6, 0) --++ (0, -0.6) --++ (0.6, 0) --++ (0, -1);
+			\path[draw, line width = 0.5, rounded corners = 0.5] (0,0) rectangle (1,1);
+		\end{scope}
+		\path[draw, line width = 0.5] (0.5, 0.5) -- (1, 1);
+		\path[draw, line width = 0.5] (0.6, 1) -- (1, 1) -- (1, 0.6);
+	}
+}
+
+\newcommand{\mail}[1]{\href{mailto:#1}{\texttt{#1}\ExternalLink}}
+
+\newcommand{\mysection}[2]{\section[#1]{#1\\[.5ex]\normalsize\textit{#2}}}
+\newcommand{\mysubsection}[2]{\subsection[#1]{#1\\[.5ex]\normalsize\textit{#2}}}
+
+\newcommand{\omissis}{[\textellipsis\unkern]}
+
+% NOTE: Linea spessa sul testo sottostante
+\newcommand{\soutthick}[1]{
+	\renewcommand{\ULthickness}{1.0pt}	% 2.4
+		\sout{#1}%
+	\renewcommand{\ULthickness}{.4pt}	% Resetting to ulem default
+}

@@ -1,0 +1,11 @@
+% HACK: Change it when you use "book" as document class
+% \renewcommand{\cftchapafterpnum}{\vspace{10pt}}
+\renewcommand{\cftsecafterpnum}{\vspace{10pt}}
+
+% \let\Chapter\chapter
+% \def\chapter{\addtocontents{lol}{\protect\addvspace{10pt}}\Chapter}
+\let\Section\section%
+\def\section{\addtocontents{lol}{\protect\addvspace{10pt}}\Section}
+
+% NOTE: La numerazione delle sezione si azzera all'inizio di una nuova parte
+\counterwithin*{section}{part}

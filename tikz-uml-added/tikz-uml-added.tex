@@ -1,0 +1,38 @@
+% FIXME: Fare attenzione, potrebbe creare problemi
+\newcommand{\nodeDistance}{2.0cm}
+\newcommand{\nextto}{0.5cm}
+
+% NOTE: Digramma Entità-Relazione
+\tikzset{%
+	every entity/.style = {draw = orange, fill = orange!20},
+	every attribute/.style = {draw = purple, fill = purple!20, node distance = 1cm},
+	every relationship/.style = {draw = greenYellow, fill = greenYellow!20},
+	every isa/.style = {draw = green, fill = green!20},
+	every database/.style = {draw = blue, fill = blue!20},
+}
+
+\tikzset{%
+	between/.style args={#1 and #2}{%
+		at = (\( (#1)!0.5!(#2) \))%
+	},
+}
+
+% ---------------------------------------------------------------------------- %
+
+% NOTE: Flow-diagram
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width = 3cm, minimum height = 1cm, text centered, every startstop]
+\tikzstyle{io} = [trapezium, trapezium left angle = 70, trapezium right angle = 110, minimum width = 3cm, minimum height = 1cm, text centered, every io]
+\tikzstyle{process} = [rectangle, minimum width = 3cm, minimum height = 1cm, text centered, text width = 3cm, every process]
+\tikzstyle{decision} = [diamond, minimum width = 3cm, minimum height = 1cm, text centered, text width = 3cm, every decision]
+\tikzstyle{arrow}  = [every arrow]
+
+\tikzstyle{every startstop}  = [draw = black, fill = red!30]
+\tikzstyle{every io}  = [draw = black, fill = blue!30]
+\tikzstyle{every process}  = [draw = black, fill = orange!30]
+\tikzstyle{every decision}  = [draw = black, fill = green!30]
+\tikzstyle{every arrow}  = [thick, ->, >=stealth]
+
+% NOTE: Images
+\tikzstyle{rettangolo} = [rectangle, draw, thick, minimum width = 4cm, minimum height = 2cm, text centered]
+\tikzstyle{freccia} = [single arrow, draw, thick, minimum width = 1cm, minimum height = 4cm, every arrow]
+\tikzstyle{freccia doppia} = [double arrow, draw, thick, minimum width = 1cm, minimum height = 4cm, every arrow]

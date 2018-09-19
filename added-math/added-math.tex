@@ -1,0 +1,52 @@
+% NOTE: comando definito dal package "mathtools"
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclarePairedDelimiter\Bracket{\lbrack}{\rbrack}
+
+\makeatletter
+\def\mathcolor#1#{\@mathcolor{#1}}
+\def\@mathcolor#1#2#3{%
+	\protect\leavevmode
+	\begingroup
+		\color#1{#2}#3%
+	\endgroup
+}
+\makeatother
+
+% NOTE: insiemistica
+\newcommand{\vuoto}{\emptyset}
+\newcommand{\e}{\( \varepsilon \)}
+% \def\eps{\varepsilon}
+
+% NOTE: grammatiche
+\newcommand{\produce}{\longrightarrow}
+\newcommand{\deriva}{\implies}
+\newcommand{\derivamultiplo}{\underset{\deriva}{+}}
+\newcommand{\derivanumero}[1]{\underset{\deriva}{#1}}
+
+% NOTE: "uq" sta per "upquote"
+\newcommand{\uq}{\text{\textquotesingle}}
+
+% NOTE: parentesi matematiche
+\newcommand{\ob}{\overbrace}
+\newcommand{\ub}{\underbrace}
+
+% NOTE: notazione insiemistica
+\newcommand{\N}{\mathbb{N}}	% natural
+\newcommand{\Z}{\mathbb{Z}}	% integers
+\newcommand{\I}{\mathbb{I}}	% irrational
+\newcommand{\Q}{\mathbb{Q}}	% rational
+\newcommand{\R}{\mathbb{R}}	% real
+\newcommand{\C}{\mathbb{C}}	% complex
+
+% NOTE: simbolo di fine dimostrazione
+\renewcommand\qedsymbol{\( \blacksquare \)}
+
+% NOTE: teoremi, lemmi e nota bene
+\newtheorem{theorem}{Teorema}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}{Definizione}
+
+\newtheorem*{remark}{Ricorda}
+\newtheorem*{note}{Nota}
+\newtheorem*{observation}{OSS.}

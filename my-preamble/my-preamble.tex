@@ -17,10 +17,11 @@
 % ---------------------------------------------------------------------------- %
 
 \PassOptionsToPackage{export}{adjustbox}				% Gestisce la dimensione massima delle immagini
+\PassOptionsToPackage{ruled, vlined, italiano}{algorithm2e}
 \PassOptionsToPackage{open,openlevel=1}{bookmarks}		% Segnalibri operto fino al 1° livello
 \PassOptionsToPackage{labelfont={sf,bf}}{caption}		% Le didascialia in grassetto, senza grazie
 \PassOptionsToPackage{autostyle}{csquotes}				% gestione delle virgolette
-\PassOptionsToPackage{us,24hr}{datetime}				% `us' makes \today behave as usual in TeX/LaTeX
+\PassOptionsToPackage{useregional,showdow}{datetime2}
 \PassOptionsToPackage{bottom}{footmisc}					% Note a piè pagina
 \PassOptionsToPackage{os=win}{menukeys}					% Notazione windows
 \PassOptionsToPackage{parfill}{parskip}					% Imposta la spaziatura fra i paragrafi
@@ -28,9 +29,8 @@
 \PassOptionsToPackage{titles,subfigure}{tocloft}		% Evita errori di caricamento dei pacchetti
 \PassOptionsToPackage{normalem}{ulem}					% replaces underlining with italics in text emphasized by \emph
 
-% \PassOptionsToPackage{colorlinks=true, allcolors=blue}{hyperref} % It produces a clashing error with the tocloft package if the TOC is displayed
-
-% \PassOptionsToPackage{thin}{roboto}					% Thin font for roboto
+% It produces a clashing error with the tocloft package if the TOC is displayed
+% \PassOptionsToPackage{colorlinks=true, allcolors=blue}{hyperref}
 
 % ---------------------------------------------------------------------------- %
 
@@ -55,17 +55,20 @@
 \usepackage{cmap}
 
 % \renewcommand*\familydefault{\sfdefault}
-\usepackage{avant}						% Lo utilizzo per il testo
 % \usepackage{roboto}					% Option 'sfdefault' only if the base font of the document is to be sans serif
+\usepackage{avant}						% Lo utilizzo per il testo
 \usepackage[scaled=.9]{sourcecodepro}	% Lo utilizzo per il codice
 
 \usepackage[T1]{fontenc}           % Codifica dei font
 \usepackage[utf8]{inputenc}        % Lettere accentate da tastiera
-\usepackage[italian, english]{babel}        % Lingua del documento
+\usepackage[italian]{babel}        % Lingua del documento
 \usepackage[italian]{varioref}     % Indicazione del numero di pagina per i riferimenti tramite \vref
+
+\setlength{\marginparwidth}{2cm}   % NOTE: Permette di non avere warning dal package "todonotes"
 
 % NOTE: Mantenee l'ordine dei pacchetti è fonadamentale per non rompere la build
 \usepackage{
+	algorithm2e,
 	% abraces,			% angle brackets
 	standalone,			%
 	adjustbox,			% boxes
@@ -74,18 +77,16 @@
 	amsthm,				% teoremi e dimostrazioni
 	amsfonts,			% nomi insiemi numerici
 	amssymb,			% leqslant & geqslant
+	bigstrut,
 	bookmark,			% Crea e gestisce i segnalibri
 	booktabs,			% Genera filetti professionali per le tabelle
-	braket,				% Permette l'uso di parentesi angolari
+	% braket,				% Permette l'uso di parentesi angolari
 	caption,			% Personalizzazione delle didascalie
-	coffee4,			% Macchie di caffé
-	chngcntr,			% It defines the \counterwithin command, useful with parts of a document
+	% coffee4,			% Macchie di caffé
 	csquotes,			% Permette di personalizzare le citazioni
 	xcolor,				% Permette di definire colori personalizzati
-	comment,			% Fornisce l'ambiente dei commenti
-	datetime,			% Gestione e stampa delle date in vari formati
+	datetime2,			% Gestione e stampa delle date in vari formati
 	enumitem,			% Permette di personalizzare gli elenchi puntati
-	etoolbox,			% Costrutto if-then-else più altri strumenti utili
 	footmisc,			% Permette di aggiungere note a pié pagina CHANGED: position with "fancyhdr to avoid warning"
 	float,				% Definisce l'opzione "H" per gli oggetti fluttuanti
 	fancyhdr,			% Permette la personalizzazione di testatina e piede, WARNING: commenta quando usi la documentclass "exam"
@@ -95,31 +96,48 @@
 	lipsum,				% Genera testo fittizio
 	lastpage,			% Riferimento all'ultima pagina (LastPage)
 	listingsutf8,		% Permette di evitare problemi di codifica NEI FILE CARICATI ESTERNAMENTE
+	makecell,
 	mathtools,			% mathtools = amsmath + other stuff
 	microtype,			% Migliora il riempimento delle righe
 	menukeys,			% CARICALO DOPO inputenc e xcolor, non usare hyperref con l'opzione colorlinks
 	MnSymbol,			% Fornisce le freccie che utilizzo per andare a capo riga nelle liste di codice
 	multirow,			% Tabelle con righe multilinea
-	ocg-p,				% Permette di controllare le opzioni di stampa
-	% NOTE: rompeva la build, da reintegrare
+	% % NOTE: rompeva la build, da reintegrare
 	% parskip,			% Imposta la spaziatura fra i paragrafi
-	pdflscape,			% Permette di mettere in orizzontale il pdf
-	pgfgantt,			% Permette di disegnare i diagrammi di Gantt
-	pgffor,				% foreach
 	pifont,				% \cmark e \xmark
-	rotating,			% Permette di ruotare la tabella
 	siunitx,			% Unità di misura del SI
 	subfig,				% Non insieme al pacchetto subcaption
 	tabularx,			% Crea tabelle dalla larghezza dinamica
+	textcomp,			% Definisce la macro "textquotesingle"
 	ltablex,			% Crea tabelle dalla larghezza dinamica su più pagine
 	tocloft,			% Gestione dei Table Of Content
 	todonotes,			% Permette l'inserimento di annotazioni
-	tikz,				% Pacchetto completo per disegnare su LaTeX
-	tikz-er2,			% Permette di disegnare diagrammi ER
 	ulem,				% Tipi di sottolineature
 	xargs,				% Use more than one optional parameter in a new commands
 }
 
+% NOTE: documento
+\usepackage{
+	pdflscape,			% Permette di mettere in orizzontale il pdf
+	rotating,			% Permette di ruotare la tabella
+}
+
+% NOTE: disegnare
+\usepackage{
+	pgfgantt,			% Permette di disegnare i diagrammi di Gantt
+	tikz,				% Pacchetto completo per disegnare su LaTeX
+	tikz-er2,			% Permette di disegnare diagrammi ER
+}
+
+% NOTE: definizione nuovi comandi o ambienti
+\usepackage{
+	comment,			% Fornisce l'ambiente dei commenti
+	chngcntr,			% It defines the \counterwithin command, useful with parts of a document
+	etoolbox,			% Costrutto if-then-else più altri strumenti utili
+	pgffor,				% foreach
+}
+
+% NOTE: UML
 \usepackage{
 	tikz-uml,			% Permette di disegnare grafici UML
 	ifthen,				% Dipendenza del pacchetto "tikz-uml"
@@ -128,6 +146,7 @@
 	pgfopts,			% Dipendenza del pacchetto "tikz-uml"
 }
 
+% NOTE: Da caricare dopo "tikz-uml"
 \usepackage{
 	pgf-umlsd			% Permette di disegnare sequence diagram
 }
@@ -142,7 +161,7 @@
 	arrows,				% Frecce
 }
 
-% NOTE: bisogna caricarlo per ultimo
+% WARNING: bisogna caricarlo per ultimo
 \usepackage{hyperref}	% Crea i collegamenti ipertestuali
 
 % ---------------------------------------------------------------------------- %
