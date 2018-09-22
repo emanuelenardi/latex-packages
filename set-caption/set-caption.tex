@@ -1,8 +1,13 @@
-% NOTE: Impostazione delle didascalie
+\usepackage{subcaption}
+
 \captionsetup{
-	figureposition = bottom,	% opzione analoga alla successiva per le figure
-	tableposition = top,		% ordina al programma di inserire uno spazio adeguato tra didascalia e tabella
-	font = small,				% produce didascalie in corpo più piccolo
-	format = hang,				% allinea (hang) alla prima riga quelle successive
-	labelfont = {sf,bf}			% imposta l’etichetta della didascalia in caratteri senza grazie, in grassetto
+	figureposition = bottom,
+	tableposition = top,
+	font = small,
+	labelfont = {sf,bf}
+}
+
+\captionsetup[subtable]{
+	singlelinecheck = false,
+	justification = centering,
 }
