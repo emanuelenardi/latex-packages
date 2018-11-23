@@ -1,5 +1,17 @@
-\newcommand{\newState}[4]{\node[state,#3](#1)[#4]{#2};}
+% NOTE: nuovo stato
+\newcommand{\newState}[4]{\node[state,#3] (#1)[#4] {#2};}
+
+% NOTE: nuova transizione
 \newcommand{\newTransition}[4]{\path[->] (#1) edge [#4] node {#3} (#2);}
+
+% NOTE: per segnalare i responsabili dei follow
+\newcommand\blame[2]{%
+	% \(\underbrace{#1}_{\mathcolor{blue}{#2}}\)%
+	% NOTE: \vphantom{,} è per avere una baseline comune
+	% \(\underset{\mathcolor{blue!50!green}{#1}}{\vphantom{,}#2}\)%
+	\(\underset{\mathcolor{blue!50!black}{#1}}{\vphantom{,}#2}\)%
+}
+\setlength\lightrulewidth{0.2pt}
 
 \tikzset{
 	node distance = 1cm and 1cm,

@@ -2,6 +2,7 @@
 % ---------------------------------------------------------------------------- %
 % ---------------------------------------------------------------------------- %
 % Welcome to hell!
+%
 % If you are editing this, look. I'm sorry.
 % I did not expect you to come here.
 % What are doing in this barren wasteland anyway?
@@ -16,196 +17,399 @@
 % ---------------------------------------------------------------------------- %
 % ---------------------------------------------------------------------------- %
 
-% activate={true,nocompatibility} - activate protrusion and expansion
-% final - enable microtype; use "draft" to disable
-% tracking=true, kerning=true, spacing=true - activate these techniques
-% factor=1100 - add 10% to the protrusion amount (default is 1000)
-% stretch=10, shrink=10 - reduce stretchability/shrinkability (default is 20/20)
+% IDEA: migliorare la tipografia
+% NOTE: activate = {true,nocompatibility} - activate protrusion and expansion
+% NOTE: final - enable microtype; use "draft" to disable
+% NOTE: tracking = true, kerning=true, spacing=true - activate these techniques
+% NOTE: factor = 1100 - add 10% to the protrusion amount (default is 1000)
+% NOTE: stretch = 10, shrink = 10 - reduce stretchability/shrinkability (default is 20/20)
 \PassOptionsToPackage{
 	% activate = {true,nocompatibility},
 	activate = {true},
 	final,
+	% draft,
 	tracking = true,
 	kerning = true,
 	spacing = true,
 	factor = 1100,
 	stretch = 10,
 	shrink = 10
-	}{microtype}
-\PassOptionsToPackage{export}{adjustbox}
-% Gestisce la dimensione massima delle immagini
+}{microtype}
+
+% NOTE: languages used in the document
 \PassOptionsToPackage{
+	english,
+	main = italian,
+}{babel}
+
+% NOTE: gestisce la dimensione massima delle immagini
+\PassOptionsToPackage{
+	export,
+}{adjustbox}
+
+% NOTE: impostazioni della stampa degli algoritmi
+\PassOptionsToPackage{
+	linesnumbered,
 	ruled,
 	vlined,
-	italiano
-	}{algorithm2e}
+	italiano,
+	onelanguage,
+}{algorithm2e}
+
+% NOTE: i segnalibri vengono aperti fino al 1° livello
 \PassOptionsToPackage{
 	open,
-	openlevel = 1
-	}{bookmarks}		% Segnalibri operto fino al 1° livello
-\PassOptionsToPackage{labelfont = {sf,bf}}{caption}		% Le didascialia in grassetto, senza grazie
-\PassOptionsToPackage{autostyle}{csquotes}				% gestione delle virgolette
-\PassOptionsToPackage{useregional,showdow}{datetime2}
-\PassOptionsToPackage{bottom}{footmisc}					% Note a piè pagina
-\PassOptionsToPackage{os = win}{menukeys}					% Notazione windows
-\PassOptionsToPackage{parfill}{parskip}					% Imposta la spaziatura fra i paragrafi
+	openlevel = 1,
+}{bookmarks}
+
+% NOTE: virgolette
 \PassOptionsToPackage{
-	colorinlistoftodos,
-	prependcaption,
-	textsize = tiny
-}{todonotes}
+	autostyle,
+}{csquotes}
+
+% NOTE: stampa della data
+\PassOptionsToPackage{
+	useregional,
+	showdow,
+}{datetime2}
+
+% NOTE: lista in linea
+\PassOptionsToPackage{
+	inline,
+}{enumitem}
+
+% NOTE: note a piè pagina
+\PassOptionsToPackage{
+	bottom,
+}{footmisc}
+
+% NOTE: metodo di stampa dei box
+\PassOptionsToPackage{
+	framemethod = tikz,
+}{mdframed}
+
+% NOTE: gestione dei "to-do"
+% OPTIMIZE: da rimuovere, genera lentezza
+% \PassOptionsToPackage{
+% 	colorinlistoftodos,
+% 	prependcaption,
+% 	textsize = tiny
+% }{todonotes}
+
+% NOTE: evita errori di caricamento dei pacchetti
 \PassOptionsToPackage{
 	titles,
-	% subfigure % WARNING: da rimuovere, il package è deprecato
-}{tocloft}		% Evita errori di caricamento dei pacchetti
-\PassOptionsToPackage{normalem}{ulem}					% replaces underlining with italics in text emphasized by \emph
-\PassOptionsToPackage{framemethod = tikz}{mdframed}
+}{tocloft}
 
-% It produces a clashing error with the tocloft package if the TOC is displayed
-% \PassOptionsToPackage{colorlinks=true, allcolors=blue}{hyperref}
+% NOTE: replaces underlining with italics in text emphasized by \emph
+\PassOptionsToPackage{
+	normalem
+}{ulem}
 
-% ---------------------------------------------------------------------------- %
-
-% CHANGED: Fa attenzione in quale classe stai compilando il documento
-\documentclass[
-	% draft,						% makes LaTeX indicate hyphenation and justification problems with a small square in the right-hand margin of the problem line so they can be located quickly by a human. It also suppresses the inclusion of images and shows only a frame where they would normally occur.
-	usenames,
+% NOTE: righe colorate
+\PassOptionsToPackage{
 	dvipsnames,
 	x11names,
-	% gray,
-	% fleqn,						% Typesets displayed formulas left-aligned instead of centered.
-	leqno,							% Places the numbering of formulas on the left hand side instead of the right.
-	a4paper,						% Defines the paper size.
-	11pt,							% Sets the size of the main font in the document. If no option is specified, 10pt is assumed.
-	titlepage,						% Specifies whether a new page should be started after the document title or not. The article class does not start a new page by default, while report and book do.
-]{article}%{exam}
+	table,
+}{xcolor}
+
+% FIXME: t produces a clashing error with the tocloft package if the TOC is displayed
+\PassOptionsToPackage{
+	colorlinks = true,
+	% allcolors = blue,
+	linkcolor 	= red,
+	anchorcolor = black,
+	citecolor 	= green,
+	filecolor 	= cyan,
+	menucolor 	= red,
+	runcolor 	= cyan,
+	urlcolor 	= magenta,
+}{hyperref}
 
 % ---------------------------------------------------------------------------- %
 
-% The cmap package is intended to make the PDF files generated by pdflatex
+% REVIEW: Fa attenzione in quale classe stai compilando il documento
+% NOTE: "draft" makes LaTeX indicate hyphenation and justification problems with a small square in the right-hand margin of the problem line so they can be located quickly by a human. It also suppresses the inclusion of images and shows only a frame where they would normally occur;
+% NOTE: "fleqn" typesets displayed formulas left-aligned instead of centered;
+% NOTE: "leqno" places the numbering of formulas on the left hand side instead of the right;
+% NOTE: "a4paper" defines the paper size;
+% NOTE: "11pt" dets the size of the main font in the document. If no option is specified, 10pt is assumed.
+% NOTE: specifies whether a new page should be started after the document title or not. The article class does not start a new page by default, while report and book do.
+\documentclass[
+	% draft,
+	% gray,
+	% fleqn,
+	leqno,
+	a4paper,
+	11pt,
+	titlepage,
+]{article}
+
+% ---------------------------------------------------------------------------- %
+
+% NOTE: The cmap package is intended to make the PDF files generated by pdflatex
 % "searchable and copyable" in acrobat reader and other compliant PDF viewers.
-\usepackage{cmap}       % cmap + mathematics (Unicode)
+\usepackage{cmap}
 % \usepackage[noTeX]{mmap}       % cmap + mathematics (Unicode)
 
-% NOTE: fonts
+% IDEA: fonts
 % \renewcommand*\familydefault{\sfdefault}
-% \usepackage{roboto}					% Option 'sfdefault' only if the base font of the document is to be sans serif
-\usepackage{avant}
-\usepackage[scaled=.9]{sourcecodepro}
+% \usepackage{roboto}
+% \usepackage{avant}
 
+% NOTE: introdotto dal progetto calliope
+% \usepackage[default, osfigures, scale=0.95]{opensans}
+\usepackage[scaled=.8]{sourcecodepro}
+
+% IDEA: standard options of a document
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage[english, italian]{babel}
+% NOTE: l'ultima dev'essere la lingua prncipale del documento
+\usepackage{babel}
 \usepackage[italian]{varioref}
 
-% NOTE: Permette di non avere warning dal package "todonotes"
+% HACK: permette di non avere warning dal package "todonotes"
 \setlength{\marginparwidth}{2cm}
 
-% NOTE: Mantenee l'ordine dei pacchetti è fonadamentale per non rompere la build
+% IDEA: compialre indipendente i file
+% \usepackage{subfiles}
+
+% IDEA: miscellaneous
+% NOTE: "adjustbox" -
+% NOTE: "afterpage" -
+% NOTE: "bookmark" - crea e gestisce i segnalibri
+% NOTE: "csquotes" - permette di personalizzare le citazioni
+% NOTE: "datetime2" - gestione e stampa delle date in vari formati
+% NOTE: "enumitem" - permette di personalizzare gli elenchi puntati
+% NOTE: "fancyhdr" - permette la personalizzazione di testatina e piede WARNING: commenta quando usi la documentclass "exam"
+% NOTE: "footmisc" - permette di aggiungere note a pié pagina CHANGED: cambiata posizione con "fancyhdr to avoid warning"
+% NOTE: "forest" - permette di disegnare alberi di cartelle
+% NOTE: "lastpage" - riferimento all'ultima pagina (LastPage)
+% NOTE: "lipsum" - genera testo fittizio
+% NOTE: "mdframed" -
+% NOTE: "microtype" - migliora il riempimento delle righe
+% NOTE: "pifont" - introduce i simboli \cmark e \xmark
+% NOTE: "standalone" -
+% NOTE: "tocloft" - gestione dei Table Of Content
+% NOTE: "ulem" - diversi tipi di sottolineatura
+% NOTE: "xcolor" - permette di definire colori personalizzati
 \usepackage{
-	algorithm2e,
-	% abraces,			% angle brackets
-	standalone,
-	adjustbox,			% boxes
+	adjustbox,
 	afterpage,
-	array,				% Permette di creare delle colonne personalizzate
-	amsthm,				% teoremi e dimostrazioni
-	amsfonts,			% nomi insiemi numerici
-	amssymb,			% leqslant & geqslant
-	bigstrut,
-	bookmark,			% Crea e gestisce i segnalibri
-	booktabs,			% Genera filetti professionali per le tabelle
-	% braket,				% Permette l'uso di parentesi angolari
-	% caption,			% Personalizzazione delle didascalie
-	% coffee4,			% Macchie di caffé
-	csquotes,			% Permette di personalizzare le citazioni
-	xcolor,				% Permette di definire colori personalizzati
-	datetime2,			% Gestione e stampa delle date in vari formati
-	enumitem,			% Permette di personalizzare gli elenchi puntati
-	footmisc,			% Permette di aggiungere note a pié pagina CHANGED: position with "fancyhdr to avoid warning"
-	float,				% Definisce l'opzione "H" per gli oggetti fluttuanti
-	fancyhdr,			% Permette la personalizzazione di testatina e piede, WARNING: commenta quando usi la documentclass "exam"
-	forest,				% Permette di disegnare l'albero di cartelle
-	geometry,			% Gestisce i margini della pagina
-	graphicx,			% Permette di allegare figure
-	lipsum,				% Genera testo fittizio
-	lastpage,			% Riferimento all'ultima pagina (LastPage)
-	listingsutf8,		% Permette di evitare problemi di codifica NEI FILE CARICATI ESTERNAMENTE
-	makecell,
-	mathtools,			% mathtools = amsmath + other stuff
-	microtype,			% Migliora il riempimento delle righe
-	menukeys,			% CARICALO DOPO inputenc e xcolor, non usare hyperref con l'opzione colorlinks
-	MnSymbol,			% Fornisce le freccie che utilizzo per andare a capo riga nelle liste di codice
-	multirow,			% Tabelle con righe multilinea
-	% % NOTE: rompeva la build, da reintegrare
-	% parskip,			% Imposta la spaziatura fra i paragrafi
-	pifont,				% \cmark e \xmark
-	siunitx,			% Unità di misura del SI
-	% subfig,				% WARNING: deprecato -> subcaption
-	tabularx,			% Crea tabelle dalla larghezza dinamica
-	textcomp,			% Definisce la macro "textquotesingle"
-	ltablex,			% Crea tabelle dalla larghezza dinamica su più pagine
-	tocloft,			% Gestione dei Table Of Content
-	todonotes,			% Permette l'inserimento di annotazioni
-	ulem,				% Tipi di sottolineature
-	xargs,				% Use more than one optional parameter in a new commands
+	bookmark,
+	csquotes,
+	datetime2,
+	enumitem,
+	fancyhdr,
+	footmisc,
+	forest,
+	lastpage,
+	lipsum,
+	mdframed,
+	microtype,
+	pifont,
+	standalone,
+	tocloft,
+	ulem,
 }
 
-% NOTE: note a margine
+% IDEA: figure
+% NOTE: "graphicx" - inserimento figure nel docuemento
+% NOTE: "float" - definisce l'opzione "H" per gli oggetti fluttuanti
+% NOTE: "wrapfig" - inserimento di figure di fianco al testo
 \usepackage{
+	graphicx,
+	float,
+	subcaption,
+	wrapfig,
+}
+
+% WARNING: package deprecati
+% OPTIMIZE: subfig -> subcaption
+% OPTIMIZE: caption -> subcaption
+
+% NOTE: opzionale
+% \usepackage{
+% 	coffee4,			% Macchie di caffé
+% }
+
+% IDEA: algoritmi e codice
+% NOTE: "algorithm2e" - specifica degli algoritmi
+% NOTE: "algpseudocode" - speudocodice
+% NOTE: "alltt" - ridefinisce l'ambiente "verbatim"
+% NOTE: "listingsutf8" - permette di evitare problemi di codifica NEI FILE CARICATI ESTERNAMENTE
+\usepackage{
+	% algorithmic,
+	% algorithmicx,
+	% algpseudocode,
+	algorithm2e,
+	alltt,
+	listingsutf8,
+}
+
+% IDEA: tabelle
+% NOTE: "array" - permette di creare delle colonne personalizzate
+% NOTE: "bigstrut" -
+% NOTE: "booktabs" - genera filetti professionali per le tabelle
+% NOTE: "colortbl" - righe e celle colorate
+% NOTE: "diagbox" - diagonal rule on a cell
+% NOTE: "ltablex" - crea tabelle dalla larghezza dinamica su più pagine
+% NOTE: "makecell" -
+% NOTE: "multirow" - tabelle con righe multilinea
+% NOTE: "tabularx" - crea tabelle dalla larghezza dinamica
+\usepackage{
+	array,
+	tabu,
+	xcolor,
+	bigstrut,
+	booktabs,
+	colortbl,
+	diagbox,
+	ltablex,
+	makecell,
+	multirow,
+	tabularx,
+}
+
+% WARNING: Mantenee l'ordine dei pacchetti è fonadamentale per non rompere la build
+% IDEA: math suymbols
+% NOTE: "amsthm" - teoremi e dimostrazioni
+% NOTE: "amsfonts" - nomi insiemi numerici
+% NOTE: "amssymb" - leqslant & geqslant
+% NOTE: "mathtools" - mathtools = amsmath + other stuff
+% NOTE: "MnSymbol" - fornisce le freccie che utilizzo per andare a capo riga nelle liste di codice
+% NOTE: "abraces" - angle brakets fine tuning
+% NOTE: "braket" - permette l'uso di parentesi angolari
+% WARNING: "semantic" - da rimuovere - introduce astrazione
+% NOTE: "nicefrac" - divisione in linea
+% NOTE: "textgreek" - caratteri greci
+% NOTE: "siunitx" - unità di misura del SI
+% WARNING: "semantic" da caricare sopo "amsmath"
+\usepackage{
+	amsthm,
+	amsfonts,
+	amssymb,
+	MnSymbol,
+	mathtools,
+	% braket,
+	semantic,
+	nicefrac,
+	% textgreek,
+	siunitx
+}
+
+% IDEA: rotazione di documento e tabelle
+% NOTE: "geometry" - gestisce i margini della pagina
+% NOTE: "pdfpages" - inserimento di pdf all'interno del documento
+% NOTE: "pdflscape" - rotazione pagine del documento
+% NOTE: "rotating" - rotazione tabelle
+\usepackage{
+	geometry,
+	% pdfpages,
+	pdflscape,
+	rotating,
+}
+
+% IDEA: annotazioni - note a margine
+% TODO: usalo per i commenti nella tesi
+\usepackage{
+	todonotes,
 	marginnote,
 	mparhack,
 	marginfix,
 }
 
-% NOTE: rotazione
+% IDEA: disegnare grafici
+% NOTE: permette di disegnare i diagrammi di Gantt
+% NOTE: pacchetto completo per disegnare su LaTeX
+% NOTE: permette di disegnare diagrammi ER
 \usepackage{
-	pdflscape,			% Permette di mettere in orizzontale il pdf
-	rotating,			% Permette di ruotare la tabella
+	pgfgantt,
+	tikz,
+	tikz-er2,
 }
 
-% NOTE: disegnare
+% IDEA: definizione nuovi comandi o ambienti
+% NOTE: "chngcntr" - defines the "\counterwithin" command, useful with parts of a document
+% NOTE: "comment" - fornisce l'ambiente dei commenti
+% NOTE: "etoolbox" - contiene il costrutto if-then-else più altri strumenti utili
+% NOTE: "pgffor" - fornisce il costrutto "foreach"
+% NOTE: "textcomp" - definisce la macro "textquotesingle" e formatta i numeri
+% NOTE: "xargs" - use more than one optional parameter in a new commands
 \usepackage{
-	pgfgantt,			% Permette di disegnare i diagrammi di Gantt
-	tikz,				% Pacchetto completo per disegnare su LaTeX
-	tikz-er2,			% Permette di disegnare diagrammi ER
+	chngcntr,
+	comment,
+	etoolbox,
+	pgffor,
+	textcomp,
+	xargs,
 }
 
-% NOTE: definizione nuovi comandi o ambienti
+% IDEA: disegnare grafici UML
+% NB: Da caricare dopo "tikz-uml"
 \usepackage{
-	comment,			% Fornisce l'ambiente dei commenti
-	chngcntr,			% It defines the \counterwithin command, useful with parts of a document
-	etoolbox,			% Costrutto if-then-else più altri strumenti utili
-	pgffor,				% foreach
+	% tikz-uml,
+	ifthen,
+	xstring,
+	calc
 }
 
-% NOTE: UML
+% IDEA: disegnare sequence diagram
+% NB: Da caricare dopo "tikz-uml"
 \usepackage{
-	tikz-uml,			% Permette di disegnare grafici UML
-	ifthen,				% Dipendenza del pacchetto "tikz-uml"
-	xstring,			% Dipendenza del pacchetto "tikz-uml"
-	calc,				% Dipendenza del pacchetto "tikz-uml"
-	pgfopts,			% Dipendenza del pacchetto "tikz-uml"
+	% pgf-umlsd,
 }
 
-% NOTE: Da caricare dopo "tikz-uml"
-\usepackage{
-	pgf-umlsd			% Permette di disegnare sequence diagram
-}
+% NOTE: sotto-librerie del pacchetto tikz
+\usetikzlibrary[
+	% arrows,
+	automata,
+	% calc,
+	% intersections,
+	% matrix,
+	positioning,
+	% shapes.geometric,
+	% tikzmark,
+	% decorations.text,
+	% decorations.pathmorphing
+]
 
-\usetikzlibrary{
-	automata,			% Automi a stati finiti
-	calc,				% Esegue calcoli matematici
-	matrix,				% Permette di disegnare matrici
-	intersections,		% Permette di disegnare in 2D
-	positioning,		% Fornisce comandi per posizionare i nodi in modo relativo
-	shapes.geometric,	% Forme geometriche
-	arrows,				% Frecce
-}
+% NOTE: optional
+% \usetikzlibrary[
+% 	external
+% ]
 
-% WARNING: bisogna caricarlo per ultimo
-\usepackage{hyperref}	% Crea i collegamenti ipertestuali
+% \usepackage{pgfplots}
+% \usepgfplotslibrary[
+% 	external
+% ]
+
+% NOTE: opzioni per la pre-compilazioni delle immagini create con tikz
+% \tikzexternalize[
+% 	mode = graphics if exists,
+% 	figure list = true,
+% 	prefix = ./assets/figures-tikz/
+% ]
+
+% NB: bisogna caricarlo per ultimo
+\usepackage{hyperref}
+
+\newboolean{maindoc}
+\setboolean{maindoc}{false}
 
 % ---------------------------------------------------------------------------- %
 % ---------------------------------------------------------------------------- %
 % ---------------------------------------------------------------------------- %
+
+% TODO: da integrare
+% \usepackage[
+% 	bibstyle = authoryear,
+% 	citestyle = numeric,
+% 	natbib = false,
+% 	backend = biber,
+% 	sorting = nyt,
+% 	autocite = plain,
+% 	hyperref = true,
+% 	backref = true,
+% 	dashed = false
+% ]{biblatex}

@@ -1,13 +1,18 @@
-% WARNING: può creare probemi a tempo di compilazione
+\newcommand\Author{Emanuele Nardi}
+
 \hypersetup{
 	pdfinfo = {
-		pdffitwindow = true,	 		% window fit to page when opened
-		pdfnewwindow = true,			% links in new PDF window
-		pdftitle = {\pdfTitle},			% PDF's title
-		pdfsubject = {\subject},		% subject of the document
-		pdfkeywords = {\tags},			% list of keywords
-		pdfauthor = {\authorName},		% author of the document
-		pdfcreator = {\authorName},		% creator of the document
-		pdfproducer = {\authorName},	% producer of the document
+		Title = {\Title},
+		Author = {\Author},
+		Subject = {\Subject},
+		Creator = {pdflatex},
+		Producer = {LaTeX},
+		Keywords = {\Keywords},
+		colorlinks = true,
+		backref = true,
 	}
 }
+
+\newcommand\logo{\includegraphics[width=0.6\textwidth, keepaspectratio]{logo_unitn_black_center}}
+\newcommand\DISI{Dipartimento di Ingegneria e Scienza dell'Informazione}
+\newcommand\faculty{Corso di Laurea in\\ Informatica}

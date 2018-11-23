@@ -1,4 +1,7 @@
-\input{set-pdf-prop}
+\ifthenelse{\boolean{maindoc}}{%
+	\input{set-pdf-prop}
+}{}
+
 \input{set-pdf}
 
 \input{my-pagestyle}

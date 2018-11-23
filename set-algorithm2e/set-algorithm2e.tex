@@ -1,22 +1,30 @@
 \SetAlgorithmName{Algoritmo}{Algoritmo}{Elenco degli algoritmi}
 
+% NOTE: commenti
+\newcommand\mycommfont[1]{\footnotesize\ttfamily\textcolor{blue}{#1}}
+\SetCommentSty{mycommfont}
+\SetNlSty{6pt}{}{}
+\SetNlSkip{1em}
+
+\SetKwProg{Fn}{}{\string:}{}
+\SetKwFunction{Closure}{closure}
+
 % NOTE: Ridefinizione di quelle inglesi
 \SetKwInput{KwIng}{Ingresso}
+\SetKwInput{KwData}{Dati}
 \SetKwInput{KwUsc}{Uscita}
-\SetKwInput{KwDati}{Dati}
 \SetKwInput{KwResult}{Risultato}
 
 % NOTE: Parole chiave definite direttamente in italiano
 \SetKwInput{Ingresso}{Ingresso}
-\SetKwInput{Uscita}{Uscita}
 \SetKwInput{Dati}{Dati}
+\SetKwInput{Uscita}{Uscita}
 \SetKwInput{Risultato}{Risultato}
-
-\newcommand{\ul}{\underline}
-\newcommand{\fns}{\footnotesize}
-
-\SetKwInOut{Input}{\fns{\ul{INPUT}}}
-\SetKwInOut{Output}{\fns{\ul{OUTPUT}}}
+% \SetKwInOut{Input}{\fns{\ul{INPUT}}}
+% \SetKwInOut{Output}{\fns{\ul{OUTPUT}}}
+\SetKwInput{DataStructures}{\fns{\fbox{Strutture dati}}}
+\SetKwInOut{Input}{\fns{\fbox{input}}}
+\SetKwInOut{Output}{\fns{\fbox{output}}}
 
 % NOTE: SPAZIATURE
 % default: smallskip
@@ -30,6 +38,24 @@
 \SetAlCapSkip{5ex}
 \SetAlgoCaptionSeparator{ --}
 
+\newcommand\Let[2]{#1 \( \leftarrow \) #2}
+\newcommand\Tau{\mathcal{T}}
+
+% NOTE: definisco nuove keywork
+\SetKw{Break}{break}
+\SetKw{Continue}{continue}
+\SetKw{Init}{init}
+\SetKw{Push}{push}
+\SetKw{Pop}{pop}
+\SetKw{Set}{set}
+\SetKw{Marca}{marca}
+\SetKw{Flag}{flag}
+\SetKw{Add}{add}
+
+% NOTE: Disabling line numbers for specific lines
+% https://tex.stackexchange.com/questions/153646/algorithm2e-disabling-line-numbers-for-specific-lines
+\let\oldnl\nl% Store \nl in \oldnl
+\newcommand{\nonl}{\renewcommand{\nl}{\let\nl\oldnl}}% Remove line number for one line
 
 % NOTE: Ridefinizione comandi
 \SetKwIF{Sea}{AltSe}{Altrimenti}

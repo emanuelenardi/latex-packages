@@ -31,3 +31,13 @@
 		\sout{#1}%
 	\renewcommand{\ULthickness}{.4pt}	% Resetting to ulem default
 }
+
+\newcommand{\lezione}[1]{{\bfseries Lezione del \DTMdate{#1}}}
+
+% https://latex.org/forum/viewtopic.php?t=22367
+\DeclareRobustCommand\circled[1]{%
+	\tikz[baseline = (char.base)]{%
+		\node[draw, circle, inner sep = 1pt]%
+			(char) {#1};%
+	}
+}
