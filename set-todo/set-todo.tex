@@ -1,3 +1,6 @@
+% HACK: permette di non avere warning dal package "todonotes"
+\setlength{\marginparwidth}{2cm}
+
 % NOTE: gestione dei "to-do"
 % OPTIMIZE: da rimuovere, genera overhead in fase di compilazione
 \usepackage[
@@ -5,9 +8,6 @@
 	,prependcaption
 	,textsize = tiny
 ]{todonotes}
-
-% HACK: permette di non avere warning dal package "todonotes"
-% \setlength{\marginparwidth}{2cm}
 
 % NOTE: Definizione nuovi comandi per il pacchetto "notes"
 \newcommandx{\insicuro}[2][1=]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}

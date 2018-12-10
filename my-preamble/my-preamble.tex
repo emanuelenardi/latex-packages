@@ -24,12 +24,12 @@
 % NOTE: "11pt" dets the size of the main font in the document. If no option is specified, 10pt is assumed.
 % NOTE: specifies whether a new page should be started after the document title or not. The article class does not start a new page by default, while report and book do.
 \documentclass[
-	,draft
+	% ,draft
 	% ,gray
 	% ,fleqn
 	,leqno
 	,a4paper
-	,11pt
+	,10pt
 	,titlepage
 ]{article}
 
@@ -40,6 +40,8 @@
 % "searchable and copyable" in acrobat reader and other compliant PDF viewers.
 \usepackage{cmap}
 % \usepackage[noTeX]{mmap}       % cmap + mathematics (Unicode)
+
+\usepackage{ifxetex}
 
 \ifxetex
 	\usepackage[no-math]{fontspec}
@@ -87,84 +89,45 @@
 % ---------------------------------------------------------------------------- %
 % ---------------------------------------------------------------------------- %
 
-\usepackage{cleveref}
-
-% IDEA: compilare indipendente i file
-% NOTE: "subfiles" - TODO
-% NOTE: "standalone" - TODO
-\usepackage{subfiles}
-\usepackage{standalone}
-
-% NOTE: "pifont" - introduce i simboli \cmark e \xmark
-\usepackage{pifont}
-
-% NOTE: "datetime2" - gestione e stampa delle date in vari formati
-\usepackage[useregional,showdow]{datetime2}
-
-\newcommand{\lezione}[1]{{\bfseries Lezione del \DTMdate{#1}}}
-
-% NOTE: "mdframed" - TODO
-\usepackage[framemethod = tikz]{mdframed}
-
-% NOTE: "ulem" - permette di avere diversi tipi di sottolineatura
-% NB: "normalem" - replaces underlining with italics in text emphasized by \emph
-\usepackage[normalem]{ulem}
-
-% NOTE: Linea spessa sul testo sottostante
-\newcommand{\soutthick}[1]{
-	\renewcommand{\ULthickness}{1.0pt}	% 2.4
-		\sout{#1}%
-	\renewcommand{\ULthickness}{.4pt}	% Resetting to ulem default
-}
-
-% NOTE: "tocloft" - gestione dei Table Of Content
-% NB: "titles" - evita errori di caricamento dei pacchetti
-\usepackage[titles]{tocloft}
-
+\input{set-color}
+\input{set-date}
+\input{set-graphics}
 
 % WARNING: package deprecatig
 % OPTIMIZE: footmisc -> TODO
 % OPTIMIZE: subfig -> subcaption
 % OPTIMIZE: caption -> subcaption
 
-\input{set-colors}
-\input{set-geometry}
-\input{set-graphics}
-\input{set-math}
 \input{set-algorithm}
-\input{set-tables}
-\input{set-rotating}
-\input{set-pages}
-\input{set-margins}
-\input{set-tikz}
-\input{set-tikz-externalization}
-\input{set-utilities}
-\input{set-links}
-
-\newif\ifmaindoc
-\maindocfalse
-
-\ifmaindoc
-	\input{set-pdf-prop}
-\fi
-
-\input{set-pdf}
-
-\input{my-pagestyle}
-\input{my-paths}
-\input{my-commands}
-
-\input{set-listing}
-\input{set-columns}
-
-\input{set-toc}
-% \input{set-todo}
-\input{set-color}
-\input{set-paragraph}
-\input{set-lists}
 \input{set-caption}
+\input{set-columns}%
+\input{set-emph}
+\input{set-geometry}
+\input{set-listing}
+\input{set-lists}
+\input{set-margins}
+\input{set-math}
+\input{set-pages}
+\input{set-pagestyle}
+\input{set-paragraph}
 \input{set-quote}
+\input{set-rotating}
+\input{set-tables}
+\input{set-tikz-externalization}
+\input{set-tikz}
+\input{set-toc}
+\input{set-utilities}
 
+\input{set-links}
+\input{set-external-files}
+
+% TODO: implementare in tutti i documenti
+% \input{set-pdf-prop}
+%
+\input{set-todo}
+%
+
+\input{my-commands}
 % ---------------------------------------------------------------------------- %
 % ---------------------------------------------------------------------------- %
 % ---------------------------------------------------------------------------- %

@@ -2,6 +2,21 @@
 \usepackage{listingsutf8}
 \usepackage{alltt}
 
+% NOTE: 'textcomp' - TODO
+\usepackage{textcomp}
+
+\newcommand{\lstinputpath}[1]{\lstset{inputpath=#1}}
+
+% NOTE: Dichiarazione dei percorsi DI DEFAULT per il codice
+\lstinputpath{./assets/codes/}
+
+% NOTE: Rinomina la didascalia dei codici
+% NOTE: Rinomina l'indice dei codici
+% Listing -> Codice
+% List of Listings -> Lista dei Codici
+\renewcommand{\lstlistingname}{Codice}
+\renewcommand{\lstlistlistingname}{Lista dei Codici}
+
 % NOTE: Abbreviazioni inserimento codice
 \newcommand\code[1]{\texttt{#1}}
 \newcommand\html[1]{\lstinline[style = HTML]|#1|}
@@ -73,12 +88,6 @@
 	% Another possibility is to replace \usepackage{listings} (in the preamble) with \usepackage{listingsutf8}, but this will only work for \lstinputlisting{...}
 }
 
-% NOTE: Rinomina la didascalia dei codici
-% NOTE: Rinomina l'indice dei codici
-% Listing -> Codice
-% List of Listings -> Lista dei Codici
-\renewcommand{\lstlistingname}{Codice}
-\renewcommand{\lstlistlistingname}{Lista dei Codici}
-
+% NOTE: dipendenze
 \input{set-listing-styles}
 \input{set-listing-languages}

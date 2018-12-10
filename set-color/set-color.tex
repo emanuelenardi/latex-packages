@@ -1,6 +1,7 @@
 % NOTE: "xcolor" - permette di definire colori personalizzati
 \usepackage[
 	,dvipsnames
+	,svgnames
 	,x11names
 	,table
 ]{xcolor}
@@ -12,15 +13,18 @@
 \definecolor{darkblue}{rgb}{0.0,0.0,0.6}
 \definecolor{gray}{rgb}{0.4,0.4,0.4}
 
-% NOTE: Definizione nomi colori personalizzati
-\colorlet{accentColor}{blue}
-\colorlet{purple}{MediumPurple1}
-\colorlet{greenYellow}{Chartreuse2}
+% NOTE: TODO
+% \colorlet{accentColor}{blue}
+% \colorlet{purple}{MediumPurple1}
+% \colorlet{greenYellow}{Chartreuse2}
 
 % NOTE: Abbreviazioni colori
 \newcommand{\darkblue}[1]{\textcolor{darkblue}{#1}}
 \newcommand{\cyan}[1]{\textcolor{cyan}{#1}}
 \newcommand{\gray}[1]{\textcolor{gray}{#1}}
+
+% NOTE: "pifont" - introduce i simboli \cmark e \xmark
+\usepackage{pifont}
 
 % NOTE: Marking
 \newcommand{\cmark}{\textcolor{ForestGreen}{\ding{51}}}
