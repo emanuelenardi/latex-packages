@@ -1,3 +1,6 @@
+% NOTE: "csquotes" - permette di personalizzare le citazioni
+\usepackage{csquotes}
+
 % NOTE: Ridefinisce le virgolette
 \DeclareQuoteStyle{italian}%
 	{\textquotedblleft}
@@ -10,3 +13,16 @@
 
 % NOTE: Imposta il tipo di virgolette
 \setquotestyle{italian}
+
+% NOTE: formatta una quotazione all'inizio di una sezione
+\usepackage{epigraph}
+
+% \epigraphsize{\small}% Default
+\setlength\epigraphwidth{8cm}
+\setlength\epigraphrule{0pt}
+
+\usepackage{etoolbox}
+
+\makeatletter
+\patchcmd{\epigraph}{\@epitext{#1}}{\itshape\@epitext{#1}}{}{}
+\makeatother

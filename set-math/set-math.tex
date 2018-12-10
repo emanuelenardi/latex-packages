@@ -1,0 +1,84 @@
+% WARNING: Mantenee l'ordine dei pacchetti è fonadamentale per non rompere la build
+% WARNING: "semantic" da caricare sopo "amsmath"
+% IDEA: math suymbols
+% NOTE: "amsthm" - teoremi e dimostrazioni
+% NOTE: "amsfonts" - nomi insiemi numerici
+% NOTE: "amssymb" - leqslant & geqslant
+% NOTE: "mathtools" - mathtools = amsmath + other stuff
+% NOTE: "MnSymbol" - fornisce le freccie che utilizzo per andare a capo riga nelle liste di codice
+% NOTE: "abraces" - angle brakets fine tuning
+% NOTE: "braket" - permette l'uso di parentesi angolari
+% NOTE: "nicefrac" - divisione in linea
+% NOTE: "textgreek" - caratteri greci
+% NOTE: "siunitx" - unità di misura del SI
+\usepackage{
+	,amsthm
+	,amsfonts
+	,amssymb
+	,MnSymbol
+	,mathtools
+	% ,braket
+	,semantic
+	,empheq
+	,nicefrac
+}
+
+
+% NOTE: comando definito dal package "amsmath"
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclarePairedDelimiter\Abs{\bigg\lvert}{\bigg\rvert}
+\DeclarePairedDelimiter\Bracket{\lbrack}{\rbrack}
+
+% NOTE: colorare simboli matematici
+% tex.stackexchange.com/questions/21598/
+\makeatletter
+\def\mathcolor#1#{\@mathcolor{#1}}
+\def\@mathcolor#1#2#3{%
+	\protect\leavevmode
+	\begingroup
+		\color#1{#2}#3%
+	\endgroup
+}
+\makeatother
+
+
+% NOTE: Linguaggi formali e compilatori
+\newcommand\produce{\longrightarrow}
+\newcommand\deriva{\Rightarrow}
+
+\usepackage{stackrel}
+
+% TODO: simbolo spostato sulla destra
+\newcommand\derivamultiplo{\stackrel{\ensuremath{+}}{\deriva}}
+\newcommand\derivanumero[1]{\stackrel{\ensuremath{#1}}{\deriva}}
+
+% NOTE: analisi
+\renewcommand\restriction{\mathord{\upharpoonright}}
+
+% NOTE: "uq" sta per "upquote"
+\newcommand\uq{\ensuremath \text{\textquotesingle}}
+
+% NOTE: abbreviazioni
+\newcommand\ob{\overbrace}
+\newcommand\ub{\underbrace}
+\newcommand\us{\underset}
+\newcommand\ul{\underline}
+\newcommand\tn{\tn}
+\newcommand\fns{\footnotesize}
+
+% NOTE: simbolo di fine dimostrazione
+\renewcommand\qedsymbol{\( \blacksquare \)}
+
+% NOTE: teoremi, lemmi e nota bene
+\newtheorem{theorem}{Teorema}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}{Definizione}
+\newtheorem{corollario}{Corollario}
+\newtheorem{example}{Esempio}
+\newtheorem{proposition}{Proposizione}
+
+\newtheorem*{remark}{Ricorda}
+\newtheorem*{note}{Nota}
+\newtheorem*{observation}{Osservazione}
+\newtheorem*{hint}{Suggerimento}

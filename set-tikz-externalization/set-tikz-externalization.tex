@@ -1,0 +1,21 @@
+% NOTE: optional
+% tex.stackexchange.com/questions/177164/
+% tex.stackexchange.com/questions/341656/
+\usetikzlibrary[external]
+% \usepackage{pgfplots}
+% \usepgfplotslibrary[
+% 	external
+% ]
+
+% Macro holding the externalized sub-directory
+\newcommand{\externaldirectory}{_tikz-cache/}
+
+% NOTE: opzioni per la pre-compilazioni delle immagini create con tikz
+\tikzexternalize[
+	mode = graphics if exists,
+	% figure list = true,
+	% All externalized graphics go to the \externaldirectory
+	prefix = \externaldirectory
+]
+% Externalise only on-demand.
+\tikzexternaldisable

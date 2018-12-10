@@ -1,3 +1,20 @@
+% NOTE: "listingsutf8" - permette di evitare problemi di codifica NEI FILE CARICATI ESTERNAMENTE
+\usepackage{listingsutf8}
+\usepackage{alltt}
+
+% NOTE: Abbreviazioni inserimento codice
+\newcommand\code[1]{\texttt{#1}}
+\newcommand\html[1]{\lstinline[style = HTML]|#1|}
+\newcommand\cc[1]{\lstinline[style = C]|#1|}
+\newcommand\cpp[1]{\lstinline[style = [11]C++]|#1|}
+\newcommand\gradle[1]{\lstinline[style = Gradle]|#1|}
+\newcommand\java[1]{\lstinline[style = Java]|#1|}
+\newcommand\javascript[1]{\lstinline[style = Javascript]|#1|}
+\newcommand\jsp[1]{\lstinline[style = JSP]|#1|}
+\newcommand\sml[1]{\lstinline[style = SML]|#1|}
+\newcommand\sql[1]{\lstinline[style = SQL]|#1|}
+\newcommand\xml[1]{\lstinline[style = XML]|#1|}
+
 % NOTE: Rinomina la didascali
 % Listing -> Codice
 \renewcommand{\lstlistingname}{Codice}
@@ -18,7 +35,7 @@
 \lstset{
 	inputencoding = utf8/latin1,	% codifica UTF-8
 	extendedchars = true,			% allows extended characters in listings, that means (national) characters of codes 128–255.
-	upquote = true,					% determines whether the left and right quote are printed ‘’ or `'. This key  requires the textcomp package if true.
+	upquote = true,					% determines whether the left and right quote are printed ‘’ or `'. WARNING: This key  requires the textcomp package if true.
 	texcl,							% Permette di mostrare formule matematiche nei commenti
 	basicstyle = \footnotesize\ttfamily,
 	numbers = none,					% Non mostra i numeri lateralmente
@@ -57,9 +74,11 @@
 }
 
 % NOTE: Rinomina la didascalia dei codici
-% Listing -> Codice
-\renewcommand{\lstlistingname}{Codice}
-
 % NOTE: Rinomina l'indice dei codici
+% Listing -> Codice
 % List of Listings -> Lista dei Codici
+\renewcommand{\lstlistingname}{Codice}
 \renewcommand{\lstlistlistingname}{Lista dei Codici}
+
+\input{set-listing-styles}
+\input{set-listing-languages}

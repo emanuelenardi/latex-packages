@@ -1,13 +1,9 @@
+% NOTE: "enumitem" - permette di personalizzare gli elenchi puntati
+% NOTE: lista in linea
+\usepackage[inline]{enumitem}
+
 % NOTE: Imposta il trattino negli elenchi puntati come marcatore
 \renewcommand{\labelitemi}{\normalfont\bfseries \textendash}
 
 % NOTE: Diminuisce la distanza fra i punti
 \setlist{itemsep = 3pt, topsep = 3pt}
-
-\setlist[description]{
-	% leftmargin = 8em,
-	style = nextline,
-}
-
-% TODO: Rimuovila da tutte le dispense, da ri-definire
-% \renewcommand{\descriptionlabel}[1]{\hspace{\labelsep}\texttt{#1}}
