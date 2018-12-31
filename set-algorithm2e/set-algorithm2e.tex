@@ -1,4 +1,29 @@
+% NOTE: impostazioni della stampa degli algoritmi
+\usepackage[
+	,linesnumbered
+	,ruled
+	,vlined
+	,italiano
+	,onelanguage
+]{algorithm2e}
+\DontPrintSemicolon
+
 \SetAlgorithmName{Algoritmo}{Algoritmo}{Elenco degli algoritmi}
+
+% NOTE: c-like
+\SetStartEndCondition{ (}{) }{}
+
+% NOTE: SPAZIATURE
+% default: smallskip
+\SetAlgoSkip{bigskip}
+
+%  NOTE: Indentazione
+% \SetInd{0.5em}{1em}
+\SetInd{0.25em}{2em}
+
+% NOTE: Didascalia
+\SetAlCapSkip{5ex}
+\SetAlgoCaptionSeparator{ --}
 
 % NOTE: commenti
 \newcommand\mycommfont[1]{\footnotesize\ttfamily\textcolor{blue}{#1}}
@@ -27,18 +52,6 @@
 \SetKwInOut{Input}{\fns{\fbox{input}}}
 \SetKwInOut{Output}{\fns{\fbox{output}}}
 
-% NOTE: SPAZIATURE
-% default: smallskip
-\SetAlgoSkip{bigskip}
-
-%  NOTE: Indentazione
-% \SetInd{0.5em}{1em}
-\SetInd{0.25em}{2em}
-
-% NOTE: Didascalia
-\SetAlCapSkip{5ex}
-\SetAlgoCaptionSeparator{ --}
-
 \newcommand\Let[2]{#1 \( \leftarrow \) #2}
 \newcommand\Tau{\mathcal{T}}
 
@@ -53,15 +66,25 @@
 \SetKw{Flag}{flag}
 \SetKw{Add}{add}
 
+\begin{comment}
+\SetKw{Bool}{bool}
+\SetKw{Int}{int}
+\SetKw{Float}{float}
+\end{comment}
+
+\SetKw{Print}{print}
+
+\SetKw{DownTo}{fino a}
+
 % NOTE: Disabling line numbers for specific lines
 % https://tex.stackexchange.com/questions/153646/algorithm2e-disabling-line-numbers-for-specific-lines
 \let\oldnl\nl% Store \nl in \oldnl
 \newcommand{\nonl}{\renewcommand{\nl}{\let\nl\oldnl}}% Remove line number for one line
 
 % NOTE: Ridefinizione comandi
+\SetKwFor{From}{da}{}
+
 \SetKwIF{Sea}{AltSe}{Altrimenti}
     	{se}{allora}{altrimenti se}{altrimenti}{fine\ se}
 
 \SetKwFor{Finche}{finché}{fai}{fine\ finché}
-
-\SetStartEndCondition{ (}{) }{}

@@ -4,14 +4,29 @@
 	,svgnames
 	,x11names
 	,table
+	% ,gray
 ]{xcolor}
 
+
+\colorlet{bodyColor}{blue!50!white}
+\colorlet{driverColor}{blue}
+
+% \colorlet{alternative}{red!50!white}
+
+\colorlet{rose}{red!50!white}
+% \colorlet{accent}{red!70}
+
+% NOTE: dichiarato in set-math
+\colorlet{brighter}{blue!50!white}
+\colorlet{darker}{blue!50!black}
+
+\newcommand\darker[1]{{\color{darker} #1}}
+
 % NOTE: Definizione nuovi colori
-\definecolor{ashgrey}{rgb}{0.7, 0.75, 0.71}
-\definecolor{burgundy}{rgb}{0.5, 0.0, 0.13}
-\definecolor{cyan}{rgb}{0.0,0.6,0.6}
-\definecolor{darkblue}{rgb}{0.0,0.0,0.6}
-\definecolor{gray}{rgb}{0.4,0.4,0.4}
+% \definecolor{burgundy}{rgb}{0.5, 0.0, 0.13}
+% \definecolor{cyan}{rgb}{0.0,0.6,0.6}
+% \definecolor{darkblue}{rgb}{0.0,0.0,0.6}
+% \definecolor{gray}{rgb}{0.4,0.4,0.4}
 
 % NOTE: TODO
 % \colorlet{accentColor}{blue}
@@ -19,9 +34,9 @@
 % \colorlet{greenYellow}{Chartreuse2}
 
 % NOTE: Abbreviazioni colori
-\newcommand{\darkblue}[1]{\textcolor{darkblue}{#1}}
-\newcommand{\cyan}[1]{\textcolor{cyan}{#1}}
-\newcommand{\gray}[1]{\textcolor{gray}{#1}}
+% \newcommand{\darkblue}[1]{\textcolor{darkblue}{#1}}
+% \newcommand{\cyan}[1]{\textcolor{cyan}{#1}}
+% \newcommand{\gray}[1]{\textcolor{gray}{#1}}
 
 % NOTE: "pifont" - introduce i simboli \cmark e \xmark
 \usepackage{pifont}

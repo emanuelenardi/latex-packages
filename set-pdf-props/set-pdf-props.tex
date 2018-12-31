@@ -1,0 +1,28 @@
+% NOTE: "bookmark" - crea e gestisce i segnalibri
+% NB: i segnalibri vengono aperti fino al 1° livello
+\usepackage[
+	,open
+	,openlevel = 1
+]{bookmark}
+
+% NOTE: rimane sempre lo stesso
+\newcommand\Author{Emanuele Nardi}
+
+\hypersetup{
+	pdfinfo = {
+		Title = {\Title},
+		Author = {\Author},
+		Subject = {\Subject},
+		Creator = {pdflatex},
+		Producer = {LaTeX},
+		Keywords = {\Keywords},
+		colorlinks = true,
+		backref = true,
+	}
+}
+
+% NOTE: keyword presenti nei documenti
+\graphicspath{{./assets/figures/}}
+\newcommand\logo{\includegraphics[width=0.6\textwidth, keepaspectratio]{logo-unitn}}
+\newcommand\DISI{Dipartimento di Ingegneria e Scienza dell'Informazione}
+\newcommand\faculty{Corso di Laurea in\\ Informatica}

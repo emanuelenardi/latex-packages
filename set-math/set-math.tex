@@ -16,13 +16,25 @@
 	,amsfonts
 	,amssymb
 	,MnSymbol
-	,mathtools
+}
+
+% NOTE: "leqno" places the numbering of formulas on the left hand side instead of the right;
+% NOTE: "fleqn" typesets displayed formulas left-aligned instead of centered;
+\usepackage[
+	,leqno
+	% ,fleqn
+]{mathtools}
+
+\usepackage{
 	% ,braket
 	,semantic
 	,empheq
 	,nicefrac
 }
 
+\usepackage{witharrows}
+\colorlet{brighter}{blue!50!white}
+\WithArrowsOptions{tikz=brighter, MoreColumns}
 
 % NOTE: comando definito dal package "amsmath"
 \DeclarePairedDelimiter\norm{\lVert}{\rVert}
@@ -42,7 +54,6 @@
 }
 \makeatother
 
-
 % NOTE: Linguaggi formali e compilatori
 \newcommand\produce{\longrightarrow}
 \newcommand\deriva{\Rightarrow}
@@ -58,14 +69,26 @@
 
 % NOTE: "uq" sta per "upquote"
 \newcommand\uq{\ensuremath \text{\textquotesingle}}
+\newcommand\bs[1]{\boldsymbol{#1}}
 
 % NOTE: abbreviazioni
 \newcommand\ob{\overbrace}
 \newcommand\ub{\underbrace}
+\newcommand\ubk{\underbracket}
 \newcommand\us{\underset}
 \newcommand\ul{\underline}
 \newcommand\tn{\tn}
 \newcommand\fns{\footnotesize}
+
+% NB: modifico il comportamento del comando 'underbrace'
+% NOTE: tex.stackexchange.com/questions/256894/
+\makeatletter
+\let\ams@underbrace=\underbrace
+\def\underbrace#1_#2{%
+	\setbox0=\hbox{$\displaystyle#1$}%
+	\ams@underbrace{#1}_{\parbox[t]{\the\wd0}{\scriptsize #2}}%
+}
+\makeatother
 
 % NOTE: simbolo di fine dimostrazione
 \renewcommand\qedsymbol{\( \blacksquare \)}
@@ -73,7 +96,7 @@
 % NOTE: teoremi, lemmi e nota bene
 \newtheorem{theorem}{Teorema}
 \newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{definition}{Definizione}
+\newtheorem{definition}{Definizione}[section]
 \newtheorem{corollario}{Corollario}
 \newtheorem{example}{Esempio}
 \newtheorem{proposition}{Proposizione}
@@ -82,3 +105,6 @@
 \newtheorem*{note}{Nota}
 \newtheorem*{observation}{Osservazione}
 \newtheorem*{hint}{Suggerimento}
+
+% - :bookmark: [Big O and related notations](texblog.org/2014/06/24/)
+\newcommand\Omicron{\mathcal{O}}

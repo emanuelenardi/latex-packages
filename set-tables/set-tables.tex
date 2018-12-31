@@ -16,9 +16,22 @@
 	booktabs,
 	colortbl,
 	diagbox,
+	float,
 	ltablex,
 	makecell,
 	multirow,
 	tabularx,
 }
+
 \setlength\lightrulewidth{0.1pt}
+\newcommand\lightrule{%
+	\arrayrulecolor{black!30}%
+	\midrule[\lightrulewidth]%
+	\arrayrulecolor{black}}
+
+% NOTE: dipenza package 'array'
+\newcolumntype{!}{>{\global\let\currentrowstyle\relax}}
+\newcolumntype{^}{>{\currentrowstyle}}
+\newcommand{\rowstyle}[1]{%
+	\gdef\currentrowstyle{#1}%
+	#1\ignorespaces}

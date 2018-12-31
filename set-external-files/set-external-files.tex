@@ -1,5 +1,11 @@
-% % IDEA: compilare indipendente i file
-% % NOTE: "subfiles" - TODO
-% % NOTE: "standalone" - TODO
+% IDEA: compilare indipendente i file
+% NOTE: "subfiles" - TODO
+% NOTE: "standalone" - TODO
+% NOTE: "docmute" - TODO
+% WARNING: NON CAMBIARE L'ORDINE DI CARICAMENTO DEI PACCHETTI
+\usepackage[
+	,subpreambles	= false
+	,mode			= buildnew
+]{standalone}
 \usepackage{subfiles}
-\usepackage{standalone}
+% \usepackage{docmute}
