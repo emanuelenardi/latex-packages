@@ -1,0 +1,250 @@
+% TODO: https://it.overleaf.com/learn/latex/Writing_your_own_package
+% \RequirePackage{algorithm2e}
+
+% NOTE Le seguenti domande hanno influenzato le impostazioni
+% https://tex.stackexchange.com/questions/345737/
+
+% NOTE impostazioni della stampa degli algoritmi
+\usepackage[
+	% ,linesnumbered
+	,ruled
+	,vlined
+	,italiano
+	,onelanguage
+	,algosection% default
+	% ,algo2e% per compatibilità con 'algorithm'
+	% TODO: ambiente algorithm -> algorithm2e
+]{algorithm2e}
+\DontPrintSemicolon
+\LinesNotNumbered
+
+% https://tex.stackexchange.com/questions/153646/algorithm2e-disabling-line-numbers-for-specific-lines
+% NOTE Disabling line numbers for specific lines with 'linesnumbered' option on
+\let\oldnl\nl% Store \nl in \oldnl
+\newcommand{\nonl}{\renewcommand{\nl}{\let\nl\oldnl}}% Remove line number for one line
+
+% NOTE didascalie ed Elenco degli algoritmi
+\SetAlgorithmName{Algoritmo}{Algoritmo}{Elenco degli algoritmi}
+\SetAlgoProcName{Procedura}{Procedura}
+\SetAlgoFuncName{Funzione}{Funzione}
+% \SetAlgorithmName{}{Algoritmo}{Elenco degli algoritmi}
+% \SetAlgoProcName{}{Procedura}
+% \SetAlgoFuncName{}{Funzione}
+
+% NOTE spaziatura nel testo
+% default: smallskip
+% \SetAlgoSkip{smallskip}
+% \SetAlgoSkip{medskip}
+\SetAlgoSkip{bigskip}
+
+% NOTE indentazione
+% \SetInd{0.5em}{1em}% <- stile compatto
+\SetInd{0.25em}{2em}
+
+% NOTE didascalia
+\SetAlCapSkip{15ex}
+\SetAlgoCaptionSeparator{ --}
+% \SetAlgoCaptionSeparator{}
+% \SetAlgoRefName{}
+
+% NOTE stile etichette
+\SetNlSty{texttt}{(}{)}
+% \SetAlgoNlRelativeSize{0}
+\SetNlSkip{.5em}
+
+% NOTE definizioni di inizio e fine blocco
+% \SetStartEndCondition{ (}{) }{}% c-like
+\SetStartEndCondition{ }{ }{}
+% \AlgoDisplayBlockMarkers\SetAlgoBlockMarkers{\{}{\}}%
+% \AlgoDisplayBlockMarkers\SetAlgoBlockMarkers{begin}{end}%
+
+% NOTE definizione nuove keyword
+\SetKwProg{Fn}{}{\string:}{}
+\SetKwFunction{Closure}{closure}
+
+% NOTE ridefinizione sei comandi in inglese
+\SetKwInput{KwIng}{Ingresso}
+\SetKwInput{KwData}{Dati}
+\SetKwInput{KwUsc}{Uscita}
+\SetKwInput{KwResult}{Risultato}
+
+% NOTE parole chiave definite direttamente in italiano
+\SetKwInput{Ingresso}{Ingresso}
+\SetKwInput{Dati}{Dati}
+\SetKwInput{Uscita}{Uscita}
+\SetKwInput{Risultato}{Risultato}
+\SetKwInput{DataStructures}{\footnotesize{\fbox{Strutture dati}}}
+
+% NOTE ridefinizione comandi italiani
+\SetKwFor{From}{da}{fai}
+
+\SetKwIF{Sea}{AltSe}{Altrimenti}
+    	{se}{allora}{altrimenti se}{altrimenti}{fine\ se}% <- mancava 'se'
+
+\SetKwFor{Finche}{finché}{fai}{fine\ finché}% <- mancava 'finché'
+
+% NOTE TODO
+\SetKwInOut{Input}{\footnotesize{\fbox{input}}}
+\SetKwInOut{Output}{\footnotesize{\fbox{output}}}
+
+\NewDocumentCommand\Let{mm}{#1 \( \leftarrow \) #2}
+\newcommand\Tau{\mathcal{T}}
+
+% NOTE Linguaggi Formali e Compilatori
+\SetKw{Break}{break}
+\SetKw{Continue}{continue}
+\SetKw{Init}{init}
+\SetKw{Push}{push}
+\SetKw{Pop}{pop}
+\SetKw{Set}{set}
+\SetKw{Marca}{marca}
+\SetKw{Flag}{flag}
+\SetKw{Add}{add}
+
+\SetKw{Print}{stampa}
+
+% NOTE cicli
+\SetKw{DownTo}{fino a}
+
+% NOTE logica booleana
+\SetKw{True}{vero}
+\SetKw{False}{falso}
+\SetKw{And}{e}
+\SetKw{Or}{oppure}
+\SetKw{Not}{non}
+\SetKw{To}{a}
+
+% NOTE Algoritmi e Strutture Dati
+
+% NOTE mi assicura la compatibilità con le slide
+\newcommand\alert[1]{\textcolor{rose}{#1}}
+\newcommand\blink[1]{\textcolor{brighter}{#1}}
+
+% NOTE quando ometto del codice scritto in precedenza
+\newcommand\omitted{\([\ldots]\)}
+
+% NOTE definizione stili
+\SetFuncSty{textsf}
+\SetArgSty{upright}
+\SetDataSty{textsc}
+% \SetKwSty{}
+
+% NOTE tipi
+\SetKw{Int}{int}
+\SetKw{Real}{float}
+\SetKw{Bool}{boolean}
+
+% NOTE Strutture Dati
+\SetKwData{fifo}{fifo}
+\SetKwData{lifo}{lifo}
+
+% NOTE funzioni ausiliarie
+\SetKwFunction{MathMax}{max}
+\SetKwFunction{MathMin}{min}
+\SetKwFunction{iif}{iif}
+\SetKwFunction{Swap}{swap}
+
+% NB Font
+% \newcommand{\fontproc}[1]{\textsf{{\small #1}}}
+\newcommand{\fonttype}[1]{\textsc{#1}\xspace}
+\newcommand{\fontvar}[1]{\textit{#1}\xspace}
+
+% NOTE variabili in comune
+\newcommand\Max{\fontvar{max}} % variables, use \max for the math function
+\newcommand\Min{\fontvar{min}} % variables, use \min for the math function
+\newcommand\In{\fontvar{in}}
+\newcommand\Out{\fontvar{out}}
+\newcommand\Temp{\fontvar{temp}}
+\newcommand\Item{\fonttype{Item}}
+\newcommand{\priority}{\fontvar{priority}}
+
+% NOTE valori
+\SetKw{Nil}{nil}
+\SetKw{Null}{null}
+\SetKw{Choice}{scelta}
+\SetKw{Sucess}{successo}
+\SetKw{Failure}{fallimento}
+
+% NOTE keyword
+\SetKwInput{precondition}{precondition}
+\SetKw{new}{new}
+
+% NOTE commenti
+\newcommand\commentFont[1]{\footnotesize\ttfamily\textcolor{blue}{#1}}
+\SetCommentSty{commentFont}
+% \newcommand\mycommfont[1]{\rmfamily\textcolor{blue}{#1}}
+% \SetCommentSty{mycommfont}
+\SetKwComment{Comment}{\%~~}{}
+% \newcommand{\REMF}[1]{\Comment*[f]{#1}}
+% \newcommand{\REMR}[1]{\Comment*[r]{#1}}
+
+% NOTE definizione di una keyword di tipo vettore dove:
+% #1 - tipo di dato contenuto nell'array
+% #2 - valore 0-esimo o estremo sinisto
+% #3 - valore 0-esimo o estremo destro
+% OPTIMIZE: \SetKwArray{Array}{array}
+\NewDocumentCommand\Array{mgg}{%
+	\ensuremath{%
+	\KwSty{#1}% <- spazio
+		\IfNoValueTF{#2}{%
+			[\,]% <- inizialmente vuoto
+		}{%
+		\IfNoValueTF{#3}{%
+			[#2]% <- valore iniziale
+		}{%
+			[#2\dots#3]% <- intervallo
+		}}}%
+	\xspace%
+}
+
+% OPTIMIZE da rimuovere
+\NewDocumentCommand\ArrayCall{mgg}{%
+	\ensuremath{% <- spazio
+	\mathit{#1}
+		\ifblank{#2}{%
+		% <- nulla, è un riferimento al vettore
+		}{%
+		\IfNoValueTF{#3}{%
+			[#2]% <- valore iniziale
+		}{%
+			[#2\dots#3]% <- intervallo
+		}}}%
+	\xspace%
+}
+
+% NOTE definizione di una keyword di tipo matrice dove:
+% #1: tipo di dato contenuto nella matrice
+% #2: se non viene specificato viene stampata la matrice '#1[][]'
+% #3: se viene specificato viene stampata la matrice '#1[#2][#3]'
+\NewDocumentCommand\Matrix{mgg}{%
+	\ensuremath{%
+	\KwSty{#1}% <- spazio
+		\IfNoValueTF{#2}{%
+			[\,][\,]% <- inizialmente vuoto
+		}{%
+		\IfValueT{#3}{%
+			[#2][#3]% <- valori iniziali
+		}}}%
+	\xspace%
+}
+
+% OPTIMIZE da rimuovere
+\NewDocumentCommand\MatrixCall{mgg}{%
+	\ensuremath{% <- spazio
+	\mathit{#1}
+		\ifblank{#2}{%
+		% <- nulla, è un riferimento alla matrice
+		}{%
+			\ifblank{#3}{%
+			% <- nulla, è un riferimento alla matrice
+			}{%
+				\IfNoValueTF{#3}{%
+					[#2]% <- valore iniziale
+				}{%
+					[#2][#3]% <- valori iniziali
+				}%
+			}%
+		}%
+	}%
+	\xspace%
+}

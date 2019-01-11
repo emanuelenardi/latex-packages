@@ -1,0 +1,110 @@
+% WARNING: Mantenee l'ordine dei pacchetti è fonadamentale per non rompere la build
+% WARNING: "semantic" da caricare sopo "amsmath"
+% IDEA: math suymbols
+% NOTE: "amsthm" - teoremi e dimostrazioni
+% NOTE: "amsfonts" - nomi insiemi numerici
+% NOTE: "amssymb" - leqslant & geqslant
+% NOTE: "mathtools" - mathtools = amsmath + other stuff
+% NOTE: "MnSymbol" - fornisce le freccie che utilizzo per andare a capo riga nelle liste di codice
+% NOTE: "abraces" - angle brakets fine tuning
+% NOTE: "braket" - permette l'uso di parentesi angolari
+% NOTE: "nicefrac" - divisione in linea
+% NOTE: "textgreek" - caratteri greci
+% NOTE: "siunitx" - unità di misura del SI
+\usepackage{
+	,amsthm
+	,amsfonts
+	,amssymb
+	,MnSymbol
+}
+
+% NOTE: "leqno" places the numbering of formulas on the left hand side instead of the right;
+% NOTE: "fleqn" typesets displayed formulas left-aligned instead of centered;
+\usepackage[
+	,leqno
+	% ,fleqn
+]{mathtools}
+
+\usepackage{
+	% ,braket
+	,semantic
+	,empheq
+	,nicefrac
+}
+
+\usepackage{witharrows}
+\colorlet{brighter}{blue!50!white}
+\WithArrowsOptions{tikz=brighter, MoreColumns}
+
+% NOTE: comando definito dal package "amsmath"
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclarePairedDelimiter\Abs{\bigg\lvert}{\bigg\rvert}
+\DeclarePairedDelimiter\Bracket{\lbrack}{\rbrack}
+
+% NOTE: colorare simboli matematici
+% tex.stackexchange.com/questions/21598/
+\makeatletter
+\def\mathcolor#1#{\@mathcolor{#1}}
+\def\@mathcolor#1#2#3{%
+	\protect\leavevmode
+	\begingroup
+		\color#1{#2}#3%
+	\endgroup
+}
+\makeatother
+
+% NOTE: Linguaggi formali e compilatori
+\newcommand\produce{\longrightarrow}
+\newcommand\deriva{\Rightarrow}
+
+\usepackage{stackrel}
+
+% TODO: simbolo spostato sulla destra
+\newcommand\derivamultiplo{\stackrel{\ensuremath{+}}{\deriva}}
+\newcommand\derivanumero[1]{\stackrel{\ensuremath{#1}}{\deriva}}
+
+% NOTE: analisi
+\renewcommand\restriction{\mathord{\upharpoonright}}
+
+% NOTE: "uq" sta per "upquote"
+\newcommand\uq{\ensuremath \text{\textquotesingle}}
+\newcommand\bs[1]{\boldsymbol{#1}}
+
+% NOTE: abbreviazioni
+\newcommand\ob{\overbrace}
+\newcommand\ub{\underbrace}
+\newcommand\us{\underset}
+\newcommand\ul{\underline}
+\newcommand\tn{\tn}
+\newcommand\fns{\footnotesize}
+
+% NB: modifico il comportamento del comando 'underbrace'
+% NOTE: tex.stackexchange.com/questions/256894/
+\makeatletter
+\let\ams@underbrace=\underbrace
+\def\underbrace#1_#2{%
+	\setbox0=\hbox{$\displaystyle#1$}%
+	\ams@underbrace{#1}_{\parbox[t]{\the\wd0}{\scriptsize #2}}%
+}
+\makeatother
+
+% NOTE: simbolo di fine dimostrazione
+\renewcommand\qedsymbol{\( \blacksquare \)}
+
+% NOTE: teoremi, lemmi e nota bene
+\newtheorem{theorem}{Teorema}
+\newtheorem*{theorem*}{Teorema}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}{Definizione}[section]
+\newtheorem{corollario}{Corollario}
+\newtheorem{example}{Esempio}
+\newtheorem{proposition}{Proposizione}
+
+\newtheorem*{remark}{Ricorda}
+\newtheorem*{note}{Nota}
+\newtheorem*{observation}{Osservazione}
+\newtheorem*{hint}{Suggerimento}
+
+% - :bookmark: [Big O and related notations](texblog.org/2014/06/24/)
+\newcommand\Omicron{\mathcal{O}}

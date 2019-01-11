@@ -1,0 +1,92 @@
+% NOTE: "listingsutf8" - permette di evitare problemi di codifica NEI FILE CARICATI ESTERNAMENTE
+\usepackage{listingsutf8}
+\usepackage{alltt}
+
+% NOTE: 'textcomp' - TODO
+\usepackage{textcomp}
+
+\newcommand{\lstinputpath}[1]{\lstset{inputpath=#1}}
+
+% NOTE: Dichiarazione dei percorsi DI DEFAULT per il codice
+% \lstinputpath{./assets/codes/}
+
+% NOTE: Rinomina la didascalia dei codici
+% NOTE: Rinomina l'indice dei codici
+% Listing -> Codice
+% List of Listings -> Lista dei Codici
+\renewcommand{\lstlistingname}{Codice}
+\renewcommand{\lstlistlistingname}{Lista dei Codici}
+
+% NOTE: Abbreviazioni inserimento codice
+\newcommand\code[1]{\texttt{#1}}
+\newcommand\html[1]{\lstinline[style = HTML]|#1|}
+\newcommand\cc[1]{\lstinline[style = C]|#1|}
+\newcommand\cpp[1]{\lstinline[style = [11]C++]|#1|}
+\newcommand\gradle[1]{\lstinline[style = Gradle]|#1|}
+\newcommand\java[1]{\lstinline[style = Java]|#1|}
+\newcommand\javascript[1]{\lstinline[style = Javascript]|#1|}
+\newcommand\jsp[1]{\lstinline[style = JSP]|#1|}
+\newcommand\sml[1]{\lstinline[style = SML]|#1|}
+\newcommand\sql[1]{\lstinline[style = SQL]|#1|}
+\newcommand\xml[1]{\lstinline[style = XML]|#1|}
+
+% NOTE: Rinomina la didascali
+% Listing -> Codice
+\renewcommand{\lstlistingname}{Codice}
+
+% NOTE: Rinomina l'indice
+% List of Listings -> Lista dei Codici
+\renewcommand{\lstlistlistingname}{Lista dei Codici}
+
+\lstloadlanguages{
+	,[11]C++
+	,Java
+	,HTML
+	,ML
+	,SQL
+	,XML
+}
+
+\lstset{
+	,inputencoding = utf8/latin1	% codifica UTF-8
+	,extendedchars = true			% allows extended characters in listings, that means (national) characters of codes 128–255.
+	,upquote = true					% determines whether the left and right quote are printed ‘’ or `'. WARNING: This key  requires the textcomp package if true.
+	,texcl							% Permette di mostrare formule matematiche nei commenti
+	,basicstyle = \footnotesize\ttfamily
+	,numbers = none					% Non mostra i numeri lateralmente
+	,breakatwhitespace = false		% Non permette di spezzare il codice dove c'è uno spazio
+	,breaklines = true				% Permette di spezzare il codice
+	,columns = fixed				% incolonnamento corretto dei caratteri
+	,frame = H						% Posizionamento corretto dal codice
+	,prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\rhookswarrow}}
+	,postbreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\rcurvearrowse}\space}
+	,escapeinside = {(*@}{@*)},		% %*codice latex*) CHANGED: (* *) -> (*@ "codice latex" @*)
+	,tabsize = 4					% imposta la larghezza del tab pari a 4 spazi
+	,showspaces = false				% non mostra gli spazi come caratteri
+	,showstringspaces = false,		% non mostra gli spazi nelle stringhe come caratteri
+	,showtabs = false				% non mostra i tab come carattere
+	,frame = lines					% aggiunge una linea sopra ed una linea sotto
+	,captionpos = b					% Imposta la posizione della didascalia sul fondo
+	,aboveskip = 3mm				% spazio superiore di 0.3 cm
+	,belowskip = 3mm				% spazio inferiore di 0.3 cm
+	% By default, listings does not support multi-byte encoding for source code. The extendedchar option only works for 8-bits encodings such as latin1. To handle UTF-8, you should tell listings how to interpret the special characters by defining them like so
+	,literate =
+		{á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+		{Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+		{à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+		{À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+		{ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+		{Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+		{â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+		{Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+		{œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+		{ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
+		{ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+		{€}{{\euro}}1 {£}{{\pounds}}1 {«}{{\guillemotleft}}1
+		{»}{{\guillemotright}}1 {ñ}{{\~n}}1 {Ñ}{{\~N}}1 {¿}{{?`}}1
+		% {$}{\$}1 % TODO: Da testare
+}
+
+% NOTE: dipendenze
+\input{set-listing-languages}
+\input{set-listing-styles}

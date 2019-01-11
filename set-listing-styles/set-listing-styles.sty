@@ -1,0 +1,168 @@
+\lstdefinestyle{Gradle} {
+	moredelim = *[s][\color{gray}]{'}{'},
+	moredelim = *[s][\color{ForestGreen}]{"}{"},
+	emphstyle = \bfseries,
+	emph = {
+		apply,
+		% android,
+		compileSdkVersion,
+		buildToolsVersion,
+		defaultConfig,
+		minSdkVersion,
+		targetSdkVersion,
+		buildTypes,
+		release,
+		proguardFiles,
+		getDefaultProguardFile,
+		% dependencies,
+		implementation,
+		fileTree, testImplementation,
+		androidTestImplementation
+	},
+	emphstyle = {[2]\bfseries\color{violet}},
+	emph = {[2]
+		applicationId,
+		versionCode,
+		versionName,
+		testInstrumentationRunner,
+		minifyEnabled
+	},
+	emphstyle = {[3]\bfseries\color{orange}},
+	emph = {[3]
+		true,
+		false
+	},
+}
+
+\lstdefinestyle{HTML} {
+	language = HTML,
+	morekeywords = {
+		placeholder,
+		pattern,
+		autofocus,
+		required,
+	},
+	moredelim = **[is][{\btHL[fill=green!30]}]{+++}{+++}
+}
+
+\lstdefinestyle{Java} {
+	language = Java,
+	commentstyle = \color{ashgrey},
+	emphstyle = {\color{darkgray}},
+	emphstyle = {[2]\bfseries},
+	keywordstyle = \color{black}\bfseries,
+	morecomment = [l][\color{blue}]{//+},		% single line blue comments
+	morecomment = [l][\color{red}]{//-},		% single line red comments
+	morecomment = [s][\color{blue}]{/*+}{*/},	% multiple line blue comments
+	morecomment = [s][\color{red}]{/*-}{*/},	% multiple line red comments
+	moredelim = [s][\color{ashgrey}]{/**}{*/},		% multiple line gray comments
+	moredelim = [is][\soutthick]{|}{|},						% cancellato
+	moredelim = **[is][\color{blue}]{^}{^},					% in blue cumulativo
+	moredelim = **[is][\color{ForestGreen}]{***}{***},		% in verde cumulativo
+	moredelim = **[is][\color{red}]{~}{~},					% [Alt + 126] in rosso cumulativo
+	moredelim = **[is][\btHL]{---}{---},					% rimosso cumulativo
+	moredelim = **[is][{\btHL[fill=blue!60]}]{Ž}{Ž},		% [Alt + 0142]  evidenzia cumulativo
+	moredelim = **[is][{\btHL[fill=SkyBlue]}]{•}{•},		% [Alt + 0149]  evidenzia cumulativo
+	moredelim = **[is][{\btHL[fill=orange!60]}]{Š}{Š},		% [Alt + 0138]  evidenzia cumulativo
+	moredelim = **[is][{\btHL[fill=yellow!60]}]{‡}{‡},		% [Alt + 0135]  modificato cumulativo
+	moredelim = **[is][{\btHL[fill=ForestGreen]}]{†}{†},	% [Alt + 0134]  evidenzia cumulativo
+	moredelim = **[is][{\btHL[fill=green!30]}]{+++}{+++},	%  aggiunto cumulativo
+	emph = {
+		@Override,
+		@param
+	},
+	emph = {[2]
+		Note
+	},
+	morekeywords = {
+		% Java Standard
+		PrintWriter, BufferedReader, Integer,
+		% Added for Android highlighting
+		Intent, LayoutInflater, Menu, MenuInflater, String, Bundle, ViewHolder,
+		FragmentManager, FragmentTransaction,
+		Object, Object...,
+		ArrayList, List, Bitmap, DataSetObserver,
+		View, ViewGroup,
+		CharSequence, Parcelable, Serializable,
+		TextView, ImageView,
+		ImageButton, EditText, ListView, ContextMenu,
+		LinearLayout, RelativeLayout, TableLayout, FrameLayout,
+		IBinder, Runnable,
+		% SQLite
+		SQLiteDatabase, MySQLiteHelper, Cursor, ArrayAdapter, ContentValues,
+		Person, Messenger,
+		% Socket Programming
+		Socket, ServerSocket,
+		InetAddress, DataOutputStream, PrintStream, OutputStream, InputStreamReader, StringTokenizer, FileInputStream,
+		% Java Servlet Objects
+		HttpServletRequest, HttpServletResponse,
+		DateFormat, Integer,
+	}
+}
+
+\lstdefinestyle{Javascript} {
+	language = Javascript,
+	commentstyle = \color{ashgrey},
+	keywordstyle = \color{black}\bfseries,
+}
+
+\lstdefinestyle{JSP} {
+	language = JSP,
+	commentstyle = \color{ashgrey},
+	keywordstyle = \color{black}\bfseries,
+	moredelim = [s][\color{ashgrey}]{/**}{*/},		% multiple line gray comments
+	moredelim = **[is][\color{red}]{~}{~},			% in rosso cumulativo
+}
+
+\lstdefinestyle{Kotlin} {
+	language = Kotlin,
+	commentstyle = \color{gray}\ttfamily,
+	emphstyle = {\color{OrangeRed}},
+	identifierstyle = \color{black},
+	keywordstyle = \color{NavyBlue}\bfseries,
+	% keywordstyle = \color{BurntOrange}\bfseries,
+	stringstyle = \color{ForestGreen}\ttfamily,
+}
+
+\definecolor{ashgrey}{rgb}{0.7, 0.75, 0.71}
+\lstdefinestyle{SML} {
+	language = SML,
+	commentstyle = \color{ashgrey},
+	keywordstyle = \color{black}\bfseries,
+	morekeywords = {
+		val, type, datatype,
+		fn, rec, fun,
+		let, local, in, end,
+	},
+	moredelim = **[is][{\btHL[fill=orange!60]}]{Š}{Š},
+	moredelim = **[is][{\btHL[fill=yellow!60]}]{‡}{‡},
+	moredelim = **[is][{\btHL[fill=ForestGreen]}]{†}{†},
+	moredelim = **[is][{\btHL[fill=green!30]}]{+++}{+++},
+	moredelim = **[is][\btHL]{---}{---},
+}
+
+\lstdefinestyle{SQL} {
+	language = SQL
+}
+
+\definecolor{ashgrey}{rgb}{0.7, 0.75, 0.71}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.6}
+\lstdefinestyle{XML} {
+	language = XML,
+	commentstyle = \color{ashgrey},
+	tag = **[s][\color{darkblue}\renewcommand\delimstyle{\color{black}}]<>,
+	identifierstyle = \color{darkblue},
+	keywordstyle = \color{cyan},
+	stringstyle = \color{ForestGreen},
+	moredelim = [is][\soutthick]{|}{|},
+	% moredelim = [s][\color{ashgrey}]{<!--}{-->},
+	moredelim = **[is][\color{red}]{~}{~},
+	moredelim = **[is][\btHL]{---}{---},
+	moredelim = **[is][{\btHL[fill=green!30]}]{+++}{+++},
+	morekeywords = {
+		android, application, encoding,
+		id, intent-filter,
+		layout_width, layout_height,
+		name, orientation, text, type, title, xmlns, version,
+	}
+}
