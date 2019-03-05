@@ -1,0 +1,44 @@
+\usepackage[newfloat, cachedir=_minted-cache]{minted}
+
+% NOTE inline mint options
+
+\newmintinline[javainline]{java}{}
+\newmint[javacode]{java}{}
+\newmintedfile[javafile]{java}{}
+
+% IDEA se stampato non ci devono essere colori
+\newif\ifprinted
+% NOTE di default produci il codice in bianco e nero
+% \printedtrue
+
+\ifprinted
+	\usemintedstyle{bw}
+\else
+	\usemintedstyle{manni}
+\fi
+
+% IDEA opzioni globali
+\setminted{
+	% ,frame				= lines
+	% ,linenos			= true
+	,fontsize			= \footnotesize
+	,fontseries			= bold
+	% ,highlightcolor		= highlightColor
+	% ,numberblanklines	= false
+	,tabsize			= 2
+	,texcomments
+	,escapeinside		= !!
+	,mathescape
+}
+
+% NOTE opzioni per linguaggio 'C++'
+\setminted[cpp]{
+	,linenos			= true
+	,tabsize			= 4
+}
+
+% NOTE opzioni per linguaggio 'Standard ML'
+\setminted[sml]{
+	,linenos			= false
+	,tabsize			= 4
+}
