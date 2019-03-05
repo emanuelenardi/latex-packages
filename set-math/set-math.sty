@@ -1,25 +1,20 @@
-% WARNING: Mantenee l'ordine dei pacchetti è fonadamentale per non rompere la build
-% WARNING: "semantic" da caricare sopo "amsmath"
-% IDEA: math suymbols
-% NOTE: "amsthm" - teoremi e dimostrazioni
-% NOTE: "amsfonts" - nomi insiemi numerici
-% NOTE: "amssymb" - leqslant & geqslant
-% NOTE: "mathtools" - mathtools = amsmath + other stuff
-% NOTE: "MnSymbol" - fornisce le freccie che utilizzo per andare a capo riga nelle liste di codice
-% NOTE: "abraces" - angle brakets fine tuning
-% NOTE: "braket" - permette l'uso di parentesi angolari
-% NOTE: "nicefrac" - divisione in linea
-% NOTE: "textgreek" - caratteri greci
-% NOTE: "siunitx" - unità di misura del SI
+% WARNING Mantenee l'ordine dei pacchetti è fonadamentale per non rompere la build
+% WARNING "semantic" da caricare sopo "amsmath"
+% IDEA math symbols
+% NOTE "mathtools" - mathtools = amsmath + other stuff
+% NOTE "MnSymbol" - fornisce le freccie che utilizzo per andare a capo riga nelle liste di codice
+% NOTE "abraces" - angle brakets fine tuning
+% NOTE "braket" - permette l'uso di parentesi angolari
+% NOTE "nicefrac" - divisione in linea
+% NOTE "textgreek" - caratteri greci
+% NOTE "siunitx" - unità di misura del SI
 \usepackage{
-	,amsthm
-	,amsfonts
-	,amssymb
+	,ams-all
 	,MnSymbol
 }
 
-% NOTE: "leqno" places the numbering of formulas on the left hand side instead of the right;
-% NOTE: "fleqn" typesets displayed formulas left-aligned instead of centered;
+% NOTE "leqno" places the numbering of formulas on the left hand side instead of the right;
+% NOTE "fleqn" typesets displayed formulas left-aligned instead of centered;
 \usepackage[
 	,leqno
 	% ,fleqn
@@ -36,13 +31,24 @@
 \colorlet{brighter}{blue!50!white}
 \WithArrowsOptions{tikz=brighter, MoreColumns}
 
-% NOTE: comando definito dal package "amsmath"
+% NOTE comando definito dal package "amsmath"
 \DeclarePairedDelimiter\norm{\lVert}{\rVert}
+
 \DeclarePairedDelimiter\abs{\lvert}{\rvert}
 \DeclarePairedDelimiter\Abs{\bigg\lvert}{\bigg\rvert}
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\Ceil{\big\lceil}{\big\rceil}
+
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\DeclarePairedDelimiter\Floor{\big\lfloor}{\big\rfloor}
+
+\DeclarePairedDelimiter\angleled{\langle}{\rangle}
+\DeclarePairedDelimiter\Angleled{\big\langle}{\big\rangle}
+
 \DeclarePairedDelimiter\Bracket{\lbrack}{\rbrack}
 
-% NOTE: colorare simboli matematici
+% NOTE colorare simboli matematici
 % tex.stackexchange.com/questions/21598/
 \makeatletter
 \def\mathcolor#1#{\@mathcolor{#1}}
@@ -54,7 +60,10 @@
 }
 \makeatother
 
-% NOTE: Linguaggi formali e compilatori
+% NOTE abbreviazione
+\newcommand\mhl[1]{\mathcolor{mathcolor}{#1}}
+
+% NOTE Linguaggi formali e compilatori
 \newcommand\produce{\longrightarrow}
 \newcommand\deriva{\Rightarrow}
 
@@ -64,23 +73,22 @@
 \newcommand\derivamultiplo{\stackrel{\ensuremath{+}}{\deriva}}
 \newcommand\derivanumero[1]{\stackrel{\ensuremath{#1}}{\deriva}}
 
-% NOTE: analisi
+% NOTE analisi
 \renewcommand\restriction{\mathord{\upharpoonright}}
 
-% NOTE: "uq" sta per "upquote"
+% NOTE 'uq' sta per 'upquote'
 \newcommand\uq{\ensuremath \text{\textquotesingle}}
 \newcommand\bs[1]{\boldsymbol{#1}}
 
-% NOTE: abbreviazioni
+% NOTE abbreviazioni
 \newcommand\ob{\overbrace}
 \newcommand\ub{\underbrace}
 \newcommand\us{\underset}
 \newcommand\ul{\underline}
-\newcommand\tn{\tn}
 \newcommand\fns{\footnotesize}
 
 % NB: modifico il comportamento del comando 'underbrace'
-% NOTE: tex.stackexchange.com/questions/256894/
+% NOTE tex.stackexchange.com/questions/256894/
 \makeatletter
 \let\ams@underbrace=\underbrace
 \def\underbrace#1_#2{%
@@ -89,22 +97,48 @@
 }
 \makeatother
 
-% NOTE: simbolo di fine dimostrazione
-\renewcommand\qedsymbol{\( \blacksquare \)}
+% NOTE simbolo di fine dimostrazione
+% \renewcommand\qedsymbol{\( \blacksquare \)}
 
-% NOTE: teoremi, lemmi e nota bene
+% IDEA teoremi, lemmi e nota bene
+
+% NOTE con o senza (*) contatori
 \newtheorem{theorem}{Teorema}
 \newtheorem*{theorem*}{Teorema}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{definition}{Definizione}[section]
+\newtheorem*{definition*}{definition}
 \newtheorem{corollario}{Corollario}
 \newtheorem{example}{Esempio}
 \newtheorem{proposition}{Proposizione}
 
+% NOTE senza contatori
 \newtheorem*{remark}{Ricorda}
 \newtheorem*{note}{Nota}
 \newtheorem*{observation}{Osservazione}
 \newtheorem*{hint}{Suggerimento}
+\newtheorem*{idea}{Idea}
 
-% - :bookmark: [Big O and related notations](texblog.org/2014/06/24/)
+% 🔖 [Big O and related notations](texblog.org/2014/06/24/)
 \newcommand\Omicron{\mathcal{O}}
+
+\usepackage[makeroom]{cancel}
+\newcommand\Ccancel[2][lightgray]{%
+	\renewcommand\CancelColor{\color{#1}}\cancel{#2}%
+}
+
+\usepackage{pgfplots}
+
+% NOTE User defined Set
+% #1 first number in the set - obbligatorio
+% #2 last number in the set - facoltativo
+\NewDocumentCommand{\uSet}{ m g }{%
+	\ensuremath{%
+		\IfNoValueTF{#2}{
+			\{{#1}_{1}, {#1}_{2}, \dots, {#1}_{n}\}%
+		}{
+			% from -> to
+			\{#1, \dots, #2\}%
+		}
+	}%
+}

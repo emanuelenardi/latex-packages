@@ -1,19 +1,22 @@
 \usepackage{forest}
 
+% NOTE definiti per la dispensa di Android
 \forestset{
-	dir node/.style={%
+	% NOTE albero di directory
+	,dir node/.style={%
 		font=\ttfamily,
 		parent anchor = south west,	% tell where the parent’s endpoint of the edge between them should be
 		child anchor = west,		% tell where the child’s endpoint of the edge between them should be
 		anchor = mid west,			% by default, nodes are anchored at their base
 		inner ysep = 0pt,			% distance within nodes
 		calign = first,				% child-alignment
-	},
-	dir tree/.style={
+	}
+	,dir tree/.style={
 		for tree = {
+			% NOTE altri stili
+			dir node,		% node style
 			% font = \sffamily,
 			grow' = 0,		% directory tree
-			dir node,		% node style
 			edge = {gray, rounded corners, line width = 1pt},
 			edge path = {
 				\noexpand\path [draw, \forestoption{edge}]%
@@ -30,5 +33,81 @@
 				l = 15pt 	% branch's length
 			},
 		}
+	}
+}
+
+% NOTE definiti per la dispensa di algoritmi
+\forestset{
+	% NOTE nodi più pronuciati
+	,circled/.style={
+		,for tree={
+			,draw = black
+			,thick
+			,circle
+		}
+	}
+	% NOTE nodi gialli
+	,yellow/.style={
+		,for tree={
+			,fill=yellow!40
+		}
+	}
+	% NOTE backtrack e approx
+	,compact tree/.style={
+		,circled
+	}
+	,circled tree/.style={
+		,circled
+		,wide
+		,math tree
+	}
+	% NOTE usato nel capitolo del backtrack
+	,pruned/.style={
+		,fill=red
+		,delay={
+			,for descendants={phantom}
+		}
+	}
+	% NOTE albero che contiene nodi in cui sono presenti numeri e/o formule matematiche
+	,math tree/.style= {
+		,for tree = {
+			% NB da testare
+			,fit = band
+			,draw
+			,math content
+		}
+	}
+	% NOTE nodi più spaziati
+	,wide/.style={
+		,for tree={
+			,align = center
+			% ,fit = band
+			,minimum width = 0.65cm
+			,s sep+=10pt % siblings separation
+			% ,l sep+=10pt % levels separation
+			,l sep+=5pt % levels separation
+		}
+	}
+	% NOTE colorazione delle etichette
+	,binary numbering/.style = {
+		,for tree = {
+			,if = { isodd(n) }
+				{ edge label = { node[midway, fill=white, font=\ttfamily, text=red] {0} } }
+				{ edge label = { node[midway, fill=white, font=\ttfamily, text=blue]  {1} } }
+		}
+	}
+	% NOTE Albero Binario di Ricerca
+	,abr tree/.style= {
+		,math tree
+	}
+	% NOTE albero Red-Black
+	,rb tree/.style= {
+		,math tree
+	}
+	% NOTE albero binario con le etichette colorate
+	,binary tree/.style = {
+		,circled
+		,wide
+		,binary numbering
 	}
 }
