@@ -1,8 +1,8 @@
-% NOTE: "tocloft" - gestione dei Table Of Content
-% NB: "titles" - evita errori di caricamento dei pacchetti
+% NOTE 'tocloft' - gestione dei Table Of Content
+% NB 'titles' - evita errori di caricamento dei pacchetti
 \usepackage[titles]{tocloft}
 
-% HACK: Change it when you use "book" as document class
+% HACK Change it when you use 'book' as document class
 % \renewcommand{\cftchapafterpnum}{\vspace{10pt}}
 \renewcommand{\cftsecafterpnum}{\vspace{10pt}}
 
@@ -11,5 +11,5 @@
 \let\Section\section%
 \def\section{\addtocontents{lol}{\protect\addvspace{10pt}}\Section}
 
-% NOTE: La numerazione delle sezione si azzera all'inizio di una nuova parte
+% NOTE La numerazione delle sezione si azzera all'inizio di una nuova parte
 \counterwithin*{section}{part}

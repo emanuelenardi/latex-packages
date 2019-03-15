@@ -1,18 +1,18 @@
-% NOTE: "ulem" - permette di avere diversi tipi di sottolineatura
-% NB: "normalem" - replaces underlining with italics in text emphasized by \emph
+% NOTE 'ulem' - permette di avere diversi tipi di sottolineatura
+% NB 'normalem' - replaces underlining with italics in text emphasized by \emph
 \usepackage[normalem]{ulem}
 
-% NOTE: Linea spessa sul testo sottostante
+% NOTE Linea spessa sul testo sottostante
 \newcommand{\soutthick}[1]{
 	\renewcommand{\ULthickness}{1.0pt}	% 2.4
 		\sout{#1}%
 	\renewcommand{\ULthickness}{.4pt}	% Resetting to ulem default
 }
 
-% NOTE: "mdframed" - TODO
+% NOTE 'mdframed' - TODO
 \usepackage[framemethod = tikz]{mdframed}
 
-% NOTE: Definizione nuovo ambiente per evidenziare il codice
+% NOTE Definizione nuovo ambiente per evidenziare il codice
 \makeatletter
 	\newenvironment{btHighlight}[1][]
 		{\begingroup\tikzset{bt@Highlight@par/.style={#1}}\begin{lrbox}{\@tempboxa}}

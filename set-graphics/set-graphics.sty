@@ -1,10 +1,11 @@
-% NOTE: gestisce la dimensione massima delle immagini
+% NOTE gestisce la dimensione massima delle immagini
 \usepackage[export]{adjustbox}
 
-% IDEA: figure
-% NOTE: "graphicx" - inserimento figure nel docuemento
-% NOTE: "float" - definisce l'opzione "H" per gli oggetti fluttuanti
-% NOTE: "wrapfig" - inserimento di figure di fianco al testo
+% IDEA figure
+% NOTE "graphicx" - inserimento figure nel docuemento
+% NOTE "float" - definisce l'opzione "H" per gli oggetti fluttuanti
+% NOTE "wrapfig" - inserimento di figure di fianco al testo
+% OPTIMIZE: subfig -> subcaption
 \usepackage{
 	graphicx,
 	float,
@@ -12,9 +13,17 @@
 	wrapfig,
 }
 
-% NOTE: Dichiarazione dei percorsi DI DEFAULT per le immagini
+% NOTE Dichiarazione dei percorsi DI DEFAULT per le immagini
 % \graphicspath{
 % 	{./assets/figures/}
 % 	{./assets/slides/}
 % 	{./assets/icons/}
 % }
+
+\captionsetup{
+	figureposition = bottom,
+	tableposition = bottom,
+	font = small,
+	labelfont = {sf,bf},
+	justification = centering,
+}

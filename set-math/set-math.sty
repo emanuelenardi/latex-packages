@@ -1,20 +1,20 @@
-% WARNING Mantenee l'ordine dei pacchetti è fonadamentale per non rompere la build
+% WARNING Mantenere l'ordine dei pacchetti è fonadamentale per non rompere la build
 % WARNING "semantic" da caricare sopo "amsmath"
 % IDEA math symbols
-% NOTE "mathtools" - mathtools = amsmath + other stuff
-% NOTE "MnSymbol" - fornisce le freccie che utilizzo per andare a capo riga nelle liste di codice
-% NOTE "abraces" - angle brakets fine tuning
-% NOTE "braket" - permette l'uso di parentesi angolari
-% NOTE "nicefrac" - divisione in linea
-% NOTE "textgreek" - caratteri greci
-% NOTE "siunitx" - unità di misura del SI
+% NOTE 'mathtools' - mathtools = amsmath + other stuff
+% NOTE 'MnSymbol' - fornisce le freccie che utilizzo per andare a capo riga nelle liste di codice
+% NOTE 'abraces' - angle brakets fine tuning
+% NOTE 'braket' - permette l'uso di parentesi angolari
+% NOTE 'nicefrac' - divisione in linea
+% NOTE 'textgreek' - caratteri greci
+% NOTE 'siunitx' - unità di misura del SI
 \usepackage{
 	,ams-all
 	,MnSymbol
 }
 
-% NOTE "leqno" places the numbering of formulas on the left hand side instead of the right;
-% NOTE "fleqn" typesets displayed formulas left-aligned instead of centered;
+% NOTE 'leqno' places the numbering of formulas on the left hand side instead of the right;
+% NOTE 'fleqn' typesets displayed formulas left-aligned instead of centered;
 \usepackage[
 	,leqno
 	% ,fleqn
@@ -46,6 +46,7 @@
 \DeclarePairedDelimiter\angleled{\langle}{\rangle}
 \DeclarePairedDelimiter\Angleled{\big\langle}{\big\rangle}
 
+\DeclarePairedDelimiter\Braces{\left(}{\right)}
 \DeclarePairedDelimiter\Bracket{\lbrack}{\rbrack}
 
 % NOTE colorare simboli matematici
@@ -87,7 +88,7 @@
 \newcommand\ul{\underline}
 \newcommand\fns{\footnotesize}
 
-% NB: modifico il comportamento del comando 'underbrace'
+% NB modifico il comportamento del comando 'underbrace'
 % NOTE tex.stackexchange.com/questions/256894/
 \makeatletter
 \let\ams@underbrace=\underbrace

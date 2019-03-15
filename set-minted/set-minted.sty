@@ -20,12 +20,12 @@
 % IDEA opzioni globali
 \setminted{
 	% ,frame				= lines
-	% ,linenos			= true
-	,fontsize			= \footnotesize
+	% ,linenos
+	% ,fontsize			= \footnotesize
 	,fontseries			= bold
 	% ,highlightcolor		= highlightColor
 	% ,numberblanklines	= false
-	,tabsize			= 2
+	,tabsize			= 4
 	,texcomments
 	,escapeinside		= !!
 	,mathescape
@@ -35,6 +35,12 @@
 \setminted[cpp]{
 	,linenos			= true
 	,tabsize			= 4
+}
+
+% NOTE opzioni per linguaggio 'C'
+\setminted[c]{
+	% ,linenos = true
+	,tabsize = 4
 }
 
 % NOTE opzioni per linguaggio 'Standard ML'
