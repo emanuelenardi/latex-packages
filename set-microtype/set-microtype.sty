@@ -8,3 +8,29 @@
 	,stretch	= 10
 	,shrink		= 10
 ]{microtype}
+
+% source: tex.stackexchange.com/questions/91307/
+% NOTE no hyphenation delle parole
+\makeatletter
+\@ifpackageloaded{babel}
+	{\newenvironment{nohyphens}
+	{\par\sloppy\exhyphenpenalty=\@M
+		\@ifundefined{l@nohyphenation}
+		{\language=\@cclv}
+		{\hyphenrules{nohyphenation}}%
+	}
+	{\par
+		\@ifundefined{l@nohyphenation}
+		{}
+		{\endhyphenrules}%
+	}
+}
+{\newenvironment{nohyphens}
+	{\par\sloppy\exhyphenpenalty=\@M
+	\@ifundefined{l@nohyphenation}
+		{\language=\@cclv}
+		{\language=\l@nohyphenation}%
+	}
+	{\par}
+}
+\makeatother

@@ -1,8 +1,4 @@
-
-
 # LaTeX
-
-
 
 This repository contains the libraries that I use on daily basis to typesetting my TeX based documents.
 
@@ -34,9 +30,6 @@ Le dipendenze dei pacchetti sono listate come sottopunti nella lista puntata sot
 <!-- - [`exam` — A template for typesetting exams; -->
 
 <!-- - [`introduction` — This is the standard introduction that I use for my lecture notes; -->
-
-
-
 
 * `tikz-er2` — it permits to draw ER diagrams with `tikz`
 * `tikz-uml` — it permits to draw UML diagrams with `tikz`.
@@ -88,25 +81,6 @@ Le dipendenze dei pacchetti sono listate come sottopunti nella lista puntata sot
 * `tikz-er2` — permette di disegnare diagrammi ER con `tikz`
 * `tikz-uml` — permette di disegnare diagrammi UML con `tikz`
 <!-- * `tikz-uml-set` — -->
-
-<!-- ## Code formatting
-
-Code formatting in my latex documents follow a strict legend that is listed below.
-
-| Colore | Simbolo | Codice |
-| --- | --- | --- |
-| SkyBlue | `•...•` | `alt + 149` |
-| celeste | `Ž...Ž` | `alt + 0142` |
-| ForestGreen | `†...†` | `alt + 0134` |
-| green | `+++...+++` | `+` |
-| yellow | `‡...‡` | `alt + 0135` |
-| orange | `Š...Š` | `alt + 0138` |
-| red | `---...---` | `-` | -->
-
-<!-- ## Contribute
-
-Fork this repository, make your changes and then issue a pull request.
-If you find bugs or have new ideas that you do not want to implement yourself, file a bug report. -->
 
 ## Copyright
 

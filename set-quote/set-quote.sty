@@ -1,7 +1,7 @@
 % NOTE 'csquotes' - permette di personalizzare le citazioni
 \usepackage{csquotes}
 
-% NOTE: Ridefinisce le virgolette
+% NOTE Ridefinisce le virgolette
 \DeclareQuoteStyle{italian}%
 	{\textquotedblleft}
 	[\textquotedblleft]
@@ -11,10 +11,10 @@
 	[\textquoteleft]
 	{\textquoteright}
 
-% NOTE: Imposta il tipo di virgolette
+% NOTE Imposta il tipo di virgolette
 \setquotestyle{italian}
 
-% TODO: mi dervirà in futuro
+% TODO mi dervirà in futuro
 % \usepackage[
 %     ,left = \flqq{}
 %     ,right = \frqq{}
@@ -25,12 +25,20 @@
 % NOTE formatta una quotazione all'inizio di una sezione
 \usepackage{epigraph}
 
-% \epigraphsize{\small}% Default
+\epigraphsize{\small\itshape}
 \setlength\epigraphwidth{8cm}
 \setlength\epigraphrule{0pt}
 
+% NOTE - TODO
 \usepackage{etoolbox}
 
 \makeatletter
 \patchcmd{\epigraph}{\@epitext{#1}}{\itshape\@epitext{#1}}{}{}
 \makeatother
+
+\usepackage{xparse}
+
+% NOTE quotation based on epigraph package
+\NewDocumentCommand{\Epigraph}{mmm}{%
+	\epigraph{\enquote{#1}}{\textup{#2} --- #3}%
+}
