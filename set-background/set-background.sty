@@ -1,12 +1,15 @@
-\usepackage[pages = all]{background}
+\usepackage{xcolor}
+\colorlet{darker}{blue!50!black}
 
+\usepackage{background}
 \backgroundsetup{
-	,contents	= \fbox{\ttfamily\small \doclicenseIcon Emanuele Nardi, \docversion\ - \today}
-	,position	= current page.south east
-	,color		= darker
-	,angle		= -90.0
-	,hshift		= -6cm
-	,vshift		= -1cm
-	,scale		= 1.0
-	,opacity	= 1.0
+	,pages    = all
+	,contents = \fbox{\texttt{\small \doclicenseIcon Emanuele Nardi, {\docversion} - {\today}}}
+	,color    = darker
+	,position = current page.south east
+	,hshift   = -6cm
+	,vshift   = -1cm
+	,opacity  = 1
+	,angle    = -90
+	,scale    = 1
 }

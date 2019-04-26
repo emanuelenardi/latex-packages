@@ -1,21 +1,21 @@
 % NOTE dipendenza 'xcolor'
-\colorlet{darker}{blue!50!black}
+% \colorlet{darker}{blue!50!black}
 
-% FIXME: it produces a clashing error with the tocloft package if the TOC is displayed
-% WARNING: bisogna caricarlo per ultimo
+% WARNING it produces a clashing error with the tocloft package if the TOC is displayed
+% NB bisogna caricarlo per ultimo
 \usepackage[
 	,colorlinks	= true
-	,allcolors = darker
-	% ,linkcolor 	= red
-	% ,anchorcolor = black
-	% ,citecolor 	= green
-	% ,filecolor 	= cyan
-	% ,menucolor 	= red
-	% ,runcolor 	= cyan
-	% ,urlcolor 	= magenta
+	% ,allcolors = darker
+	,linkcolor 	= red
+	,anchorcolor = black
+	,citecolor 	= green
+	,filecolor 	= cyan
+	,menucolor 	= red
+	,runcolor 	= cyan
+	,urlcolor 	= magenta
 ]{hyperref}
 
 \newcommand{\mail}[1]{\href{mailto:#1}{\texttt{#1}\ExternalLink}}
 
-% WARNING: deve essere caricato dopo "amsmath"
+% WARNING deve essere caricato dopo il pacchetto 'amsmath'
 \usepackage{cleveref}

@@ -2,13 +2,19 @@
 
 % NOTE inline mint options
 
+% NOTE Languace C++
+\newmintinline[cppinline]{cpp}{}
+\newmint[cppcode]{cpp}{}
+\newmintedfile[cppfile]{cpp}{}
+
+% NOTE Language Java
 \newmintinline[javainline]{java}{}
 \newmint[javacode]{java}{}
 \newmintedfile[javafile]{java}{}
 
 % IDEA se stampato non ci devono essere colori
 \newif\ifprinted
-% NOTE di default produci il codice in bianco e nero
+% NOTE di default produci il codice colorato
 % \printedtrue
 
 \ifprinted
@@ -19,32 +25,33 @@
 
 % IDEA opzioni globali
 \setminted{
-	% ,frame				= lines
-	,linenos
-	% ,fontsize			= \footnotesize
-	,fontseries			= bold
-	% ,highlightcolor		= highlightColor
-	% ,numberblanklines	= false
-	,tabsize			= 4
+	breaklines = true,
+	frame = lines,
+	% ,linenos
+	,fontsize = \footnotesize
+	,fontseries = bold
+	% ,highlightcolor = highlightColor
+	,numberblanklines = false
 	,texcomments
-	,escapeinside		= ||
+	% WARNING il carattere '|' crea problemi
+	% escapeinside = ||
 	,mathescape
 }
 
 % NOTE opzioni per linguaggio 'C++'
+\setminted[java]{
+	,linenos = true
+	,tabsize = 4
+}
+
+% NOTE opzioni per linguaggio 'C++'
 \setminted[cpp]{
-	% ,linenos			= true
-	,tabsize			= 4
+	,linenos = true
+	,tabsize = 4
 }
 
 % NOTE opzioni per linguaggio 'C'
 \setminted[c]{
-	% ,linenos = true
-	% ,tabsize = 4
-}
-
-% NOTE opzioni per linguaggio 'Standard ML'
-\setminted[sml]{
-	,linenos			= false
-	,tabsize			= 4
+	,linenos = true
+	,tabsize = 4
 }

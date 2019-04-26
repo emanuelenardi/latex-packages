@@ -1,9 +1,16 @@
+% NOTE: keyword presenti nei documenti
+\graphicspath{{./assets/figures/}}
+\newcommand{\Logo}{\includegraphics[width=0.6\textwidth, keepaspectratio]{logo-unitn}}
+\newcommand{\Department}{Dipartimento di Ingegneria e Scienza dell'Informazione}
+\newcommand{\Faculty}{Corso di Laurea in\\ Informatica}
+
+% NOTE dipendenza pacchetto 'tabularx'
 \begin{titlepage}
-	\centering
+\begin{center}
 	\Logo
 
 	\vspace{2cm}
-	\LARGE{\Departament\\}
+	\LARGE{\Department\\}
 
 	\vspace{1cm}
 	\Large{\Faculty}
@@ -15,11 +22,12 @@
 	\Large{\emph{\Subtitle}}
 
 	\vspace{2cm}
-	\begin{tabularx}{\textwidth}{ cX c }
+	\begin{tabularx}{\textwidth}{ l X c }
 		\Large{Autore}		& &	\Large{Revisore}     \\
-		\Large{\authorName}	& &	\Large{\reviserName} \\
+		\Large{\AuthorName}	& &	\Large{\ReviserName} \\
 	\end{tabularx}
 
 	\vspace{2cm}
-	\Large{Anno accademico \academicYear}
+	\Large{Anno accademico \AcademicYear}
+\end{center}
 \end{titlepage}

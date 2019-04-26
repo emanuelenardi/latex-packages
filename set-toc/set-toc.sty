@@ -2,14 +2,16 @@
 % NB 'titles' - evita errori di caricamento dei pacchetti
 \usepackage[titles]{tocloft}
 
-% HACK Change it when you use 'book' as document class
+% NOTE immette dello spazio nel 'toc'
+% NB Change it when you use 'book' as document class
 % \renewcommand{\cftchapafterpnum}{\vspace{10pt}}
 \renewcommand{\cftsecafterpnum}{\vspace{10pt}}
 
+% NOTE aggiunge alla 'toc' la 'lol'
 % \let\Chapter\chapter
 % \def\chapter{\addtocontents{lol}{\protect\addvspace{10pt}}\Chapter}
 \let\Section\section%
 \def\section{\addtocontents{lol}{\protect\addvspace{10pt}}\Section}
 
-% NOTE La numerazione delle sezione si azzera all'inizio di una nuova parte
+% NOTE La numerazione delle sezioni si azzera all'inizio di una nuova parte
 \counterwithin*{section}{part}

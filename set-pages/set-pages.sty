@@ -7,7 +7,7 @@
 	,afterpage
 }
 
-% NOTE: Permette di inserisce una pagina bianca
+% NOTE Permette di inserisce una pagina bianca
 \newcommand{\blankpage}{%
 	\null%
 	\thispagestyle{empty}%
@@ -15,13 +15,12 @@
 	\newpage%
 }
 
-% NOTE: 'fancyhdr' - permette la personalizzazione di testatina e piè di pagina
-% WARNING: non compatibile con la classe 'exam'
-\usepackage{fancyhdr}
-\usepackage{lastpage}
+% NOTE 'fancyhdr' - permette la personalizzazione di testatina e piè di pagina
+% WARNING non compatibile con la classe 'exam'
+\usepackage{fancyhdr, lastpage}
 
-% WARNING: Commenta quando usi la documentclass 'exam'
-% NOTE: \pagestyle{footer}
+% WARNING Commenta quando usi la documentclass 'exam'
+% NOTE \pagestyle{footer}
 \fancypagestyle{footer}{
 	\fancyhf{}
 	% \lfoot{\authorName}
