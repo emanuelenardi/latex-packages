@@ -1,0 +1,5 @@
+# cartella già presente
+local/
+
+# drive sync folder
+.tmp.drivedownload/
