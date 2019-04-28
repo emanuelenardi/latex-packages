@@ -1,15 +1,15 @@
 % WARNING Mantenere l'ordine dei pacchetti è fonadamentale per non rompere la build
-% WARNING "semantic" da caricare sopo "amsmath"
 % IDEA math symbols
 % NOTE 'mathtools' - mathtools = amsmath + other stuff
 % NOTE 'MnSymbol' - fornisce le freccie che utilizzo per andare a capo riga nelle liste di codice
 % NOTE 'abraces' - angle brakets fine tuning
 % NOTE 'braket' - permette l'uso di parentesi angolari
 % NOTE 'nicefrac' - divisione in linea
-% NOTE 'textgreek' - caratteri greci
-% NOTE 'siunitx' - unità di misura del SI
+% NOTE 'textgreek' - puoi caratteri greci nel testo
 \usepackage{
-	,ams-all
+	,amsthm
+	,amsfonts
+	,amssymb
 	,MnSymbol
 }
 
@@ -20,11 +20,13 @@
 	% ,fleqn
 ]{mathtools}
 
+% WARNING "semantic" da caricare sopo "amsmath"
 \usepackage{
 	% ,braket
-	,semantic
+	% ,semantic
 	,empheq
 	,nicefrac
+	,textgreek
 }
 
 \usepackage{witharrows}
@@ -50,58 +52,6 @@
 \DeclarePairedDelimiter\Braces{\left(}{\right)}
 \DeclarePairedDelimiter\Bracket{\lbrack}{\rbrack}
 
-% NOTE colorare simboli matematici
-% tex.stackexchange.com/questions/21598/
-\makeatletter
-\def\mathcolor#1#{\@mathcolor{#1}}
-\def\@mathcolor#1#2#3{%
-	\protect\leavevmode
-	\begingroup
-		\color#1{#2}#3%
-	\endgroup
-}
-\makeatother
-
-% NOTE abbreviazione
-\newcommand\mhl[1]{\mathcolor{mathcolor}{#1}}
-
-% NOTE Linguaggi formali e compilatori
-\newcommand\produce{\longrightarrow}
-\newcommand\deriva{\Rightarrow}
-
-\usepackage{stackrel}
-
-% TODO: simbolo spostato sulla destra
-\newcommand\derivamultiplo{\stackrel{\ensuremath{+}}{\deriva}}
-\newcommand\derivanumero[1]{\stackrel{\ensuremath{#1}}{\deriva}}
-
-% NOTE analisi
-\renewcommand\restriction{\mathord{\upharpoonright}}
-
-% NOTE 'uq' sta per 'upquote'
-\newcommand\uq{\ensuremath \text{\textquotesingle}}
-\newcommand\bs[1]{\boldsymbol{#1}}
-
-% NOTE abbreviazioni
-\newcommand\ob{\overbrace}
-\newcommand\ub{\underbrace}
-\newcommand\us{\underset}
-\newcommand\ul{\underline}
-\newcommand\fns{\footnotesize}
-
-% NB modifico il comportamento del comando 'underbrace'
-% NOTE tex.stackexchange.com/questions/256894/
-\makeatletter
-\let\ams@underbrace=\underbrace
-\def\underbrace#1_#2{%
-	\setbox0=\hbox{$\displaystyle#1$}%
-	\ams@underbrace{#1}_{\parbox[t]{\the\wd0}{\scriptsize #2}}%
-}
-\makeatother
-
-% NOTE simbolo di fine dimostrazione
-% \renewcommand\qedsymbol{\( \blacksquare \)}
-
 % IDEA teoremi, lemmi e nota bene
 
 % NOTE con o senza (*) contatori
@@ -121,26 +71,75 @@
 \newtheorem*{hint}{Suggerimento}
 \newtheorem*{idea}{Idea}
 
-% 🔖 [Big O and related notations](texblog.org/2014/06/24/)
-\newcommand{\Omicron}{\mathcal{O}}
-
 \usepackage[makeroom]{cancel}
 \newcommand\Ccancel[2][lightgray]{%
 	\renewcommand\CancelColor{\color{#1}}\cancel{#2}%
 }
-
-\usepackage{pgfplots}
 
 % NOTE User defined Set
 % #1 first number in the set - obbligatorio
 % #2 last number in the set - facoltativo
 \NewDocumentCommand{\uSet}{ m g }{%
 	\ensuremath{%
-		\IfNoValueTF{#2}{
+		\IfNoValueTF{#2}{%
+			% from #1_1 -> to #1_n
 			\{{#1}_{1}, {#1}_{2}, \dots, {#1}_{n}\}%
-		}{
-			% from -> to
+		}{%
+			% from #1 -> to #2
 			\{#1, \dots, #2\}%
-		}
+		}%
 	}%
 }
+
+% NOTE colorare simboli matematici
+% tex.stackexchange.com/questions/21598/
+\makeatletter
+\def\mathcolor#1#{\@mathcolor{#1}}
+\def\@mathcolor#1#2#3{%
+	\protect\leavevmode
+	\begingroup
+		\color#1{#2}#3%
+	\endgroup
+}
+\makeatother
+
+% TODO da spostare nel documento in cui viene usato
+\newcommand\mhl[1]{\mathcolor{mathcolor}{#1}}
+% 🔖 [Big O and related notations](texblog.org/2014/06/24/)
+\newcommand{\Omicron}{\mathcal{O}}
+
+% TODO da spostare nel documento in cui viene usato
+\newcommand\produce{\longrightarrow}
+\newcommand\deriva{\Rightarrow}
+\usepackage{stackrel}
+\newcommand\derivamultiplo{\stackrel{\ensuremath{+}}{\deriva}}
+\newcommand\derivanumero[1]{\stackrel{\ensuremath{#1}}{\deriva}}
+
+% NOTE analisi
+\renewcommand\restriction{\mathord{\upharpoonright}}
+
+% TODO da spostare nel documento in cui viene usato
+% 'uq' sta per 'upquote'
+\newcommand\uq{\ensuremath{\text{\textquotesingle}}}
+\newcommand\bs[1]{\boldsymbol{#1}}
+
+% TODO da rimuovere
+% \newcommand\ob{\overbrace}
+% \newcommand\ub{\underbrace}
+% \newcommand\us{\underset}
+% \newcommand\ul{\underline}
+% \newcommand\fns{\footnotesize}
+
+% NB modifico il comportamento del comando 'underbrace'
+% tex.stackexchange.com/questions/256894/
+% TODO da rimuovere
+% \makeatletter
+% \let\ams@underbrace=\underbrace
+% \def\underbrace#1_#2{%
+% 	\setbox0=\hbox{$\displaystyle#1$}%
+% 	\ams@underbrace{#1}_{\parbox[t]{\the\wd0}{\scriptsize #2}}%
+% }
+% \makeatother
+
+% NOTE simbolo di fine dimostrazione nero
+% \renewcommand\qedsymbol{\( \blacksquare \)}
