@@ -1,13 +1,12 @@
-% IDEA 'estione pagine
+% IDEA gestione delle pagine
 % NOTE 'pdfpages' - inserimento di pdf all'interno del documento
 % NOTE 'afterpage' -  TODO
-% NOTE 'lastpage' - riferimento all'ultima pagina (LastPage)
 \usepackage{
 	,pdfpages
 	,afterpage
 }
 
-% NOTE Permette di inserisce una pagina bianca
+% NOTE Permette di inserire una pagina bianca
 \newcommand{\blankpage}{%
 	\null%
 	\thispagestyle{empty}%
@@ -15,11 +14,15 @@
 	\newpage%
 }
 
+% NOTE toglie i numeri a piè pagina dalle pagine bianche
+\usepackage{emptypage}
+
 % NOTE 'fancyhdr' - permette la personalizzazione di testatina e piè di pagina
+% NOTE 'lastpage' - riferimento all'ultima pagina (LastPage)
 % WARNING non compatibile con la classe 'exam'
 \usepackage{fancyhdr, lastpage}
 
-% WARNING Commenta quando usi la documentclass 'exam'
+% WARNING commenta quando usi la documentclass 'exam'
 % NOTE \pagestyle{footer}
 \fancypagestyle{footer}{
 	\fancyhf{}

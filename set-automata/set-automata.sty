@@ -7,22 +7,68 @@
 	,tikzmark
 }
 
+% NOTE nuova definizione dei comandi con 'xparse'
+% NOTE ho reso opzionale il posizionamento dello stato
+\NewDocumentCommand{\State}{ m m O{} O{} }{%
+	\node[state,#3] (#1)[#4] {#2};
+}
+
+\NewDocumentCommand{\Label}{ m m }{%
+	\node[info, #1] {#2};%
+}
+
+% NOTE ho reso opzionali le etichette dei lati e la loro posizione
+% #1: (opzionale) bend left/right
+% #2: (opzionale) verso della freccia
+% #3: (obbligatorio) start node
+% #4: (obbligatorio) end node
+% #5: (opzionale) transition label
+\NewDocumentCommand{\Transition}{ O{} O{} m m O{} }{%
+	\path[->] (#3) edge [#2, #1] node {#5} (#4);
+}
+
+% #1: (opzionale) posizionamento del loop rispetto al nodo (default: right)
+% (#1): posizionamento etichetta rispetto all'arco (default: #1)
+% #2: (opzionale) verso della freccia
+% #3: (obbligatorio) nodo attorno al quale ruota il loop
+% #3: (opzionale) etichetta
+% NOTE ora è molto più sofisticato, la scelta del posizionamento è dinamico
+\NewDocumentCommand{\Loop}{ O{above} O{->} m O{} }{%
+	\IfEq{#1}{above}
+		{\path (#3) edge [#2, out = 120, in = 60, looseness = 6] node[#1] {#4} (#3);}{}
+	\IfEq{#1}{right}
+		{\path (#3) edge [#2, out = 30, in = 330, looseness = 6] node[#1] {#4} (#3);}{}
+	\IfEq{#1}{below}
+		{\path (#3) edge [#2, out = 300, in = 240, looseness = 6] node[#1] {#4} (#3);}{}
+	\IfEq{#1}{left}
+		{\path (#3) edge [#2, out = 210, in = 150, looseness = 6] node[#1] {#4} (#3);}{}
+}
+
+\NewDocumentCommand{\LoopAbove}{ m O{} O{} }{%
+	\path (#1) edge [loop right, out = 120, in = 60, looseness = 6] node[#3] {#2} (#1);
+}
+
 % NOTE stile delle etichette
-\tikzstyle{info} = [draw = driverColor, text = driverColor]
+% \tikzstyle{info} = [draw = driverColor, text = driverColor]
+\tikzstyle{info} = [draw = accentColor, text = accentColor]
 
 % NOTE nuovo stato
-\newcommand\newState[4]{\node[state,#3] (#1)[#4] {#2};}
+\newcommand{\newState}[4]{\node[state,#3] (#1)[#4] {#2};}
 % NOTE nuova transizione
-\newcommand\newTransition[4]{\path[->] (#1) edge [#4] node {#3} (#2);}
+\newcommand{\newTransition}[4]{\path[->] (#1) edge [#4] node {#3} (#2);}
 % NOTE nuovi loop
-\newcommand\newLoop[4]{\path (#1) edge [#4, looseness = 6] node[#3] {#2} (#1);}
-\newcommand\newLoopRight[3]{\path (#1) edge [loop right, out = 40, in = 340, looseness = 6] node[#3] {#2} (#1);}
-\newcommand\newLoopLeft[3]{\path (#1) edge [loop left, out = 140, in = 200, looseness = 6] node[#3] {#2} (#1);}
+\newcommand{\newLoop}[4]{\path (#1) edge [#4, looseness = 6] node[#3] {#2} (#1);}
+\newcommand{\newLoopRight}[3]{\path (#1) edge [out = 40, in = 340, looseness = 6] node[#3] {#2} (#1);}
+\newcommand{\newLoopLeft}[3]{\path (#1) edge [out = 140, in = 200, looseness = 6] node[#3] {#2} (#1);}
+\newcommand{\newLoopAbove}[3]{\path (#1) edge [out = 120, in = 60, looseness = 6] node[#3] {#2} (#1);}
+\newcommand{\newLoopBelow}[3]{\path (#1) edge [out = 300, in = 240, looseness = 6] node[#3] {#2} (#1);}
+% \newcommand{\newLoopBelow}[3]{\path (#1) edge [loop left, out = 140, in = 200, looseness = 6] node[#3] {#2} (#1);}
 % NOTE nuova etichetta
-\newcommand\newLabel[2]{\node[info, #1] {#2};}
+\newcommand{\newLabel}[2]{\node[info, #1] {#2};}
 
+% TODO da spostare sul preambolo della dispensa di LFC
 % NOTE per segnalare i responsabili dei follow
-\newcommand\blame[2]{%
+\newcommand{\blame}[2]{%
 	% \(\underbrace{#1}_{\mathcolor{blue}{#2}}\)%
 	% NOTE \vphantom{,} è per avere una baseline comune
 	% \(\underset{\mathcolor{blue!50!green}{#1}}{\vphantom{,}#2}\)%
@@ -56,19 +102,20 @@
 	}%
 }
 
-\newcommand\state[1]{%
+% NOTE indicazione di uno stato nel testo
+\newcommand{\state}[1]{%
 	\circled{#1}%
 }
 
-\newcommand\cursor{%
+\newcommand{\cursor}{%
 	\tikz \fill [bodyColor] (0.0,0.0) rectangle (0.15,0.35);%
 }
 
-\newcommand\free{\textcolor{ForestGreen}{\emph{libero da contesto}}}
-\newcommand\notfree{\textcolor{rose}{\emph{non libero da contesto}}}
-\newcommand\shift{\emph{shift}}
-\newcommand\accept{\textcolor{ForestGreen}{\texttt{accept()}}}
-\newcommand\error{\textcolor{rose}{\texttt{error()}}}
+\newcommand{\free}{\textcolor{ForestGreen}{\emph{libero da contesto}}}
+\newcommand{\notfree}{\textcolor{rose}{\emph{non libero da contesto}}}
+\newcommand{\shift}{\emph{shift}}
+\newcommand{\accept}{\textcolor{ForestGreen}{\texttt{accept()}}}
+\newcommand{\error}{\textcolor{rose}{\texttt{error()}}}
 
 \usepackage{forest}
 % TODO

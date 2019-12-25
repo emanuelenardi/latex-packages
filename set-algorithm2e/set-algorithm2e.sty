@@ -4,33 +4,105 @@
 % NOTE Le seguenti domande hanno influenzato le impostazioni
 % https://tex.stackexchange.com/questions/345737/
 
+\usepackage{comment} % debugging
 % NOTE impostazioni della stampa degli algoritmi
 \usepackage[
 	% ,linesnumbered
-	% ,plain
-	% ,ruled
-	,tworuled
+	% ,plain% default
+	,ruled
+	% ,tworuled
+	% ,noline% default
 	,vlined
-	,italiano
-	,onelanguage
-	,algosection% default
-	% ,algo2e% per compatibilità con 'algorithm'
-	% TODO: ambiente algorithm -> algorithm2e
+	% ,italiano
+	% ,onelanguage
+	,algosection % default
+	% ,algo2e % per compatibilità con 'algorithm' TODO ambiente algorithm -> algorithm2e
 ]{algorithm2e}
 \DontPrintSemicolon
 \LinesNotNumbered
 
-\usepackage{multicol}
+% NOTE inclusione delle immagini esplicative negli algoritmi
+\newif\ifFigureOfAlgo
+\FigureOfAlgotrue% stampa l'immagine
+% NOTE ottimizzare la versione stampata in bianco e nero
+\newif\ifAlgoPrinted
+% TODO rimuovere condizionalmente i commenti dagli algoritmi
+% IDEA ridefinire i comandi vuoti?
+\newif\ifAlgoNotCommented
+% \AlgoNotCommentedtrue
+
+% NOTE commenti
+\ifAlgoPrinted
+\newcommand\commentFont[1]{\footnotesize\ttfamily\textcolor{lightgray}{#1}}
+\else
+\newcommand\commentFont[1]{\footnotesize\ttfamily\textcolor{blue}{#1}}
+\fi
+
+% https://tex.stackexchange.com/questions/210161/
+% NOTE cabiare lo stile dell'algoritmo nel testo
+\makeatletter
+\newcommand{\algorithmstyle}[1]{%
+	\renewcommand{\algocf@style}{#1}%
+}
+\makeatother
+
+% NOTE se crea problemi nell'impaginazione degli algoritmi rimuovere senza pietà alcuna
+% \begin{comment}
+% https://tex.stackexchange.com/questions/345737/
+\makeatletter
+\newcommand\fs@booktabsruled{%
+	\def\@fs@cfont{\bfseries\strut}\let\@fs@capt\floatc@ruled
+	\def\@fs@pre{\hrule height\heavyrulewidth depth0pt \kern\belowrulesep}%
+	\def\@fs@mid{\kern\aboverulesep\hrule height\lightrulewidth\kern\belowrulesep}%
+	\def\@fs@post{\kern\aboverulesep\hrule height\heavyrulewidth\relax}%
+	\let\@fs@iftopcapt\iftrue
+	% NOTE aggiunto dal codice sorgente di algorithm2e
+	\let\@mathsemicolon=\;\def\;{\ifmmode\@mathsemicolon\else\@endalgoln\fi}%
+}
+\makeatother
+
+% NOTE senza questo if condizionale succedono disastri
+\newif\ifstandalone
+\ifstandalone\else
+\usepackage{float}
+\newfloat{algorithm}{h}{alg}[section]
+\floatname{algorithm}{Algoritmo}
+
+\floatstyle{booktabsruled}
+\restylefloat{algorithm}
+\fi
+% \end{comment}
+
+% NOTE correzione temporanea per sovrascrittura dell'ambiente 'algorithm'
+% NOTE l'errore risiede nel codice soprastante
+% \NewDocumentCommand{\InputAlgo}{m}{%
+% 	\renewcommand{\;}{\par}% intepreta il '\;' come fine riga
+% 	\FigureOfAlgotrue% prints explanatory image
+% 	\input{#1}% TeX command
+% 	\FigureOfAlgofalse% reset setting
+% 	\renewcommand{\;}{\mskip\thickmuskip}% p.357 of TeXbook
+% }
+
+% NOTE utilizzato in alcune occasioni per algoritmi a metà pagina
+% NOTE non più utilizzato, rimpiazzato da minipage
+% \usepackage{multicol}
 
 % https://tex.stackexchange.com/questions/153646/algorithm2e-disabling-line-numbers-for-specific-lines
 % NOTE Disabling line numbers for specific lines with 'linesnumbered' option on
 \let\oldnl\nl% Store \nl in \oldnl
-\newcommand{\nonl}{\renewcommand{\nl}{\let\nl\oldnl}}% Remove line number for one line
+\newcommand{\nonl}{%
+	\renewcommand{\nl}{\let\nl\oldnl}%
+}% Remove line number for one line
+
+% \SetKwProg{keyword}{prima}{dopo}{fine}
+\SetKwProg{prototype}{}{}{}
+\SetKwProg{function}{Funzione}{}{}
+\SetKwProg{procedure}{Procedura}{}{}
 
 % NOTE didascalie ed Elenco degli algoritmi
-\SetAlgorithmName{Algoritmo}{Algoritmo}{Elenco degli algoritmi}
-\SetAlgoProcName{Procedura}{Procedura}
-\SetAlgoFuncName{Funzione}{Funzione}
+\SetAlgorithmName{Algoritmo}{algoritmo}{Elenco degli algoritmi}
+\SetAlgoProcName{Procedura}{procedura}
+\SetAlgoFuncName{Funzione}{funzione}
 % \SetAlgorithmName{}{Algoritmo}{Elenco degli algoritmi}
 % \SetAlgoProcName{}{Procedura}
 % \SetAlgoFuncName{}{Funzione}
@@ -47,7 +119,8 @@
 
 % NOTE didascalia
 \SetAlCapSkip{15ex}
-\SetAlgoCaptionSeparator{ --}
+% \SetAlgoCaptionSeparator{ --}
+\SetAlgoCaptionSeparator{:}
 % \SetAlgoCaptionSeparator{}
 % \SetAlgoRefName{}
 
@@ -62,15 +135,16 @@
 % \AlgoDisplayBlockMarkers\SetAlgoBlockMarkers{\{}{\}}%
 % \AlgoDisplayBlockMarkers\SetAlgoBlockMarkers{begin}{end}%
 
+% TODO spostare impostazioni sul progetto di LFC
 % NOTE definizione nuove keyword
 \SetKwProg{Fn}{}{\string:}{}
 \SetKwFunction{Closure}{closure}
 
 % NOTE ridefinizione sei comandi in inglese
-\SetKwInput{KwIng}{Ingresso}
-\SetKwInput{KwData}{Dati}
-\SetKwInput{KwUsc}{Uscita}
-\SetKwInput{KwResult}{Risultato}
+% \SetKwInput{KwIng}{Ingresso}
+% \SetKwInput{KwData}{Dati}
+% \SetKwInput{KwUsc}{Uscita}
+% \SetKwInput{KwResult}{Risultato}
 
 % NOTE parole chiave definite direttamente in italiano
 \SetKwInput{Ingresso}{Ingresso}
@@ -80,18 +154,22 @@
 \SetKwInput{DataStructures}{\footnotesize{\fbox{Strutture dati}}}
 
 % NOTE ridefinizione comandi italiani
-\SetKwFor{From}{da}{fai}
 
-\SetKwIF{Sea}{AltSe}{Altrimenti}
-    	{se}{allora}{altrimenti se}{altrimenti}{fine\ se}% <- mancava 'se'
+% NOTE abilita opzione 'longend', 'shortend' è dafault
+% \SetKwIF{Sea}{AltSe}{Altrimenti}
+%     	{se}{allora}{altrimenti se}{altrimenti}{fine\ se}% <- mancava 'se'
+%
+% \SetKwFor{Finche}{finché}{fai}{fine\ finché}% <- mancava 'finché'
 
-\SetKwFor{Finche}{finché}{fai}{fine\ finché}% <- mancava 'finché'
+% NOTE ridefinizione comandi per dispense LFC
 
-% NOTE TODO
-\SetKwInOut{Input}{\footnotesize{\fbox{input}}}
-\SetKwInOut{Output}{\footnotesize{\fbox{output}}}
+\SetKwInOut{Input}{Input}
+\SetKwInOut{Output}{Output}
+% NOTE stile personalizzato
+% \SetKwInOut{Input}{\footnotesize{\fbox{input}}}
+% \SetKwInOut{Output}{\footnotesize{\fbox{output}}}
 
-\NewDocumentCommand\Let{mm}{#1 \( \leftarrow \) #2}
+\NewDocumentCommand\Let{mm}{#1 \textleftarrow #2}
 \newcommand\Tau{\mathcal{T}}
 
 % NOTE Linguaggi Formali e Compilatori
@@ -108,11 +186,19 @@
 \SetKw{Print}{stampa}
 
 % NOTE cicli
-\SetKw{DownTo}{fino a}
+% WARNING fa attenzione lasca degli spazi dalla definizione delle keyword, pena errori incorreggibili
+% \SetKwFor{From}{da}{fai}
+\SetKwFor{From}{from}{do}
 
-% NOTE logica booleana
-\SetKw{True}{vero}
-\SetKw{False}{falso}
+% \SetKw{DownTo}{fino a}
+\SetKw{DownTo}{until}
+
+% \SetKw{Step}{con passo}
+\SetKw{Step}{with step}
+
+% NOTE logica booleana - boolean logic
+\SetKw{True}{true}
+\SetKw{False}{false}
 \SetKw{And}{and}
 \SetKw{Or}{or}
 \SetKw{Not}{not}
@@ -120,8 +206,9 @@
 
 % NOTE Algoritmi e Strutture Dati
 
-% NOTE mi assicura la compatibilità con le slide
-\newcommand\alert[1]{\textcolor{rose}{#1}}
+% NOTE utilizzato nel testo
+\newcommand\alert[1]{\textcolor{Blue}{#1}}
+% NOTE mi assicura la compatibilità quando copio testo dalle slide
 \newcommand\blink[1]{\textcolor{rose}{#1}}
 
 % NOTE quando ometto del codice scritto in precedenza
@@ -143,10 +230,14 @@
 \SetKwData{lifo}{lifo}
 
 % NOTE funzioni ausiliarie
+% TODO ho usato maxFunction, da cambiare
 \SetKwFunction{MathMax}{max}
 \SetKwFunction{MathMin}{min}
+% NOTE vedi comandi
 \SetKwFunction{iif}{iif}
+
 \SetKwFunction{Swap}{swap}
+% NOTE dove l'ho utilizzato?
 \newcommand\sSwap[2]{\ensuremath{#1 \leftrightarrow #2}}
 
 % NB Font
@@ -165,6 +256,7 @@
 
 % NOTE valori
 \SetKw{This}{this}
+\SetKw{Self}{self}
 \SetKw{Delete}{delete}
 \SetKw{Nil}{nil}
 \SetKw{Null}{null}
@@ -175,18 +267,16 @@
 % NOTE keyword
 \SetKwInput{precondition}{precondition}
 \SetKwFunction{new}{new}
+\SetKwFunction{delete}{delete}
 
-% NOTE commenti
-% \ifprinted
-% \newcommand\commentFont[1]{\footnotesize\ttfamily\textcolor{lightgray}{#1}}
-% \else
-\newcommand\commentFont[1]{\footnotesize\ttfamily\textcolor{blue}{#1}}
-% \fi
+% NOTE stile definito all'inizio
 \SetCommentSty{commentFont}
 % \newcommand\mycommfont[1]{\rmfamily\textcolor{blue}{#1}}
 % \SetCommentSty{mycommfont}
 % NOTE \SetKwComment{<cmd>}{<before>}{<after>}
 \SetKwComment{Comment}{//~}{}
+% NOTE serve per l'introduzione, dove si calcola la complessità
+\SetKwComment{Rem}{}{}
 % \newcommand{\REMF}[1]{\Comment*[f]{#1}}
 % \newcommand{\REMR}[1]{\Comment*[r]{#1}}
 
@@ -195,26 +285,12 @@
 % #2 - valore 0-esimo o estremo sinisto
 % #3 - valore 0-esimo o estremo destro
 % OPTIMIZE: \SetKwArray{Array}{array}
-\NewDocumentCommand\Array{mgg}{%
+% TODO non utilizzare 'g' come parametro, sostituirlo con 'o'
+\NewDocumentCommand\Array{moo}{%
 	\ensuremath{%
 	\KwSty{#1}% <- spazio
 		\IfNoValueTF{#2}{%
 			[\,]% <- inizialmente vuoto
-		}{%
-		\IfNoValueTF{#3}{%
-			[#2]% <- valore iniziale
-		}{%
-			[#2\dots#3]% <- intervallo
-		}}}%
-	\xspace%
-}
-
-% OPTIMIZE da rimuovere
-\NewDocumentCommand\ArrayCall{mgg}{%
-	\ensuremath{% <- spazio
-	\mathit{#1}
-		\ifblank{#2}{%
-		% <- nulla, è un riferimento al vettore
 		}{%
 		\IfNoValueTF{#3}{%
 			[#2]% <- valore iniziale
@@ -240,94 +316,47 @@
 	\xspace%
 }
 
-% OPTIMIZE da rimuovere
-\NewDocumentCommand\MatrixCall{mgg}{%
-	\ensuremath{% <- spazio
-	\mathit{#1}
-		\ifblank{#2}{%
-		% <- nulla, è un riferimento alla matrice
-		}{%
-			\ifblank{#3}{%
-			% <- nulla, è un riferimento alla matrice
-			}{%
-				\IfNoValueTF{#3}{%
-					[#2]% <- valore iniziale
-				}{%
-					[#2][#3]% <- valori iniziali
-				}%
-			}%
-		}%
-	}%
-	\xspace%
-}
-
 \DeclareMathOperator*\Equal{==}
 \newcommand\Assign{\ensuremath{\gets}\xspace}% =
 \DeclareMathOperator*\Neq{\neq}% !=
 
+% TODO migliorare la resa tipografica, seimboli troppo vicini
 \newcommand\Increment[1]{%
-	\ensuremath{#1 \mkern-3mu + \mkern-6mu +}%
+	\ensuremath{#1}\texttt{++}%
 }
 \newcommand\Decrement[1]{%
-	\ensuremath{#1 - \mkern-6mu -}%
+	\ensuremath{#1}\texttt{++}%
 }
 \newcommand\Multiply[2]{%
-	\ensuremath{#1 * \mkern-6mu = #2}%
+	\ensuremath{#1 *= #2}%
 }
 % https://tex.stackexchange.com/questions/67912/
 \newcommand\AddTo[2]{%
-	\ensuremath{#1 + \mkern-6mu = #2}%
+	\ensuremath{#1\, + \mkern-6mu = #2}%
 }
 \newcommand\RemoveFrom[2]{%
-	\ensuremath{#1 - \mkern-6mu = #2}%
+	\ensuremath{#1\, -= #2}%
 }
 
-% NOTE specifica la slide dove è specificato l'algoritmo
-\newcommand\slide[2]{\fbox{#1/#2}}
+% TODO da rimuovere, non semantico
+% \colorlet{algAccentColor}{blue}
+% \newcommand\accentColor[1]{\textcolor{algAccentColor}{#1}}
 
-% TODO
-\usepackage[useregional]{datetime2}
-
-\reversemarginpar
-\NewDocumentCommand{\esercizio}{ o m }{
-	\marginnote{\tiny \fbox{\em\DTMdate{#2}} \IfValueT{#1}{\circled{#1}}}%
+% NOTE per rappresentazione computazioni costi nell'Introduzione
+\NewDocumentCommand{\costo}{ s m O{} O{} }{%
+	\IfBooleanTF{#1}{%
+		% NOTE comando per la riga di intestazione
+		\Rem*[f]{%
+			\makebox[15mm][c]{#2}% costo
+			\makebox[15mm][c]{#3}% # Volte / caso migliore
+			\makebox[15mm][c]{#4}% #         caso pessimo
+		}%
+	}{%
+		% NOTE comando per descrivere i costi
+		\Rem*[f]{%
+			\makebox[15mm][c]{\(#2\)}% costo
+			\makebox[15mm][c]{\(#3\)}% caso migliore
+			\makebox[15mm][c]{#4}%     caso pessimo
+		}%
+	}%
 }
-
-\newcommand\intervalNumber{1}
-\NewDocumentEnvironment{ricorrenza}{ s o g }{
-	% \begin{equation*}
-	\[
-		\IfBooleanF{#1}
-		{T(n) =}
-		\IfValueT{#3}{\esercizio[#2]{#3}}
-		% NOTE mi permette di evitare errori se non specifico la data dell'esercizio
-		% TODO de-commetare per avere le equazioni complete
-		% TODO versione con star permette di avere l'equazione pulita
-		\IfBooleanF{#1}
-			{\begin{dcases}}
-}{
-		\IfBooleanF{#1}
-			{
-			& n > \intervalNumber \\
-			1 & n \leqslant \intervalNumber \\
-		\end{dcases}
-			}
-	\]
-	% \end{equation*}
-}
-
-\NewDocumentCommand{\T}{ s o m }{
-	\ensuremath{%
-		\IfValueTF{#2}
-			{T_{#2}}
-			{T}
-		\left(%
-		\IfBooleanTF{#1}
-			{\left\lfloor#3\right\rfloor}
-			{#3}
-		\right)
-	}
-}
-
-\colorlet{algAccentColor}{blue}
-\newcommand\accentColor[1]{\textcolor{algAccentColor}{#1}}

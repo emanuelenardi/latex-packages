@@ -5,15 +5,15 @@
 % NOTE 'colortbl' - righe e celle colorate
 % NOTE 'diagbox' - diagonal rule on a cell
 % NOTE 'ltablex' - crea tabelle dalla larghezza dinamica su più pagine
-% NOTE 'makecell' -
+% NOTE 'makecell' - supporta layout comuni per le intestazioni, può creare celle multi-allineate
 % NOTE 'multirow' - tabelle con righe multilinea
 % NOTE 'tabularx' - crea tabelle dalla larghezza dinamica
 \usepackage{
 	,array
 	,tabu
-	,xcolor
 	,bigstrut
 	,booktabs
+	% ,xcolor NOTE just a dependency
 	,colortbl
 	,diagbox
 	,float
@@ -23,6 +23,7 @@
 	,tabularx
 }
 
+% NOTE linea sottile grigia all'interno della tabella
 \setlength{\lightrulewidth}{0.1pt}
 \newcommand{\lightrule}{%
 	\arrayrulecolor{black!30}%
@@ -30,8 +31,9 @@
 	\arrayrulecolor{black}}
 
 % NOTE dipendenza package 'array'
-\newcolumntype{!}{>{\global\let\currentrowstyle\relax}}
-\newcolumntype{^}{>{\currentrowstyle}}
-\newcommand{\rowstyle}[1]{%
-	\gdef\currentrowstyle{#1}%
-	#1\ignorespaces}
+% OPTIMIZE rimuovere questo codice quando lo trovi
+% \newcolumntype{!}{>{\global\let\currentrowstyle\relax}}
+% \newcolumntype{^}{>{\currentrowstyle}}
+% \newcommand{\rowstyle}[1]{%
+% 	\gdef\currentrowstyle{#1}%
+% 	#1\ignorespaces}

@@ -3,3 +3,16 @@ local/
 
 # drive sync folder
 .tmp.drivedownload/
+
+# extra fonts
+classico
+dayroman
+gandhi
+garamondx
+literaturnaya
+luxi
+ua1
+ugm
+ulg
+vntex
+webomints

@@ -32,6 +32,8 @@ Le dipendenze dei pacchetti sono listate come sottopunti nella lista puntata sot
 
 ### Pacchetti esterni
 
+Questi pacchetti non sono presenti su CTAN e non vengono distribuiti con TeXLive.
+
 - `tikz-er2` — it permits to draw ER diagrams with `tikz`
 - `tikz-uml` — it permits to draw UML diagrams with `tikz`.
 - `pgf-umlsd` — it permits to draw UML di­a­grams us­ing pgf

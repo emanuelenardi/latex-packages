@@ -3,7 +3,9 @@
 
 % WARNING it produces a clashing error with the tocloft package if the TOC is displayed
 % NB bisogna caricarlo per ultimo
-\usepackage[
+% NOTE gestisce i link testuali all'interno del documento
+\usepackage{hyperref}
+\hypersetup{
 	,colorlinks	= true
 	% ,allcolors = darker
 	,linkcolor 	= red
@@ -13,9 +15,13 @@
 	,menucolor 	= red
 	,runcolor 	= cyan
 	,urlcolor 	= magenta
-]{hyperref}
+	,pdfauthor={Nardi, Emanuele}
+	% pdfpagemode=FullScreen
+}
 
-\newcommand{\mail}[1]{\href{mailto:#1}{\texttt{#1}\ExternalLink}}
+% NOTE specifica la mail con link
+\newcommand{\mail}[1]{\href{mailto:#1}{\texttt{#1}}}
 
 % WARNING deve essere caricato dopo il pacchetto 'amsmath'
-\usepackage{cleveref}
+% NOTE non funziona come dovrebbe, leggere la documentazione
+% \usepackage{cleveref}

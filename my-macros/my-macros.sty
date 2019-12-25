@@ -1,13 +1,14 @@
-\newcommand\omissis{%
-	[\textellipsis\unkern]%
-}
+% https://tex.stackexchange.com/questions/102615/dedicated-symbol-for-in-quotations
+% \newcommand\omissis{%
+% 	[\textellipsis\unkern]%
+% }
 
 \newcommand\mysection[2]{%
 	\section[#1]{#1\\%
-	[.5ex]\normalsize\textit{#2}}%
+	[.5ex]\normalfont\footnotesize\textit{#2}}%
 }
 
 \newcommand\mysubsection[2]{%
 	\subsection[#1]{#1\\[.5ex]%
-	\normalsize\textit{#2}}%
+	\normalfont\footnotesize\textit{#2}}%
 }

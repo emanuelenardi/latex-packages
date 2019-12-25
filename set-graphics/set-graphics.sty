@@ -2,28 +2,45 @@
 \usepackage[export]{adjustbox}
 
 % IDEA figure
-% NOTE 'graphicx' - inserimento figure nel docuemento
+% NOTE 'graphicx' - inserimento figure nel documento
 % NOTE 'float' - definisce l'opzione "H" per gli oggetti fluttuanti
+% NOTE 'subcaption' - immagini multiple con didascalie separate
 % NOTE 'wrapfig' - inserimento di figure di fianco al testo
 % OPTIMIZE subfig -> subcaption
 \usepackage{
 	,graphicx
 	,float
 	,caption
+	,subcaption
 	,wrapfig
 }
 
-% NOTE Dichiarazione dei percorsi DI DEFAULT per le immagini
+% NOTE dichiarazione dei percorsi DI DEFAULT per le immagini
 % \graphicspath{
 % 	{./assets/figures/}
 % 	{./assets/slides/}
 % 	{./assets/icons/}
 % }
 
+% NOTE impostazione GENERALI delle didascalie
 \captionsetup{
 	,figureposition = bottom
 	,tableposition = top
 	,font = small
 	,labelfont = {sf, bf}
 	,justification = centering
+}
+
+% NOTE impostazione delle didascalie NELLE FIGURE
+\captionsetup[figure]{
+	format=hang,
+	justification=raggedright,
+	singlelinecheck=off
+}
+
+\captionsetup[subfigure]{
+	format=hang,
+	justification=raggedright,
+	singlelinecheck=off,
+	position=b
 }

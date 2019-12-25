@@ -1,5 +1,9 @@
 \usepackage[newfloat, cachedir=_minted-cache]{minted}
 
+% NOTE permette di trattare il codice come se fosse un float
+\newenvironment{code}{\captionsetup{type=listing}}{}
+\SetupFloatingEnvironment{listing}{name=Codice}
+
 % NOTE inline mint options
 
 % NOTE Languace C++
@@ -40,18 +44,18 @@
 
 % NOTE opzioni per linguaggio 'C++'
 \setminted[java]{
-	,linenos = true
+	,linenos = false
 	,tabsize = 4
 }
 
 % NOTE opzioni per linguaggio 'C++'
 \setminted[cpp]{
-	,linenos = true
+	,linenos = false
 	,tabsize = 4
 }
 
 % NOTE opzioni per linguaggio 'C'
 \setminted[c]{
-	,linenos = true
+	,linenos = false
 	,tabsize = 4
 }

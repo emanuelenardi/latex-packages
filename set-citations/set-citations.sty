@@ -7,7 +7,7 @@
 \newcommand\quotescale{3}
 \newcommand\myquotesleft{\makebox(0,0){\scalebox{\quotescale}{\textcolor{quotemark}{``}}}}
 \newcommand\myquotesright{\makebox(0,0){\scalebox{\quotescale}{\textcolor{quotemark}{''}}}}
-\newcommand\quotemargin{0.1\textwidth}
+\newcommand\quotemargin{0.25\textwidth}
 
 \makeatletter
 % NOTE TODO
@@ -52,7 +52,7 @@
 		% NOTE posiziona le virgolette destre
 		\begin{picture}(0,0)(0,0)%
 			% NOTE (15,25)
-			\put(15,15){\myquotesright}%
+			\put(-120,15){\myquotesright}%
 		\end{picture}}%
 	% NOTE controlla se sono stati passati gli argomenti giusti
 	% NOTE; se non passo l'autore non stampa niente

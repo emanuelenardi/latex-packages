@@ -1,18 +1,16 @@
 % WARNING Mantenere l'ordine dei pacchetti è fonadamentale per non rompere la build
 % IDEA math symbols
-% NOTE 'mathtools' - mathtools = amsmath + other stuff
-% NOTE 'MnSymbol' - fornisce le freccie che utilizzo per andare a capo riga nelle liste di codice
 % NOTE 'abraces' - angle brakets fine tuning
-% NOTE 'braket' - permette l'uso di parentesi angolari
-% NOTE 'nicefrac' - divisione in linea
-% NOTE 'textgreek' - puoi caratteri greci nel testo
+% NOTE 'MnSymbol' - fornisce le freccie che utilizzo per andare a capo riga nelle liste di codice
 \usepackage{
 	,amsthm
 	,amsfonts
 	,amssymb
 	,MnSymbol
+	% ,mathtools % clash
 }
 
+% NB 'mathtools' - mathtools = amsmath + other stuff
 % NOTE 'leqno' places the numbering of formulas on the left hand side instead of the right;
 % NOTE 'fleqn' typesets displayed formulas left-aligned instead of centered;
 \usepackage[
@@ -20,7 +18,10 @@
 	% ,fleqn
 ]{mathtools}
 
-% WARNING "semantic" da caricare sopo "amsmath"
+% NOTE 'braket' - permette l'uso di parentesi angolari
+% WARNING 'semantic' da caricare sopo "amsmath"
+% NOTE 'nicefrac' - divisione in linea
+% NOTE 'textgreek' - puoi utilizzare caratteri greci nel testo
 \usepackage{
 	% ,braket
 	% ,semantic
@@ -32,7 +33,9 @@
 \usepackage{witharrows}
 % WARNING dipendenza set-color
 \colorlet{brighter}{blue!50!white}
-\WithArrowsOptions{tikz=brighter, MoreColumns}
+% NOTE tolta opzione poiché risulta inesistente
+% \WithArrowsOptions{tikz=brighter, MoreColumns}
+\WithArrowsOptions{tikz=brighter}
 
 % NOTE comando definito dal package "amsmath"
 \DeclarePairedDelimiter\norm{\lVert}{\rVert}
@@ -54,22 +57,46 @@
 
 % IDEA teoremi, lemmi e nota bene
 
+% NOTE https://tex.stackexchange.com/questions/28165/amsthm-how-to-reduce-the-vertical-spacing-between-theorem-and-proof
+% NOTE diminuire lo spazio sopra e sotto i teoremi
+\usepackage{thmtools}
+% WARNING crea problemi alla dispensa di algoritmi, lo commento
+% \declaretheoremstyle[%
+% 	spaceabove=6pt,%
+% 	spacebelow=6pt,%
+% 	headfont=\normalfont\itshape,%
+% 	postheadspace=1em,%
+% 	qed=\qedsymbol%
+% ]{mystyle}
+% \let\proof\oldproof
+% \declaretheorem[name={Dimostrazione},style=mystyle,unnumbered]{proof}
+
 % NOTE con o senza (*) contatori
+\theoremstyle{plain}% default
 \newtheorem{theorem}{Teorema}
+\newtheorem{axiom}{Assioma}
+\newtheorem{problem}{Problema}
+\newtheorem*{axiom*}{Assioma}
 \newtheorem*{theorem*}{Teorema}
+\newtheorem*{property*}{Proprietà}
 \newtheorem{lemma}[theorem]{Lemma}
+
+\theoremstyle{definition}
 \newtheorem{definition}{Definizione}[section]
-\newtheorem*{definition*}{definition}
+\newtheorem*{definition*}{Definizione}
+\newtheorem*{notation*}{Notazione}
 \newtheorem{corollario}{Corollario}
-\newtheorem{example}{Esempio}
+\newtheorem*{corollario*}{Corollario}
 \newtheorem{proposition}{Proposizione}
 
 % NOTE senza contatori
+\theoremstyle{remark}
 \newtheorem*{remark}{Ricorda}
 \newtheorem*{note}{Nota}
 \newtheorem*{observation}{Osservazione}
 \newtheorem*{hint}{Suggerimento}
 \newtheorem*{idea}{Idea}
+\newtheorem{example}{Esempio}
 
 \usepackage[makeroom]{cancel}
 \newcommand\Ccancel[2][lightgray]{%
@@ -77,19 +104,20 @@
 }
 
 % NOTE User defined Set
+% TODO da rimuovere dai documenti
 % #1 first number in the set - obbligatorio
 % #2 last number in the set - facoltativo
-\NewDocumentCommand{\uSet}{ m g }{%
-	\ensuremath{%
-		\IfNoValueTF{#2}{%
-			% from #1_1 -> to #1_n
-			\{{#1}_{1}, {#1}_{2}, \dots, {#1}_{n}\}%
-		}{%
-			% from #1 -> to #2
-			\{#1, \dots, #2\}%
-		}%
-	}%
-}
+% \NewDocumentCommand{\uSet}{ m g }{%
+% 	\ensuremath{%
+% 		\IfNoValueTF{#2}{%
+% 			% from #1_1 -> to #1_n
+% 			\{{#1}_{1}, {#1}_{2}, \dots, {#1}_{n}\}%
+% 		}{%
+% 			% from #1 -> to #2
+% 			\{#1, \dots, #2\}%
+% 		}%
+% 	}%
+% }
 
 % NOTE colorare simboli matematici
 % tex.stackexchange.com/questions/21598/
@@ -105,25 +133,36 @@
 
 % TODO da spostare nel documento in cui viene usato
 \newcommand\mhl[1]{\mathcolor{mathcolor}{#1}}
-% 🔖 [Big O and related notations](texblog.org/2014/06/24/)
-\newcommand{\Omicron}{\mathcal{O}}
 
-% TODO da spostare nel documento in cui viene usato
-\newcommand\produce{\longrightarrow}
-\newcommand\deriva{\Rightarrow}
-\usepackage{stackrel}
-\newcommand\derivamultiplo{\stackrel{\ensuremath{+}}{\deriva}}
-\newcommand\derivanumero[1]{\stackrel{\ensuremath{#1}}{\deriva}}
+% NOTE 🔖 [Big O and related notations](texblog.org/2014/06/24/)
+\NewDocumentCommand{\Omicron}{o}{
+	\IfValueTF{#1}
+		{\mathcal{O}(#1)}
+		{\mathcal{O}}
+}
+\let\oldTheta\Theta
+\RenewDocumentCommand{\Theta}{o}{
+	\IfValueTF{#1}
+		{\oldTheta(#1)}
+		{\oldTheta}
+}
+\let\oldOmega\Omega
+\RenewDocumentCommand{\Omega}{o}{
+	\IfValueTF{#1}
+		{\oldOmega(#1)}
+		{\oldOmega}
+}
 
 % NOTE analisi
-\renewcommand\restriction{\mathord{\upharpoonright}}
+% \renewcommand\restriction{\mathord{\upharpoonright}}
 
 % TODO da spostare nel documento in cui viene usato
 % 'uq' sta per 'upquote'
 \newcommand\uq{\ensuremath{\text{\textquotesingle}}}
 \newcommand\bs[1]{\boldsymbol{#1}}
 
-% TODO da rimuovere
+% NOTE definizione abbreviazioni
+% TODO da rimuovere dai documenti
 % \newcommand\ob{\overbrace}
 % \newcommand\ub{\underbrace}
 % \newcommand\us{\underset}
@@ -141,5 +180,5 @@
 % }
 % \makeatother
 
-% NOTE simbolo di fine dimostrazione nero
+% NOTE simbolo di fine dimostrazione nero, preferenza personale
 % \renewcommand\qedsymbol{\( \blacksquare \)}
