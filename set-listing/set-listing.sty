@@ -5,6 +5,7 @@
 % NOTE 'textcomp' - TODO
 \usepackage{textcomp}
 
+% NOTE specifica il percorso per il file contenenti codice
 \newcommand{\lstinputpath}[1]{\lstset{inputpath=#1}}
 
 % NOTE Dichiarazione dei percorsi DI DEFAULT per il codice
@@ -20,17 +21,17 @@
 % NOTE abbreviazioni inserimento codice
 \newcommand\code[1]{\texttt{#1}}
 
-% OPTIMIZE eliminare dai documenti
-% \newcommand\html[1]{\lstinline[style = HTML]|#1|}
-% \newcommand\cc[1]{\lstinline[style = C]|#1|}
-% \newcommand\cpp[1]{\lstinline[style = [11]C++]|#1|}
-% \newcommand\gradle[1]{\lstinline[style = Gradle]|#1|}
-% \newcommand\java[1]{\lstinline[style = Java]|#1|}
-% \newcommand\javascript[1]{\lstinline[style = Javascript]|#1|}
-% \newcommand\jsp[1]{\lstinline[style = JSP]|#1|}
-% \newcommand\sml[1]{\lstinline[style = SML]|#1|}
-% \newcommand\sql[1]{\lstinline[style = SQL]|#1|}
-% \newcommand\xml[1]{\lstinline[style = XML]|#1|}
+% NOTE specifici per ogni linguaggio
+\newcommand\html[1]{\lstinline[style = HTML]|#1|}
+\newcommand\cc[1]{\lstinline[style = C]|#1|}
+\newcommand\cpp[1]{\lstinline[style = [11]C++]|#1|}
+\newcommand\gradle[1]{\lstinline[style = Gradle]|#1|}
+\newcommand\java[1]{\lstinline[style = Java]|#1|}
+\newcommand\javascript[1]{\lstinline[style = Javascript]|#1|}
+\newcommand\jsp[1]{\lstinline[style = JSP]|#1|}
+\newcommand\sml[1]{\lstinline[style = SML]|#1|}
+\newcommand\sql[1]{\lstinline[style = SQL]|#1|}
+\newcommand\xml[1]{\lstinline[style = XML]|#1|}
 
 % NOTE Rinomina la didascali
 % Listing -> Codice

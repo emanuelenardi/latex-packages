@@ -46,8 +46,9 @@
 }
 \makeatother
 
-% NOTE se crea problemi nell'impaginazione degli algoritmi rimuovere senza pietà alcuna
 % \begin{comment}
+\usepackage{booktabs}
+% NOTE se crea problemi nell'impaginazione degli algoritmi rimuovere senza pietà alcuna
 % https://tex.stackexchange.com/questions/345737/
 \makeatletter
 \newcommand\fs@booktabsruled{%
@@ -62,6 +63,7 @@
 \makeatother
 
 % NOTE senza questo if condizionale succedono disastri
+% NOTE -> i file standalone non compilano
 \newif\ifstandalone
 \ifstandalone\else
 \usepackage{float}
@@ -82,10 +84,6 @@
 % 	\FigureOfAlgofalse% reset setting
 % 	\renewcommand{\;}{\mskip\thickmuskip}% p.357 of TeXbook
 % }
-
-% NOTE utilizzato in alcune occasioni per algoritmi a metà pagina
-% NOTE non più utilizzato, rimpiazzato da minipage
-% \usepackage{multicol}
 
 % https://tex.stackexchange.com/questions/153646/algorithm2e-disabling-line-numbers-for-specific-lines
 % NOTE Disabling line numbers for specific lines with 'linesnumbered' option on
@@ -109,8 +107,8 @@
 
 % NOTE spaziatura nel testo
 % default: smallskip
-% \SetAlgoSkip{smallskip}
-\SetAlgoSkip{medskip}
+\SetAlgoSkip{smallskip}
+% \SetAlgoSkip{medskip}
 % \SetAlgoSkip{bigskip}
 
 % NOTE indentazione
@@ -135,16 +133,11 @@
 % \AlgoDisplayBlockMarkers\SetAlgoBlockMarkers{\{}{\}}%
 % \AlgoDisplayBlockMarkers\SetAlgoBlockMarkers{begin}{end}%
 
-% TODO spostare impostazioni sul progetto di LFC
-% NOTE definizione nuove keyword
-\SetKwProg{Fn}{}{\string:}{}
-\SetKwFunction{Closure}{closure}
-
 % NOTE ridefinizione sei comandi in inglese
-% \SetKwInput{KwIng}{Ingresso}
-% \SetKwInput{KwData}{Dati}
-% \SetKwInput{KwUsc}{Uscita}
-% \SetKwInput{KwResult}{Risultato}
+\SetKwInput{KwIng}{Ingresso}
+\SetKwInput{KwData}{Dati}
+\SetKwInput{KwUsc}{Uscita}
+\SetKwInput{KwResult}{Risultato}
 
 % NOTE parole chiave definite direttamente in italiano
 \SetKwInput{Ingresso}{Ingresso}
@@ -161,16 +154,15 @@
 %
 % \SetKwFor{Finche}{finché}{fai}{fine\ finché}% <- mancava 'finché'
 
+\SetKwInOut{Input}{\small{Input}}
+\SetKwInOut{Output}{\small{Output}}
 % NOTE ridefinizione comandi per dispense LFC
-
-\SetKwInOut{Input}{Input}
-\SetKwInOut{Output}{Output}
-% NOTE stile personalizzato
 % \SetKwInOut{Input}{\footnotesize{\fbox{input}}}
 % \SetKwInOut{Output}{\footnotesize{\fbox{output}}}
 
-\NewDocumentCommand\Let{mm}{#1 \textleftarrow #2}
-\newcommand\Tau{\mathcal{T}}
+% WARNING comandi già specificati nei pacchetti matematici
+% \NewDocumentCommand\Let{mm}{#1 \textleftarrow #2}
+% \newcommand\Tau{\mathcal{T}}
 
 % NOTE Linguaggi Formali e Compilatori
 \SetKw{Break}{break}
@@ -182,6 +174,13 @@
 \SetKw{Marca}{marca}
 \SetKw{Flag}{flag}
 \SetKw{Add}{add}
+
+% \SetKwProg{Fn}{}{\string:}{}
+\SetKwFunction{Closure}{closure}
+
+\usepackage{xspace}
+\providecommand{\myyes}{\textcolor{ForestGreen}{\textbf{yes}}\xspace}
+\providecommand{\myno}{\textcolor{red}{\textbf{no}}\xspace}
 
 \SetKw{Print}{stampa}
 
@@ -304,7 +303,7 @@
 % #1: tipo di dato contenuto nella matrice
 % #2: se non viene specificato viene stampata la matrice '#1[][]'
 % #3: se viene specificato viene stampata la matrice '#1[#2][#3]'
-\NewDocumentCommand\Matrix{mgg}{%
+\NewDocumentCommand\Matrix{mO{}O{}}{%
 	\ensuremath{%
 	\KwSty{#1}% <- spazio
 		\IfNoValueTF{#2}{%

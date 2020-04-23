@@ -37,7 +37,7 @@
 % \WithArrowsOptions{tikz=brighter, MoreColumns}
 \WithArrowsOptions{tikz=brighter}
 
-% NOTE comando definito dal package "amsmath"
+% NOTE comando definito dal package 'amsmath'
 \DeclarePairedDelimiter\norm{\lVert}{\rVert}
 
 \DeclarePairedDelimiter\abs{\lvert}{\rvert}
@@ -59,8 +59,8 @@
 
 % NOTE https://tex.stackexchange.com/questions/28165/amsthm-how-to-reduce-the-vertical-spacing-between-theorem-and-proof
 % NOTE diminuire lo spazio sopra e sotto i teoremi
-\usepackage{thmtools}
-% WARNING crea problemi alla dispensa di algoritmi, lo commento
+% WARNING crea problemi alla dispensa di algoritmi e non ne capisco il motivo, lo commento
+% \usepackage{thmtools}
 % \declaretheoremstyle[%
 % 	spaceabove=6pt,%
 % 	spacebelow=6pt,%
@@ -74,12 +74,13 @@
 % NOTE con o senza (*) contatori
 \theoremstyle{plain}% default
 \newtheorem{theorem}{Teorema}
-\newtheorem{axiom}{Assioma}
-\newtheorem{problem}{Problema}
-\newtheorem*{axiom*}{Assioma}
 \newtheorem*{theorem*}{Teorema}
+\newtheorem{axiom}{Assioma}
+\newtheorem*{axiom*}{Assioma}
 \newtheorem*{property*}{Proprietà}
 \newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{lemma*}{Lemma}
+\newtheorem*{exam}{Esercizio d'esame}
 
 \theoremstyle{definition}
 \newtheorem{definition}{Definizione}[section]
@@ -88,36 +89,23 @@
 \newtheorem{corollario}{Corollario}
 \newtheorem*{corollario*}{Corollario}
 \newtheorem{proposition}{Proposizione}
+\newtheorem{problem}{Problema}
+\newtheorem*{example}{Esempio}
 
 % NOTE senza contatori
 \theoremstyle{remark}
+% https://tex.stackexchange.com/questions/264010/amsthm-with-usepackagefrenchbabel
+% \addto\captionsitalian{\renewcommand\proofname{Dimostrazione}}
 \newtheorem*{remark}{Ricorda}
 \newtheorem*{note}{Nota}
 \newtheorem*{observation}{Osservazione}
 \newtheorem*{hint}{Suggerimento}
 \newtheorem*{idea}{Idea}
-\newtheorem{example}{Esempio}
 
 \usepackage[makeroom]{cancel}
 \newcommand\Ccancel[2][lightgray]{%
 	\renewcommand\CancelColor{\color{#1}}\cancel{#2}%
 }
-
-% NOTE User defined Set
-% TODO da rimuovere dai documenti
-% #1 first number in the set - obbligatorio
-% #2 last number in the set - facoltativo
-% \NewDocumentCommand{\uSet}{ m g }{%
-% 	\ensuremath{%
-% 		\IfNoValueTF{#2}{%
-% 			% from #1_1 -> to #1_n
-% 			\{{#1}_{1}, {#1}_{2}, \dots, {#1}_{n}\}%
-% 		}{%
-% 			% from #1 -> to #2
-% 			\{#1, \dots, #2\}%
-% 		}%
-% 	}%
-% }
 
 % NOTE colorare simboli matematici
 % tex.stackexchange.com/questions/21598/
@@ -134,51 +122,7 @@
 % TODO da spostare nel documento in cui viene usato
 \newcommand\mhl[1]{\mathcolor{mathcolor}{#1}}
 
-% NOTE 🔖 [Big O and related notations](texblog.org/2014/06/24/)
-\NewDocumentCommand{\Omicron}{o}{
-	\IfValueTF{#1}
-		{\mathcal{O}(#1)}
-		{\mathcal{O}}
-}
-\let\oldTheta\Theta
-\RenewDocumentCommand{\Theta}{o}{
-	\IfValueTF{#1}
-		{\oldTheta(#1)}
-		{\oldTheta}
-}
-\let\oldOmega\Omega
-\RenewDocumentCommand{\Omega}{o}{
-	\IfValueTF{#1}
-		{\oldOmega(#1)}
-		{\oldOmega}
-}
-
-% NOTE analisi
-% \renewcommand\restriction{\mathord{\upharpoonright}}
-
 % TODO da spostare nel documento in cui viene usato
 % 'uq' sta per 'upquote'
 \newcommand\uq{\ensuremath{\text{\textquotesingle}}}
 \newcommand\bs[1]{\boldsymbol{#1}}
-
-% NOTE definizione abbreviazioni
-% TODO da rimuovere dai documenti
-% \newcommand\ob{\overbrace}
-% \newcommand\ub{\underbrace}
-% \newcommand\us{\underset}
-% \newcommand\ul{\underline}
-% \newcommand\fns{\footnotesize}
-
-% NB modifico il comportamento del comando 'underbrace'
-% tex.stackexchange.com/questions/256894/
-% TODO da rimuovere
-% \makeatletter
-% \let\ams@underbrace=\underbrace
-% \def\underbrace#1_#2{%
-% 	\setbox0=\hbox{$\displaystyle#1$}%
-% 	\ams@underbrace{#1}_{\parbox[t]{\the\wd0}{\scriptsize #2}}%
-% }
-% \makeatother
-
-% NOTE simbolo di fine dimostrazione nero, preferenza personale
-% \renewcommand\qedsymbol{\( \blacksquare \)}

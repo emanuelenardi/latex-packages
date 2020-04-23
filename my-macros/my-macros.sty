@@ -1,13 +1,16 @@
-% https://tex.stackexchange.com/questions/102615/dedicated-symbol-for-in-quotations
-% \newcommand\omissis{%
-% 	[\textellipsis\unkern]%
-% }
+% NOTE https://tex.stackexchange.com/questions/102615/dedicated-symbol-for-in-quotations
+% NOTE omissione nel testo
+\newcommand\omissis{%
+	[\textellipsis\unkern]%
+}
 
+% NOTE sezione con sottotitolo
 \newcommand\mysection[2]{%
 	\section[#1]{#1\\%
 	[.5ex]\normalfont\footnotesize\textit{#2}}%
 }
 
+% NOTE sotto sezione con sottotitolo
 \newcommand\mysubsection[2]{%
 	\subsection[#1]{#1\\[.5ex]%
 	\normalfont\footnotesize\textit{#2}}%
