@@ -43,7 +43,6 @@ Questi pacchetti non sono presenti su CTAN e non vengono distribuiti con TeXLive
 - `ams-all` — un semplice pacchetto che carica i pacchetti matematici nel giusto ordine
 - `debug` — carica i pacchetti `showframe` e `showlabel` per avere una chiara idea di margini ed etichette presenti nel documento
 - `front-page` — A template for the initial page of my lectures notes
-- `local` — A folder already present on the file system ( _don't_ delete it )
 - `my-macros` — comandi personali
 - `my-preamble` — The preamble in which I've listed all the libraries I ordinarily use in my doc
 - `set-algorithm2e` — personalizzazione del pacchetto `algorithm2e`
