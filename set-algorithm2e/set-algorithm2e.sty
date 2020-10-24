@@ -285,17 +285,16 @@
 % #3 - valore 0-esimo o estremo destro
 % OPTIMIZE: \SetKwArray{Array}{array}
 % TODO non utilizzare 'g' come parametro, sostituirlo con 'o'
-\NewDocumentCommand\Array{moo}{%
-	\ensuremath{%
+\NewDocumentCommand\Array{ m o o }{%
 	\KwSty{#1}% <- spazio
 		\IfNoValueTF{#2}{%
-			[\,]% <- inizialmente vuoto
+			\textup{[\,]}% <- inizialmente vuoto
 		}{%
 		\IfNoValueTF{#3}{%
-			[#2]% <- valore iniziale
+			\textup{[\(#2\)]}% <- valore iniziale
 		}{%
-			[#2\dots#3]% <- intervallo
-		}}}%
+			\textup{[\(#2\dots#3\)]}% <- intervallo
+		}}%
 	\xspace%
 }
 
@@ -303,7 +302,7 @@
 % #1: tipo di dato contenuto nella matrice
 % #2: se non viene specificato viene stampata la matrice '#1[][]'
 % #3: se viene specificato viene stampata la matrice '#1[#2][#3]'
-\NewDocumentCommand\Matrix{mO{}O{}}{%
+\NewDocumentCommand\Matrix{ m O{} O{} }{%
 	\ensuremath{%
 	\KwSty{#1}% <- spazio
 		\IfNoValueTF{#2}{%
